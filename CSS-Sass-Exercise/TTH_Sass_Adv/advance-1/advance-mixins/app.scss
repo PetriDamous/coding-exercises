@@ -1,0 +1,62 @@
+// With using global variables
+
+// config file
+// $add-border: ($position: right, $size: 10px);
+
+// !default variables for the mixin
+
+// $add-border-position: all !default; // global variables we will use as default arguments
+// $add-border-size: 1px !default;
+// $add-border-pattern: solid !default;
+// $add-border-color: #999 !default;
+
+// mixin
+
+// @mixin add-border ($position: $add-border-position,
+    // $size: $add-border-size,
+    // $pattern: $add-border-pattern,
+    // $color: $add-border-color) {
+// 
+        // @if $position == all {
+            // border: $position $pattern $color;
+        // } @else {
+            // border-#{$position}: $size $pattern $color;
+        // }
+// }
+// 
+// .block {
+    // @include add-border;
+// }
+
+
+
+// Using map-list
+
+// config file
+$add-border: ($position: right, $size: 10px);
+
+$add-border: (
+    position: all,
+    size: 1px,
+    pattern: solid,
+    color: #999
+) !default;
+
+
+@mixin add-border ($position: map-get($add-border, position),
+    $size: map-get($add-border, size),
+    $pattern: map-get($add-border, pattern),
+    $color: map-get($add-border, color)) {
+
+        @if $position == all {
+            border: $position $pattern $color;
+        } @else {
+            border-#{$position}: $size $pattern $color;
+        }
+}
+
+.block {
+    @include add-border;
+}
+
+

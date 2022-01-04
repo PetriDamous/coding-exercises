@@ -1,0 +1,56 @@
+.test-container {
+  margin: 0 auto;
+  max-width: 80%;
+}
+
+.small-class {
+  font: italic bolder 30px/12px arial;
+  font-variant: common-ligatures small-caps;
+  border-style: dotted solid solid;
+  border-width: 1px 2px 3px;
+  border-color: green black blue purple;
+  border-top-left-radius: 20%;
+  border-bottom-left-radius: 20%;
+  margin: 3px 2px;
+  padding: 20px;
+  position: relative;
+  top: 100px;
+  bottom: 100px;
+  left: 2px;
+  letter-spacing: 2px;
+}
+
+.medium-class {
+  font: italic small-caps bolder 30px/12px arial;
+  border-style: solid;
+  border-width: 1px 2px 3px;
+  border-color: green black blue purple;
+  border-top-left-radius: 20%;
+  border-bottom-left-radius: 20%;
+  margin: 3px 2px;
+  padding: 20px;
+  line-height: 80%;
+  position: relative;
+  top: 100px;
+  bottom: 100px;
+  left: 2px;
+  letter-spacing: 2px;
+}
+
+.large-class {
+  font: italic small-caps bolder 30px/12px arial;
+  border-style: solid;
+  border-width: 1px 2px 3px;
+  border-color: green black blue purple;
+  border-top-left-radius: 20%;
+  border-bottom-left-radius: 20%;
+  margin: 3px 2px;
+  padding: 20px;
+  line-height: 80%;
+  position: relative;
+  top: 100px;
+  bottom: 100px;
+  left: 2px;
+  letter-spacing: 2px;
+}
+/*# sourceMappingURL=test.css.map */

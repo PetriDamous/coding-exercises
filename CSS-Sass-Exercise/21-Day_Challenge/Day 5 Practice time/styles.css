@@ -1,0 +1,62 @@
+:root {
+    --primary-color: #23424A;
+    --btn-color: #38CFD9;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Roboto sans-serif;
+    font-size: 16px;
+    color: white;
+    margin: 0;
+}
+
+h1 {
+  font-weight: 900;  
+}
+
+p {
+    font-weight: 400;    
+}
+
+.hero {
+    background: var(--primary-color);
+    padding: 5em 0;
+}
+
+.hero__text {
+    width: 70%;
+    /* border: 1px solid pink; */
+}
+
+.hero__text p {
+    margin-bottom: 3em;
+}
+
+.wrapper {
+    width: 80%;
+    max-width: 1100px;
+    margin: 0 auto; 
+    /* border: 1px solid yellow;    */
+}
+
+.btn {
+    display: inline-block;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: #072A2D;
+    background: var(--btn-color);
+    padding: .75em 2em;
+    border-radius: 100px;    
+}
+
+.btn:hover,
+.btn:focus {
+    background: #072A2D;
+    color: white;
+}

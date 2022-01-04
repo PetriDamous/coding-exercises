@@ -1,0 +1,106 @@
+/* Parent element of .section-one */
+body {
+    margin: 0;
+    font-size: 10px;
+    font-family: 'Lato', sans-serif;
+    color: #2e354f;
+}
+
+/* Child elements include <ul> */
+/* Grandchild elements are the <ul>'s <li> */
+.section-one {
+    font-size: 2em;
+}
+
+/* Parent elemtn is .section-one */
+/* Child elements are <li> */
+ul {
+    /* 1.5em = 150% */
+    font-size: 1.5em;
+}
+
+/* <li> element will multiply its 1.5em to the 1.5em of its direct parent <ul> which is 1.5em */
+/* It doesn't stop there. The <li> element will continue to multiply by it's parent's parent and there parents as well */
+/* 1.5em(<li>) -> 1.5em(<ul>) -> 2em(.section-one) -> 10px(<body>) */
+li {
+    font-size: 1.5em; 
+}
+
+
+h1,
+h2,
+strong {
+    font-weight: 900;
+}
+
+/* Typography */
+
+h1 {
+    font-size: 3em;
+    margin: 0;
+}
+
+h2 {
+    font-size: 2em;
+    color: #ef5839;
+}
+
+a {
+    color: #ef5839;
+}
+
+a:hover,
+a:focus {
+    color: #d4b44c;
+}
+
+/* Buttons */
+
+.btn {
+    display: inline-block;
+    padding: 10px 25px;
+    text-decoration: none;
+}
+
+.btn-accent {
+    background: #ef5839;
+    color: #fff;
+}
+
+.btn-accent:hover {
+    color: #2e354f;
+    background: #d4b44c;
+}
+
+.btn-white {
+    background: #fff;
+    color: #2e354f;
+}
+
+.btn-white:hover {
+    color: #2e354f;
+    background: #999;
+}
+
+/* Layout */
+
+header {
+    background: #2e354f;
+    padding: 45px 0;
+    color: #fff;
+}
+
+section {
+    padding: 45px 0;
+}
+
+.container {
+    width: 620px;
+    margin: 0 auto;
+    /* border: 2px solid magenta; */
+}
+
+.section-two {
+    background: #2e354f;
+    color: #fff;
+}

@@ -1,0 +1,55 @@
+:root {
+    --color-p: #111d4a;
+    --color-s: #05cbe9;
+
+    --font-stack-1: 'Blinker', sans-serif;
+    --font-stack-2: 'Source Sans Pro', sans-serif;
+
+    --title-small: 1.75rem;
+    --body-small: 1rem;
+    --button-small: 1.25rem;
+
+    --title-big: 2rem;
+    --body-big: 1.125rem;
+    --button-big: var(--button-small);
+}
+
+.card {
+    width: 90%;
+    margin: 0 auto;
+    max-width: 800px;
+    background-color: var(--color-p);  
+}
+
+.card__content {
+    color: grey;
+}
+
+.card__title,
+.card__footer {
+    font-family: var(--font-stack-1);
+}
+
+.card__title {
+    font-size: var(--title-small);    
+    color: var(--color-s);
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 1.2;
+}
+
+.card__body {
+    font-family: var(--font-stack-2);
+    font-size: var(--body-small);      
+    line-height: 1.7;
+}
+
+.card__footer {   
+    font-weight: 400;
+}
+
+.card__read__number {
+    font-size: var(--title-small);
+    font-weight: 700;    
+    letter-spacing: 1px;
+}

@@ -1,0 +1,76 @@
+/*
+
+Note: I tried to set the font-weight and the text-decoraton properties on the <div> that contains our brand, but
+the text-decoration property wasn't inherited by the child element (main-header__brand)
+
+Summary:
+
+We can use the text-decoration property to remove the underline on anchore elements using the value none.
+
+We can use the vertical-align property to align elements vertically.
+
+
+*/
+
+:root {
+    --primary-color: #2ddf5c;
+    --secondary-color: #ff1b68;
+    --white: white;
+}
+
+/* Simple browser rest */
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.main-header {    
+    background-color: var(--primary-color); 
+    width: 100%;
+    padding: 8px 16px;    
+}
+
+.main-header > div {
+    display: inline-block;
+    vertical-align: middle; /* Aligns element vertically */
+}
+
+.main-header__brand {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 23px; 
+}
+
+.main-nav,
+.main-nav__item {
+    display: inline-block;
+}
+
+.main-nav {    
+    width: calc(100% - 74px); 
+    text-align: right;
+    vertical-align: middle; /* Aligns element vertically */
+}
+
+.main-nav__items {
+    list-style: none;
+}
+
+#product-overview {
+    color: var(--white);
+    background-color: var(--secondary-color); 
+    padding: 10px;
+    width: 100%;
+    height: 510px;
+}
+
+.section-title {
+    color: var(--primary-color); 
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.section-title + p {
+    margin-top: 16px;
+    margin-bottom: 16px;
+}

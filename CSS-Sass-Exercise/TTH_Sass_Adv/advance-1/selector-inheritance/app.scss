@@ -1,0 +1,107 @@
+// In this video we learn the concept of how @extend can be used to repeat common styles on elements.
+
+// @extend does have its pitfalls. If used incorectly it can create extra CSS that we do not want
+
+/**** Example of using @extend in a simple way that works ************/
+
+// h1 {
+    // font-size: 3.833333em;
+    // font-family: "Helvetica Neue", Arial, sans-serif;
+    // text-transform: uppercase;
+// }
+// 
+// h2 {
+    // @extend h1;
+    // font-size: 2.6666667;
+// }
+// 
+// .larg-copy {
+    // @extend h1;
+// }
+
+// The above code works ok in this situation
+
+// Common styles are grouped together (h1, h2, .large-copy)
+
+// h2 to gets its own set of rules that will in this case override
+// the fonts-size by using the Cascade
+
+
+/****** @extend used incorrectly ***********/
+
+// h1 {
+    // font-size: 3.833333em;
+    // font-family: "Helvetica Neue", Arial, sans-serif;
+    // text-transform: uppercase;
+// }
+// 
+// h2 {
+    // @extend h1;
+    // font-size: 2.6666667;
+// }
+// 
+// .larg-copy {
+    // @extend h1;
+// }
+
+
+// The extra h1 nested inside of .foo will 
+// continue to extend the color property to any
+// element that has @extend h1
+
+// .foo {
+    // border: 1px solid black;
+// 
+    // h1 {
+        // color: white;
+    // }
+// }
+
+// We get a lot of junk code when the compiler hits the .foo class
+
+// This is becasue @extend will loop through all instances of h1
+// and add any rule that h1 contains in the file to the @extend
+
+// In this case we will get rules for .foo h1, .foo h2, .foo .larg-copy
+// because h2 .large-copy include an extend and the h1 rule itself will be added
+// into the mix
+
+// Basically anything that has @extend h1 will inherit the new h1 color rule as well
+
+
+/**** Using placeholder element with extends *******/
+
+
+// To help fix this issue we can use a place holder value.
+
+// Placeholder values do not get compiled unless the @extend derictive is used
+
+// Placeholder element
+%default-header {
+    font-size: 3.833333em;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    text-transform: uppercase;
+}
+
+h1 {
+    @extend %default-header;
+}
+
+h2 {
+    @extend %default-header;
+    font-size: 2.6666667;
+}
+
+.larg-copy {
+    @extend %default-header;
+}
+
+
+.foo {
+    border: 1px solid black;
+
+    h1 {
+        color: white;
+    }
+}
+

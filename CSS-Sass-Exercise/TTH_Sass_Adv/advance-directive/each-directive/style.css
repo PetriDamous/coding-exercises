@@ -1,0 +1,14 @@
+@charset "UTF-8";
+.icon-strategy:after {
+  content: "";
+}
+
+.icon-twitter:after {
+  content: "";
+}
+
+.icon-github:after {
+  content: "";
+}
+
+/*# sourceMappingURL=style.css.map */

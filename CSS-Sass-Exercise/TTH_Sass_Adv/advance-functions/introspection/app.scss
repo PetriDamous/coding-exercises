@@ -1,0 +1,85 @@
+// With Sass We Can Test For:
+
+// 1. if a variable exists
+// 2. if a global variable exists
+// 3. if a function exists
+// 4. if a mixin exists
+// 5. inspect for value type
+// 6. inspect for the unit(s) of a number
+// 7. inspect if units can be operated on
+
+// Checking for local variable
+
+.block__1 {
+    $color: green; // local variable
+
+    // variable-exists checks for local variable
+    @if variable-exists(color) {
+        color: $color;
+    } @else {
+        color: red;
+    }
+}
+
+// Local variable exists so local variable is used
+
+// If local variable cannot be found
+
+.block__2 {
+    // local variable doesn't exist
+
+    // variable-exists checks for local variable
+    @if variable-exists(color) {
+        color: $color;
+    } @else {
+        color: red;
+    }
+}
+
+// Check if global variable exist
+
+$global-color: green;
+
+.block__3 {
+    
+    // variable-exists checks for local variable
+    @if global-variable-exists(global-color) {
+        color: $global-color;
+    } @else {
+        color: red;
+    }
+}
+
+// Global variable exist so it is used
+
+.block__4 {
+    $local-color: green;
+    
+    // variable-exists checks for local variable
+    @if global-variable-exists(local-color) {
+        color: $local-color;
+    } @else {
+        color: red;
+    }
+}
+
+// No global variable so else kicks in
+
+// Note: If you we where to use the !global on $local-color
+// then $local-color will become a global variable and be used
+
+// Example with null
+
+.block__5 {
+    $local-color: null;
+    
+    // variable-exists checks for local variable
+    @if variable-exists(local-color) {
+        color: $local-color;
+    } @else {
+        color: red;
+    }
+}
+
+// null is an empty value so it will still pass the test
+// null returns nothing so the CSS style is not outputed

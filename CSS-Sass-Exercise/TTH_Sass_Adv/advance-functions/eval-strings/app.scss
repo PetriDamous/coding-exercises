@@ -1,0 +1,24 @@
+// type-of(variable_name) can be used to find out the type of a value
+
+$arg: 10em;
+
+.block {
+    @if type-of($arg) == number {
+        color: '#{$arg} is #{ type-of($arg) }';
+    }
+}
+
+// This can also be used to check for string and colors
+
+// Note: Look into different ways to get rid of quotes in final CSS
+
+$arg_1: red;
+
+.block__1 {
+
+    $arg: inspect($arg_1);
+
+    color: '#{$arg} is a #{ type-of($arg) }';
+}
+
+// https://www.tutorialsteacher.com/sass/sass-introspection-functions

@@ -1,0 +1,18 @@
+body{
+   margin: 20px 10%;   
+   border: 20px solid grey;
+}
+
+.post{
+    margin: 20px 5%;
+}
+
+p:nth-of-type(1){
+    border-left: 5px solid grey;
+    padding-left: 1rem;
+}
+
+h3{
+    text-transform: uppercase;
+    letter-spacing: 1rem;
+}

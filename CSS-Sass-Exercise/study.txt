@@ -1,0 +1,55 @@
+// Ask question
+1. when to use margin 0 auto vs. abosulute postioning trick vs. transform: translate()
+
+2. Difference between display: none and visibilty: hidden
+
+
+
+//Missed
+fri 2 
+sat 1 
+sun 0
+wed 1
+fri 1
+sun 1
+
+
+total: 6 to make up
+
+madeup: 3 of 6
+
+Research
+
+1. display properties
+2. Review position
+3. Watch how to make hover nav effect
+4. how block, inline-block, and inline act inside of parent element
+5. Find out why addEventListener key word this returns window object while annoymous function returns object (look in debug js)
+6. Javascript way of making popup and scrolling effects
+7. When to use display block vs. width 100%
+
+Testing
+1. Use Sizzy.io
+2. Make special git repo for testing your pages
+
+
+Challenge
+1. Fix form field text animation (Natours)
+2. Go over website and make it more mobile friendly (Natours)
+3. Add another section that has an embeded video (Natours)
+4. Make it meet the requirments for freecodecamp (Natours)
+5. Make popup responsive (Natours)
+6. Change all <img> to use art direction, density switching, and resolution switching to make responsive <img> (Natours)
+7. Use media queries to make all the CSS background-images responsive (Natours)
+8. Graceful delgation and browser support (Natours: Chrome, Firefox, Edge, IE11)
+9. Apply only screen to all media queries to ensure that the media query is only applied to the screen
+10. On Natours navagation make it functional using good old javascript
+11. Make popup in Natours close when clicked on black background using good ol javascript
+12. Apply touch only controls to natours compoents that rely on hover (refer to final video for natours)
+
+
+Read
+
+1. https://www.sitepoint.com/css-layouts-floats-flexbox-grid/
+
+

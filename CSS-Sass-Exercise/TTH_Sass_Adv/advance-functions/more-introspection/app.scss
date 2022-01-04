@@ -1,0 +1,30 @@
+// We can test to see if a function exists
+// function-exists(function_name) will check for a function
+
+// We can also test to see if a mixin exists
+// mixin-exists(mixin_name) will check for a mixin
+
+// function-exists example:
+
+@mixin random-mix($color: 255, $alpha: 10) {
+
+    @if function-exists(random-decimal) {
+        color: rgba(random($color), random($color), random($color), random-decimal($alpha));
+    } @else {
+        color: 'Function not found';
+    }
+}
+
+.block {
+    @include random-mix();
+}
+
+// mixin-exists example:
+
+.block__1 {
+    @if mixin-exists(missing-mixin) {
+        color: blue;
+    } @else {
+        color: 'Mixin not found';
+    }
+}

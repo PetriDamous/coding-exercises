@@ -1,0 +1,28 @@
+// In the example below we use a @for loop instead of the 
+// @each directive so we can use the iterator ($i) as number to help
+// do the math
+
+@mixin spans($cols) {
+    $col-val: length($cols);
+
+    @for $i from 1 through $col-val {
+        .span-#{nth($cols, $i)} {
+            width: percentage((1 / $col-val) * $i);
+        }
+    }
+}
+
+@include spans(chris jill barry wesker);
+
+// How it works:
+// We capture the length of our list in $cal-val
+// We loop through the length of the list
+
+// Note about loop:
+// $i is iterator
+// 1 is our starting number
+// through counts the whole length of our list
+// if we used to the iteration would stop before the last list item
+// We can iterate through the list backwards by switching @for $i from 1 through $col-va to @for $i from $col-va through 1 
+// percentage is function that converts decimals into percentages
+

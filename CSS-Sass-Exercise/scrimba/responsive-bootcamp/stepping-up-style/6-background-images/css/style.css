@@ -1,0 +1,9 @@
+h1 {
+    font-size: 3rem;
+    text-align: center;
+}
+
+.cat {
+    background-image: url(../images/email-pattern.png);
+    padding: 200px;
+}

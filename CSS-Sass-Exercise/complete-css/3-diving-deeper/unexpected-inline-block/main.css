@@ -1,0 +1,70 @@
+/* 
+
+Note: This is Max's code which is different from mine.
+
+Summary:
+
+When using inline-block the white space between HTML elements can
+cause two inline-block elements to behaive like a block element (sit on a seperate line)
+This is because the white spaces width is added between the two inline-elements.
+
+Since we want to keep our file structure we can just increase the width until the elements are alinged.
+This is just a temapray fix for now.
+
+*/
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+}
+
+#product-overview {
+    background: #ff1b68;
+    width: 100%;
+    height: 528px;
+    padding: 10px;   
+}
+
+.section-title {
+    color: #2ddf5c;
+}
+
+#product-overview h1 {
+    color: white;
+    font-family: 'Anton', sans-serif;
+}
+
+/* h1 {
+    font-family: sans-serif;
+} */
+
+.main-header {
+    width: 100%;
+    background: #2ddf5c;
+    padding: 8px 16px;
+}
+
+.main-header > div {
+    display: inline-block;
+    font-size: 23px;
+}
+
+.main-nav {
+    display: inline-block;
+    text-align: right;
+    width: calc(100% - 75px); /* Increase the width for now (the px) for a temp fix */
+}
+
+.main-nav__items {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.main-nav__item {
+    display: inline-block;
+}

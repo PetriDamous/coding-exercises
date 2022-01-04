@@ -1,0 +1,56 @@
+/* Base Styles */
+
+html {
+    font-size: 16px;
+    --primary-color: #312614;
+    --secondary-color: #b7832f;
+    --tertiary-color: #707070;
+    --white: #fff;  
+}
+
+body {
+    font-size: 1.125rem;
+    color: var(--tertiary-color);
+    margin: 0;
+}
+
+h1 {
+    font-size: 3rem;
+    text-align: center;
+    color: #212614;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+h1 span {
+    color: var(--secondary-color);
+}
+
+p {
+    margin-top: 0;
+}
+
+img {
+    max-width: 100%;    
+}
+
+/* Layout */
+
+.wrapper {    
+    max-width: 980px;
+    width: 90%;
+    margin: 0 auto;    
+}
+
+.columns {
+    display: flex;
+    margin: 1em 0;
+}
+
+.col-bg {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 1em;
+}

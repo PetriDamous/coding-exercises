@@ -1,0 +1,234 @@
+/* =================
+   Variables 
+   ================= */
+
+:root {
+    /* Colors */
+    --primary-color: #F18119;
+    --secondary-color: #404040;
+    --white: #FFFFFF;
+
+    /* Font-size */
+
+    --body-small: 1rem;
+    --h1-small: 2.25rem;
+    --h2-small: 1.3125rem;
+
+    --small: .625rem;
+
+    --body-large: 1.125rem;
+    --h1-large: 3.5rem;
+    --h2-large: 1.75rem;    
+
+    /* Font-weight */
+
+    --font-light: 300;
+    --font-regular: 400;
+    --font-bold: 900;
+}
+
+/* =================
+   Base styles 
+   ================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: var(--body-small);
+    font-weight: var(--font-regular);
+    color: var(--secondary-color);
+    text-align: center;
+}
+
+
+/* =================
+   Typography 
+   ================= */
+
+h1 {
+    font-size: var(--h1-small);
+    font-weight: var(--font-light);
+    color: var(--white);
+    margin: 2em 0;
+}
+
+h1 + p {
+    font-size: var(--h2-small);
+    font-weight: var(--font-bold);
+    color: var(--primary-color);
+    text-transform: uppercase;
+    margin: 0;    
+}
+
+h2 {
+    font-size: var(--h2-small);
+    margin: 0;    
+}
+
+h2 + p {
+    font-weight: var(--font-bold);
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 0;
+}
+
+.main-content p {
+    line-height: 1.7;
+}
+
+strong {
+    font-weight: var(--font-bold);
+}
+
+.top-text {
+    font-weight: 900;
+    color: var(--primary-color);
+    text-transform: uppercase;    
+    order: -1;
+}
+
+.top-text,
+.disclaimer {
+    font-size: var(--small);
+    letter-spacing: 1px;
+}
+
+/* =================
+   Layout 
+   ================= */
+
+/* .intro > *,
+.main-content > * {
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+} */
+
+.wrapper {
+    max-width: 400px;
+    margin: 0 auto;
+    /* border: 2px solid red; */
+}
+
+.wrapper-intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 50vh;
+}
+
+
+/* =================
+   Intro section 
+   ================= */
+
+.intro {
+    background-image: url(../images/dark-ribs.jpg);
+    background-position: center;
+    background-size: cover;
+    background-color: var(--secondary-color);
+    padding: 0 .5em 2em;
+}
+
+
+/* =================
+   main-content section 
+   ================= */
+
+.main-content {
+    padding: 2em 1em;
+}
+
+
+/* =================
+   Form 
+   ================= */
+
+.register {
+    /* border: 2px solid orange; */
+    width: 80%;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}    
+
+input,
+.btn {
+    width: 100%;
+    font-family: inherit;
+    text-align: inherit;    
+    border-radius: 4px;
+    transform: scale(1);
+    transition: transform 250ms;    
+}
+
+input {
+    border: 1px solid black;
+    padding: .25em;
+    margin-bottom: .75em;
+}
+
+
+.btn {
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: unset;
+    padding: .85em 0;
+    font-size: .75rem;
+    font-weight: var(--font-bold);
+    cursor: pointer;    
+}
+
+.btn-form {
+    color: var(--white);
+    background: linear-gradient(to left, #ff713b, #ffa51d);
+} 
+
+.btn-form:hover,
+.btn-form:focus,
+input:focus {
+    transform: scale(1.1);    
+}
+
+/* =================
+   media-queries 
+   ================= */
+
+@media (min-width: 600px) {
+    body {
+        font-size: var(--body-large);
+        display: flex;        
+    }
+
+    h1 {
+        font-size: var(--h1-large);
+    }
+
+    h1 + p,
+    h2 {
+        font-size: var(--h2-large);
+    }
+
+    .intro,
+    .main-content {
+        width: 50%;
+        min-height: 100vh;
+    }
+
+    .main-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .wrapper-intro {
+        height: 100%;
+    }
+
+}

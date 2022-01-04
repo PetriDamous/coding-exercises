@@ -1,0 +1,83 @@
+$color-primary: #f9ed69;
+$color-secondary: #f08a5d;
+$color-third: #b83b5e;
+$color-dark: #333;
+$color-text-light: #eee;
+
+$width-button: 150px;
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    margin: 30px;
+    background-color: $color-primary;    
+
+    &::after{
+        content: "";
+        clear: both;
+        display: table;
+    }
+}
+
+
+
+.navigation {
+    list-style: none;
+    float: left;
+
+    li {
+        display: inline-block;
+        margin-left: 30px;
+        
+        &:first-child {
+            margin: 0;
+        }
+
+        a:link {
+            text-decoration: none;
+            text-transform: uppercase;
+            color: $color-dark;
+        }
+    }
+}
+
+.buttons {
+    float: right;
+}
+
+.btn-main:link,
+.btn-hot:link{
+    padding: 10px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 100px;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: $width-button; 
+       
+}
+
+.btn-main {
+    color: $color-text-light;
+    &:link {
+        background-color: $color-secondary;
+    }
+
+    &:hover {
+        background-color: darken($color-secondary, 15%);
+    }
+}
+
+.btn-hot {
+    color: $color-text-light;
+    &:link {
+        background-color: $color-third;
+    }
+
+    &:hover {
+        background-color: lighten($color-third, 15%)
+    }
+}

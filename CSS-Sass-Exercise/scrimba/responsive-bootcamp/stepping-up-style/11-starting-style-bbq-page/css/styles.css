@@ -1,0 +1,85 @@
+/* =================
+   Variables 
+   ================= */
+
+:root {
+    /* Colors */
+    --primary-color: #F18119;
+    --secondary-color: #404040;
+    --white: #FFFFFF;
+
+    /* Font-size */
+
+    --body-small: 1rem;
+    --h1-small: 2.25rem;
+    --h2-small: 1.3125rem;
+
+    --small: .625rem;
+
+    /* Font-weight */
+
+    --font-light: 300;
+    --font-regular: 400;
+    --font-bold: 900;
+}
+
+/* =================
+   Base styles 
+   ================= */
+
+body {
+    margin: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: var(--body-small);
+    font-weight: var(--font-regular);
+    color: var(--secondary-color);
+    text-align: center;
+}
+
+/* =================
+   Typography 
+   ================= */
+
+h1 {
+    font-size: var(--h1-small);
+    font-weight: var(--font-light);
+}
+
+h1 + p {
+    font-size: var(--h2-small);
+    font-weight: var(--font-bold);
+    color: var(--primary-color);
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: var(--h2-small);    
+}
+
+h2 + p {
+    font-weight: var(--font-bold);
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+strong {
+    font-weight: var(--font-bold);
+}
+
+.top-text {
+    font-weight: 900;
+    color: var(--primary-color);
+    text-transform: uppercase;
+}
+
+.top-text,
+.disclaimer {
+    font-size: var(--small);
+    letter-spacing: 1px;
+}
+
+/* =================
+   Intro section 
+   ================= */
+

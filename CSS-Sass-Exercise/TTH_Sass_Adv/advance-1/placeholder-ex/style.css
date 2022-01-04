@@ -1,0 +1,19 @@
+.large-bold-copy, p, b {
+  font-weight: bold;
+  font-size: 3.8333em;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  text-transform: uppercase;
+}
+
+p {
+  font-size: 2.66667em;
+}
+
+.foo {
+  border: 1px solid red;
+}
+.foo b {
+  color: white;
+}
+
+/*# sourceMappingURL=style.css.map */

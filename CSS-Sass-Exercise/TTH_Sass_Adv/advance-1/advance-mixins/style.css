@@ -1,0 +1,18 @@
+/* Error: $map: right, 10px is not a map.
+ *    ,
+ * 42 | @mixin add-border ($position: map-get($add-border, position),
+ *    |                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ *    '
+ *   app.scss 42:31  add-border()
+ *   app.scss 55:5   root stylesheet */
+
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: $map: right, 10px is not a map.\a    \2577 \a 42 \2502  @mixin add-border ($position: map-get($add-border, position),\d\a    \2502                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\a    \2575 \a   app.scss 42:31  add-border()\a   app.scss 55:5   root stylesheet";
+}

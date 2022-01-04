@@ -1,0 +1,47 @@
+/* 
+
+By defualt the browser uses box-sizing: content-box;
+
+content-box doesn't include the border and the padding in its height and width calculations
+
+By setting box-sizing: border-box; padding and border are included in the height and width calculations
+
+It is very common to use the unviveral selector to set box-sizing: border-box; on all elements on the page
+
+You cannot set box-sizing: border-box; on the body or html elements because the children will not be able to inherite the property
+
+This is because default browser properties end up over writing the border-box. Targeting all elements using the universal selector is the best way to get the job done
+
+*/
+
+/* Sets border-box on all elements on the page */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    /* Cannot set border-box here because it will never be inherited */
+}
+
+/* Now the height and width will include the padding and border */
+/* Note: Margin is excluded in the calculation */
+.section-1 {
+    background: #ff1b68;
+    padding: 20px;
+    border: 5px solid black;
+    margin: 30px;
+    height: 528px;
+    width: 450px;
+    
+}
+
+.section-2 {
+    margin-top: 10px;
+}
+
+
+h2 {
+    margin: 20px;
+}
+

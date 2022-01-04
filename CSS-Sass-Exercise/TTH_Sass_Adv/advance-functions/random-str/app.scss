@@ -1,0 +1,28 @@
+// to-upper-case($val) string will be upper cased
+$string-upper: to-upper-case('puppy power');
+
+.puppy-upper {
+    foo: $string-upper;
+}
+
+// to-lower-case($val) string will be lower cased
+$string-lower: to-lower-case('PUPPY POWER');
+
+.pupp-lower {
+    foo: $string-lower;
+}
+
+/**** str-insert *****/
+
+// str-insert function allows us to designate a string, specify what new string we want to insert and at what spot.
+
+$string: 'is my fav character';
+
+// 1st argument is our string
+// 2nd argument is the string we want to insert
+// 3rd argument is the index or where we want to insert (index starts at 1 not 0)
+$char: str-insert($string, 'Chris Redfield ', 1);
+
+.puppy-str {
+    foo: $char;
+}

@@ -1,0 +1,15 @@
+section {
+    color: black;
+}
+
+/* The <h1> for section-first inherites the color white from #section-first because specificty kicks in */
+#section-first {
+    background: #ff1b68;
+    color: white;
+}
+
+
+/* The <h1> for section-second inherites the color black from parent */
+#section-second {
+    background: #2ddf5c;
+}

@@ -1,0 +1,28 @@
+%large-bold-copy {
+    font: {
+      weight: bold;
+      size: 3.8333em;
+      family: "Helvetica Neue", Arial, sans-serif;
+    };
+    text-transform: uppercase;
+  }
+
+  b {
+      @extend %large-bold-copy;
+  }
+  
+  p {
+    @extend %large-bold-copy;
+    font-size: 2.66667em;
+  }
+  
+  .large-bold-copy {
+    @extend %large-bold-copy;
+  }
+  
+  .foo {
+    border: 1px solid red;
+    b {
+      color: white;
+    }
+  }

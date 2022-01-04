@@ -1,0 +1,148 @@
+/* Variables */
+
+:root {
+    --primary-font: 'Lato', sans-serif;
+    --primary-color: #2E354F;
+    --secondary-color: #EF5839;
+    --secondary-color-dark: #E33612;
+    --tertiary-color: #E11256;  
+    --white: #FFF;      
+    --white-dark: #E6E6E6;
+    --black: #000; 
+    --layout-padding: 45px 0;
+    --responsive-padding: 45px 30px;
+}
+
+/* Base styles */
+
+body {
+    margin: 0;
+    font-family: var(--primary-font);
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--white);
+}
+
+h1,
+h2,
+strong {
+    font-weight: 900;
+}
+
+h1,
+h2 {
+    margin: 0;
+}
+
+h1 {
+    font-size: 36px;    
+}
+
+h2 {
+    margin-bottom: 18px;
+    font-size: 24px;
+    color: var(--secondary-color);
+}
+
+p {
+    margin: 0 0 35px;
+    
+}
+
+img {
+    width: 100%;
+    margin: 0 0 20px;
+}
+
+/* Layout */
+
+.wrapper {
+    max-width: 620px;
+    margin: 0 auto;
+}
+
+.section--1,
+.section--2,
+header {
+    padding: var(--layout-padding);    
+}
+
+header {
+    background: var(--primary-color);         
+}
+
+
+
+.section--1 {    
+    color: var(--primary-color);
+}
+
+.section--2 {
+    background: var(--primary-color);    
+}
+
+.wrapper p:last-child {
+    margin-bottom: 0;
+}
+
+.wrapper a:last-child {
+    margin-bottom: 0;
+}
+
+/* Components */
+
+.section__link {
+    color: var(--secondary-color);    
+}
+
+.section__link--1:hover,
+.section__link--1:focus {
+    color: var(--black);
+}
+
+.section__link--2:hover,
+.section__link--2:focus {
+    color: var(--tertiary-color)
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 40px;
+    font-weight: 900;
+    margin-right: 20px;
+    text-decoration: none;
+}
+
+.btn--contact {
+    background: var(--secondary-color);
+    color: white;    
+}
+
+.btn--contact:hover,
+.btn--contact:focus {
+    background: var(--secondary-color-dark);    
+}
+
+.btn--info {
+    background: var(--white);
+    color: var(--primary-color);
+}
+
+.btn--info:hover,
+.btn--info:focus {
+    background: var(--white-dark);    
+}
+
+@media screen and (max-width: 468px) {
+    .btn {
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .section--1,
+    .section--2,
+    header {
+        padding: var(--responsive-padding);    
+    }
+}

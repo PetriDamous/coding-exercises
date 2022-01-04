@@ -1,0 +1,25 @@
+$ems: 2em;
+$pixels: 5px;
+$percents: 25%;
+$inches: 1in;
+
+@function add-if-comparable($alpha, $bravo) {
+    /* Add your code here! */
+
+    $alpha-unit: unit($alpha);
+    $bravo-unit: unit($bravo);
+
+    @if $alpha-unit == $bravo-unit {
+        @return $alpha + $bravo;
+    } @else {
+        @return 'error';
+    } 
+
+}
+
+.block {
+  display: block;
+  background-color: orange;
+  font-size: add-if-comparable($ems, $ems);
+  content: add-if-comparable($pixels, $percents);
+}

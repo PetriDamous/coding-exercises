@@ -1,0 +1,15 @@
+.block {
+  foo1: 3;
+  foo2: 1;
+  foo3: 25;
+  border: 1px solid;
+  padding: 0.5em;
+  text-align: center;
+  width: 20em;
+}
+.block:after {
+  font-size: 18px;
+  content: "this is a string of words";
+}
+
+/*# sourceMappingURL=style.css.map */

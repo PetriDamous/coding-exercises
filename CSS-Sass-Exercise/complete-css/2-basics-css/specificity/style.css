@@ -1,0 +1,30 @@
+/*
+
+Specificty order:
+
+inline-style -> #ID -> .class, :pseudo-class, [attribute], <Tag>, ::pseudo-element
+
+
+*/
+
+#section-first {
+    background: #ff1b68;
+}
+
+/* Higher specificty, so style applies regaurdless of the cascade */
+.section-title {
+    color: #2ddf5c;
+}
+
+/* color property will be overwritten for the <h1> that has the .section-title class assigned to it */
+
+/* font-family will still apply to .section-title class */
+h1 {
+    color: white;
+    font-family: sans-serif;
+}
+
+/* Cascade kicks in. will overwrite color for <h1> with no class */
+h1 {
+    color: black;
+}

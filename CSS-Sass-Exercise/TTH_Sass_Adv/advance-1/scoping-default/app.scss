@@ -1,0 +1,18 @@
+// Global variable
+$text-color: blue;
+
+.global-text {
+    // Uses global variable 
+    color: $text-color; // blue
+}
+
+.error {
+    // Local variable
+    $text-color: red !global; // Scoped variable to the selector
+    color: $text-color; // red  
+}
+
+.normal-text {
+    // Uses the !global variable
+    color: $text-color; // red
+}

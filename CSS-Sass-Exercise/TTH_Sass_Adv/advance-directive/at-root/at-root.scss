@@ -1,0 +1,40 @@
+// The @at-root directive allows us to nest a series of rules within a module, but the CSS output will be at the root level of the document.
+// The @at-root directive can come in handy for setting up animations
+
+// Sass 3.4 and higher automatically “@at-roots” nested keyframe rules. This means you no longer need to use the @at-root directive to output nested @keyframes rules at the root of the CSS. This article by Guil Hernandez explains why.
+
+// Old way
+.color-swap {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+
+    &:hover {
+        animation: color-swap 5s;
+    }
+}
+
+@keyframes color-swap {
+    from { background-color: red; }
+    to { background-color: blue; }
+}
+
+// With @at-root directive we can bundle our @keyframes with the element that is using the animation
+
+.color-swap {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+
+    &:hover {
+        animation: color-swap 5s;
+    }
+
+    @at-root {
+        @keyframes color-swap {
+            from { background-color: red; }
+            to { background-color: blue; }
+        }
+    }
+}
+

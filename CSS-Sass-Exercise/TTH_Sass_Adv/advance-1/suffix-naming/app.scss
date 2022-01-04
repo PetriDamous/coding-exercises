@@ -1,0 +1,45 @@
+// Use the given placeholder selectors along with parent selector references in order to get this CSS output:
+// 
+// .base {
+//   width: 100%; 
+// }
+// 
+// .base__element {
+//   background-color: blue;
+// }
+// 
+// .base__element--modifier {
+//   background-color: orange;
+//   border-color: red; 
+// }
+
+
+// starting modifiers
+
+
+%base {
+    width: 100%;
+}
+
+%element {
+  background-color: blue;
+}
+
+%modifier {
+  background-color: orange;
+  border-color: red;
+}
+  
+  
+
+.base {
+    @extend %base;
+
+    &__element {
+        @extend %element;
+
+        &--modifier {
+            @extend %modifier;
+        }
+    }
+}

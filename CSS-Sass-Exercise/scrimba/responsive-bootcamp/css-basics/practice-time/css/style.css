@@ -1,0 +1,43 @@
+h1, h2, p {
+    margin-top: 0;
+}
+
+h1 {
+    font-size: 45px;
+    color: #2E7AD3;
+    text-align: center;
+    margin: 45px auto;    
+}
+
+h2 {
+    font-size: 32px;
+    color: #104C90;
+    text-align: center;    
+}
+
+p {
+    font-size: 16px;
+    margin-bottom: 9px;
+}
+
+a {
+    color: #FF8000;
+    font-weight: bold;
+}
+
+.content {
+    margin: 0 auto;
+    width: 450px;
+    background: #F1F1F1;
+    padding: 25px;
+}
+
+.image {
+    width: 432px;
+    margin: 0 auto 25px;
+}
+
+.link {
+    margin-bottom: 0;
+}
+

@@ -1,0 +1,25 @@
+@import 'sass-list-maps' // imports sass-list-maps
+
+$input-disabled-color: tomato;
+
+// Our nested list
+
+$input: (
+    disabled (
+        background: lighten($input-disabled-color, 75%),
+        border: lighten($input-disabled-color, 50%),
+        text: lighten($input-disabled-color, 5%)
+    )
+);
+
+
+// With sass-list-maps we now have access to the map-get-z function for accessing styles in nested lists
+// First argument is the variable that holds the list ($input)
+// second argument is key that holds the other items in the list (disabled)
+// third argument is the nested key that holds the vaules we are targeting (background, border, text)
+
+input[disabled] {
+    background-color: map-get-z($input, disabled, background);
+    border-color: map-get-z($input, disabled, border);
+    color: map-get-z($input, disabled, text)
+}

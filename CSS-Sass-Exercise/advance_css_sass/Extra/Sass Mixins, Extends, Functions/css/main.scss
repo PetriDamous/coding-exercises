@@ -1,0 +1,92 @@
+$color-primary: #f9ed69;
+$color-secondary: #f08a5d;
+$color-third: #b83b5e;
+$color-dark: #333;
+$color-text-light: #eee;
+
+$width-button: 150px;
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+@mixin clearfix {
+    &::after{
+        content: "";
+        clear: both;
+        display: table;
+    }    
+}
+
+@mixin link-text-color($color){
+    color: $color;
+}
+
+%btn-style {
+    padding: 10px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 100px;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: $width-button;
+}
+
+nav {
+    margin: 30px;
+    background-color: $color-primary;
+    @include clearfix;
+}
+
+.navigation {
+    list-style: none;
+    float: left;
+
+    li {
+        display: inline-block;
+        margin-left: 30px;
+        
+        &:first-child {
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+            text-transform: uppercase;            
+            @include link-text-color($color-dark);
+        }
+    }
+}
+
+.buttons {
+    float: right;
+}
+
+
+
+.btn-main {    
+    @include link-text-color($color-text-light);    
+    
+    &:link {
+        background-color: $color-secondary;
+        @extend %btn-style;        
+    }
+
+    &:hover {
+        background-color: darken($color-secondary, 15%);
+    }
+}
+
+.btn-hot {    
+    @include link-text-color($color-text-light);
+
+    &:link {
+        background-color: $color-third;
+        @extend %btn-style;
+    }
+
+    &:hover {
+        background-color: lighten($color-third, 15%)
+    }
+}

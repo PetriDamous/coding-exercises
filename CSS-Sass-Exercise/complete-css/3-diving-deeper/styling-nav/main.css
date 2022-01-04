@@ -1,0 +1,79 @@
+/*
+
+Summary:
+
+We added a header with navigation to project.
+
+We used the calc funtion that allows you to perform calculatins when specifying CSS property values.
+It can be sued anywhere a <length>, <frequency>, <angle>, <time>, <percentage>, <number>, or <integer> is allowed.
+
+We set navigation and other header elements side by side by using the display: inline-block property.
+
+I used CSS variables.  
+You decalare the variable at the :root element.
+Then you can use the variables where you see fit.
+See code below to see how it works.
+
+We also used the list-style property and set it to none to remove any list styles such as bullet points.
+
+*/
+
+/* Variables */
+:root {
+    --primary-color: #2ddf5c;
+    --secondary-color: #ff1b68;
+    --white: white;
+}
+
+/* Simple browser rest */
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.main-header {    
+    background-color: var(--primary-color); /* using variables */
+    width: 100%;
+    padding: 8px 16px;    
+}
+
+/* Selects direct child of main header */
+.main-header > div {
+    display: inline-block;
+}
+
+/* Applies inline-block styles to main-nav and main-nav__item */
+.main-nav,
+.main-nav__item {
+    display: inline-block;
+}
+
+.main-nav {
+    /* function that can be used to calculate numerical values */
+    width: calc(100% - 54px); /* 100% of total width of parent container (<header>) subtracted by sibling element (<div> containing uHost text) */
+    text-align: right;
+}
+
+.main-nav__items {
+    list-style: none; /* gets ride of any list styles such as bullet points */
+}
+
+#product-overview {
+    color: var(--white); /* using variables */
+    background-color: var(--secondary-color); /* using variables */
+    padding: 10px;
+    width: 100%;
+    height: 510px;
+}
+
+.section-title {
+    color: var(--primary-color); /* using variables */
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+/* Selects adjacent sibling of section-title  */
+.section-title + p {
+    margin-top: 16px;
+    margin-bottom: 16px;
+}

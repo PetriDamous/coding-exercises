@@ -1,0 +1,15 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+h1,
+p {
+    border: 1px solid red;
+}
+
+body {
+    display: grid;
+    grid-template-columns: 500px 200px 200px;
+    grid-template-rows: 300px 300px;
+}

@@ -1,0 +1,30 @@
+/* 
+
+When an element is inline top and bottom margin properties have no effect.
+
+Left and Right margin properties do work.
+
+Top and bottom padding also has no effect.
+
+Left and Right padding does work.
+
+Oddly enough top and bottom padding does work.
+
+There is a catch.  If the element is at the top of the screen then padding-top has little effect.
+
+inline-block elements however are like inline elments but act as block level elements so you have
+free reign when it comes to all margin and padding porperties.
+
+
+*/
+
+#div-1 {
+    display: inline;
+    padding-top: 100px;
+    border: 2px solid black;
+}
+
+#div-2 {
+    display: inline-block;
+    padding-top: 100px;
+}

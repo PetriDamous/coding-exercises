@@ -1,0 +1,15 @@
+// Sass 3.2 added the @content directive, which allows us to pass a content block into a mixin.
+
+@mixin apply-to-ie6-only {
+    * html {
+      @content
+    }
+}
+  
+@include apply-to-ie6-only {
+  #logo {
+    background-image: url(/logo.gif);
+  }
+}
+
+// https://thoughtbot.com/blog/sasss-content-directive

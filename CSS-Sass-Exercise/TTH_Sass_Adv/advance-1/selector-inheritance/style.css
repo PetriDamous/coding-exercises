@@ -1,0 +1,21 @@
+/**** Example of using @extend in a simple way that works ************/
+/****** @extend used incorrectly ***********/
+/**** Using placeholder element with extends *******/
+.larg-copy, h2, h1 {
+  font-size: 3.833333em;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: 2.6666667;
+}
+
+.foo {
+  border: 1px solid black;
+}
+.foo h1 {
+  color: white;
+}
+
+/*# sourceMappingURL=style.css.map */

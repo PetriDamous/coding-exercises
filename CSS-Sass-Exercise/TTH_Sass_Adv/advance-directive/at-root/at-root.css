@@ -1,0 +1,35 @@
+.color-swap {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+}
+.color-swap:hover {
+  animation: color-swap 5s;
+}
+
+@keyframes color-swap {
+  from {
+    background-color: red;
+  }
+  to {
+    background-color: blue;
+  }
+}
+.color-swap {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+}
+.color-swap:hover {
+  animation: color-swap 5s;
+}
+@keyframes color-swap {
+  from {
+    background-color: red;
+  }
+  to {
+    background-color: blue;
+  }
+}
+
+/*# sourceMappingURL=at-root.css.map */

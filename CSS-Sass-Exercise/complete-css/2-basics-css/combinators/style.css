@@ -1,0 +1,85 @@
+/* 
+
+Adjacent Sibling: 
+
+Elements share the same parent
+
+Second elemnt comes immediately after first element
+
+h2 + p {
+    background: red;
+}
+
+h2 {
+    background: green;
+}
+
+h3 {
+    background: green;
+}
+
+p {
+    background: green;
+}
+
+*/
+
+
+/* 
+General Sibling
+
+Elements share the same parent
+
+Second element comes after first element but doesn't have to be directly after the first element
+
+h2 ~ p {
+    background: red;
+}
+
+h2 {
+    background: green;
+}
+
+h3 {
+    background: green;
+}
+
+p {
+    background: green;
+}
+
+*/
+
+/*
+
+Child
+
+Second element is a direct child of first element
+
+div > p {
+    background: red;
+}
+
+div {
+    background: green;
+}
+
+*/
+
+/* 
+
+Descendant
+
+Second element is a decendant of the first element
+
+Doesn't have to be a direct child
+
+*/
+
+div p {
+    background: red;
+}
+
+div {
+    background: green;
+}

@@ -1,0 +1,728 @@
+///////////////////////////////////////////////////////////////////////
+//
+// DIRECTION TEXT
+//
+// ///////////////////////////////////////////////////////////////////
+
+// VARIABLES
+// ------------------------------------------------------------------
+$breakpoint-small: true;
+$breakpoint-medium: true;
+$breakpoint-large: true;
+
+// MAPS
+// ------------------------------------------------------------------
+
+
+// Small-breakpoint-maps
+// ------------------------------------------------------------------
+$fonter: "Fira Sans", serif;
+
+$font-sm: (
+    font-style: italic,
+    font-var: common-ligatures small-caps,
+    font-weight: bolder,
+    font-size: 30px,
+    line-height: 12px,
+    font-family: arial,
+    font-system: null,
+);
+
+$border-styles-sm: (    
+    border-top: dotted,
+    border-right: solid,
+    border-bottom: solid,
+    border-left: solid
+);
+
+$border-width-sm: (
+    border-left: 2px,
+    border-top: 1px,
+    border-right: 2px,
+    border-bottom: 3px
+);
+
+$border-color-sm: (
+    border-left: purple,
+    border-top: green,
+    border-right: black,
+    border-bottom: blue
+);
+
+$border-radius-sm: (
+    border-top-left-r: 20%,
+    border-top-right-r: null,
+    border-bottom-right-r: null,
+    border-bottom-left-r: 20%
+);
+
+$margins-sm: (
+    margin-left: 2px,
+    margin-top: 3px,
+    margin-right: 2px,
+    margin-bottom: 3px
+);
+
+$padding-sm: (    
+    padding-top: 20px,
+    padding-right: 20px,
+    padding-bottom: 20px,
+    padding-left: 20px,
+);
+
+$line-height-sm: (
+    value: null
+);
+
+$letter-spacing-sm: (
+    value: 2px
+);
+
+$position-sm: (
+    position-type: relative,
+    position-top: 100px,
+    position-right: null,
+    position-bottom: 100px,
+    position-left: 2px,
+);
+
+$float-sm: (
+    float-value: null
+);
+
+$display-sm: (
+    display-value: null
+);
+
+// Medium-breakpoint-maps
+// ------------------------------------------------------------------
+
+$font-md: (
+    font-style: italic,
+    font-var: small-caps,
+    font-weight: bolder,
+    font-size: 30px,
+    line-height: 12px,
+    font-family: arial,
+    font-system: null,
+);
+
+$border-styles-md: (    
+    border-top: solid,
+    border-right: solid,
+    border-bottom: solid,
+    border-left: solid
+);
+
+$border-width-md: (
+    border-left: 2px,
+    border-top: 1px,
+    border-right: 2px,
+    border-bottom: 3px
+);
+
+$border-color-md: (
+    border-left: purple,
+    border-top: green,
+    border-right: black,
+    border-bottom: blue
+);
+
+$border-radius-md: (
+    border-top-left-r: 20%,
+    border-top-right-r: null,
+    border-bottom-right-r: null,
+    border-bottom-left-r: 20%
+);
+
+$margins-md: (
+    margin-left: 2px,
+    margin-top: 3px,
+    margin-right: 2px,
+    margin-bottom: 3px
+);
+
+$padding-md: (    
+    padding-top: 20px,
+    padding-right: 20px,
+    padding-bottom: 20px,
+    padding-left: 20px,
+);
+
+$line-height-md: (
+    value: 80%
+);
+
+$letter-spacing-md: (
+    value: 2px
+);
+
+$position-md: (
+    position-type: relative,
+    position-top: 100px,
+    position-right: null,
+    position-bottom: 100px,
+    position-left: 2px,
+);
+
+$float-md: (
+    float-value: null
+);
+
+$display-md: (
+    display-value: null
+);
+
+// Large-breakpoint-maps
+// ------------------------------------------------------------------
+
+$font-lg: (
+    font-style: italic,
+    font-var: small-caps,
+    font-weight: bolder,
+    font-size: 30px,
+    line-height: 12px,
+    font-family: arial,
+    font-system: null,
+);
+
+$border-styles-lg: (    
+    border-top: solid,
+    border-right: solid,
+    border-bottom: solid,
+    border-left: solid
+);
+
+$border-width-lg: (
+    border-left: 2px,
+    border-top: 1px,
+    border-right: 2px,
+    border-bottom: 3px
+);
+
+$border-color-lg: (
+    border-left: purple,
+    border-top: green,
+    border-right: black,
+    border-bottom: blue
+);
+
+$border-radius-lg: (
+    border-top-left-r: 20%,
+    border-top-right-r: null,
+    border-bottom-right-r: null,
+    border-bottom-left-r: 20%
+);
+
+$margins-lg: (
+    margin-left: 2px,
+    margin-top: 3px,
+    margin-right: 2px,
+    margin-bottom: 3px
+);
+
+$padding-lg: (    
+    padding-top: 20px,
+    padding-right: 20px,
+    padding-bottom: 20px,
+    padding-left: 20px,
+);
+
+$line-height-lg: (
+    value: 80%
+);
+
+$letter-spacing-lg: (
+    value: 2px
+);
+
+$position-lg: (
+    position-type: relative,
+    position-top: 100px,
+    position-right: null,
+    position-bottom: 100px,
+    position-left: 2px,
+);
+
+$float-lg: (
+    float-value: null
+);
+
+$display-lg: (
+    display-value: null
+);
+
+
+// MIXINS
+// ------------------------------------------------------------------
+
+// Font
+@mixin font (
+    $font-st: null,
+    $font-v: null,
+    $font-w: null, 
+    $font-sz: null,
+    $line-h: null,
+    $font-f: null,
+    $font-sy: null,
+) {
+    @if $font-sy != null {
+        font: $font-sy;
+    } @else if ($font-sz == null) or ($font-f == null) {
+        font-style: $font-st;
+        font-variant: $font-v;
+        font-weight: $font-w;
+        font-size: $font-sz;
+        line-height: $line-h;
+        font-family: $font-f;
+    } @else {
+
+        @if ($font-v == small-caps) or ($font-v == normal) {
+            font: $font-st $font-v $font-w unquote($font-sz + "/" + $line-h) $font-f;            
+        } @else {
+            font: $font-st $font-w unquote($font-sz + "/" + $line-h) $font-f;
+            font-variant: $font-v;
+        }
+        
+    }
+}
+
+// Display
+@mixin display ($display-v: null) {
+    display: $display-v;
+}
+
+// Floats
+@mixin floats ($float-v: null) {
+    float: $float-v;
+}
+
+// Position
+@mixin position (
+    $type-p: null,
+    $top-p: null,
+    $right-p: null,
+    $bottom-p: null,
+    $left-p: null,
+) {
+    position: $type-p;
+    top: $top-p;
+    right: $right-p;
+    bottom: $bottom-p;
+    left: $left-p;
+}
+
+// Line-height
+@mixin line-height ($line-h: null) {
+    line-height: $line-h;
+}
+
+// Letter-spacing
+@mixin letter-spacing ($letter-s: null) {
+    letter-spacing: $letter-s;
+}
+
+// Padding
+@mixin padding (
+    $top-p: null,
+    $right-p: null,
+    $bottom-p: null,
+    $left-p: null,
+) {
+    @if ($top-p == null) or ($right-p == null) or ($bottom-p == null) or ($left-p == null) {
+        padding-top: $top-p;
+        padding-right: $right-p;
+        padding-bottom: $bottom-p;
+        padding-left: $left-p;
+    } @else if ($top-p == $bottom-p) and ($top-p == $right-p) and ($top-p == $left-p) {
+        padding: $top-p;        
+    } @else if ($top-p == $bottom-p) and ($right-p == $left-p) {
+        padding: $top-p $left-p;        
+    } @else if ($top-p != $bottom-p) and ($right-p == $left-p) {
+        padding: $top-p $right-p $bottom-p;      
+    } @else {
+        padding: $top-p $right-p $bottom-p $left-p;
+    }    
+}
+
+// Margins
+@mixin margins (
+    $top-m: null,
+    $right-m: null,
+    $bottom-m: null,
+    $left-m: null,
+) {
+    @if ($top-m == null) or ($right-m == null) or ($bottom-m == null) or ($left-m == null) {
+        margin-top: $top-m;
+        margin-right: $right-m;
+        margin-bottom: $bottom-m;
+        margin-left: $left-m;
+    } @else if ($top-m == $bottom-m) and ($top-m == $right-m) and ($top-m == $left-m) {
+        margin: $top-m;        
+    } @else if ($top-m == $bottom-m) and ($right-m == $left-m) {
+        margin: $top-m $left-m;        
+    } @else if ($top-m != $bottom-m) and ($right-m == $left-m) {
+        margin: $top-m $right-m $bottom-m;      
+    } @else {
+        margin: $top-m $right-m $bottom-m $left-m;
+    }
+}
+
+// Border-radius
+@mixin border-radius (
+    $top-left-r: null,
+    $top-right-r: null,
+    $bottom-right-r: null,
+    $bottom-left-r: null
+) { 
+    @if ($top-left-r == null) or ($top-right-r == null) or ($bottom-right-r == null) or ($bottom-left-r == null) {
+        border-top-left-radius: $top-left-r;
+        border-top-right-radius: $top-right-r ;
+        border-bottom-right-radius: $bottom-right-r;
+        border-bottom-left-radius: $bottom-left-r;
+    } @else if ($top-left-r == $top-left-r) and 
+        ($top-left-r == $top-right-r) and 
+        ($top-left-r == $bottom-right-r) and 
+        ($top-left-r == $bottom-left-r) {
+            border-radius: $top-left-r;        
+    } @else if ($top-left-r == $bottom-right-r) and ($top-right-r == $bottom-left-r) {
+        border-radius: $top-left-r $bottom-left-r;        
+    } @else if ($top-left-r != $bottom-right-r) and ($top-right-r == $bottom-left-r) {
+        border-radius: $top-left-r $top-right-r $bottom-right-r;      
+    } @else {
+        border-radius: $top-left-r $top-right-r $bottom-right-r $bottom-left-r;
+    }
+}
+
+// Border
+@mixin border-style ($top-bs, $right-bs, $bottom-bs, $left-bs) {
+
+    @if ($top-bs == null) or
+        ($right-bs == null) or
+        ($bottom-bs == null) or
+        ($left-bs == null) {
+
+        border-top-style: $top-bs;
+        border-right-style: $right-bs;
+        border-bottom-style: $bottom-bs;
+        border-left-style: $left-bs;                     
+    }
+    @else if ($top-bs == $top-bs) and
+        ($top-bs == $right-bs) and
+        ($top-bs == $bottom-bs) and
+        ($top-bs == $left-bs) {
+            border-style: $top-bs;
+    }
+    @else if ($top-bs == $bottom-bs) and ($right-bs == $left-bs) {
+        border-style: $top-bs $left-bs;
+    } @else if ($top-bs != $bottom-bs) and ($right-bs == $left-bs) {
+        border-style: $top-bs $right-bs $bottom-bs;
+    } @else {
+        border-style: $top-bs $right-bs $bottom-bs $left-bs
+    } 
+}
+
+@mixin border-width ($top-bw, $right-bw, $bottom-bw, $left-bw) {
+    
+    @if ($top-bw == null) or
+        ($right-bw == null) or
+        ($bottom-bw == null) or
+        ($left-bw == null) {            
+            border-top-width: $top-bw;
+            border-right-width: $right-bw;
+            border-bottom-width: $bottom-bw;
+            border-left-width: $left-bw ;
+    } @else if ($top-bw == $top-bw) and 
+        ($top-bw == $right-bw) and 
+        ($top-bw == $bottom-bw) and 
+        ($top-bw == $left-bw) {
+            border-width: $top-bw;
+    } @else if ($top-bw == $bottom-bw) and ($right-bw == $left-bw) {
+        border-width: $top-bw $left-bw;
+    } @else if ($top-bw != $bottom-bw) and ($right-bw == $left-bw) {
+        border-width: $top-bw $right-bw $bottom-bw;
+    } @else {
+        border-width: $top-bw $right-bw $bottom-bw $left-bw
+    } 
+}
+
+@mixin border-color ($top-bc, $right-bc, $bottom-bc, $left-bc) {
+
+    @if ($top-bc == null) or 
+        ($right-bc == null) or 
+        ($bottom-bc == null) or 
+        ($left-bc == null) {
+            border-top-color: $top-bc;
+            border-right-color: $right-bc;
+            border-bottom-color: $bottom-b;
+            border-left-color: $left-bc;
+
+    } @else if ($top-bc == $top-bc) and 
+        ($top-bc == $right-bc) and 
+        ($top-bc == $bottom-bc) and 
+        ($top-bc == $left-bc) {
+            border-color: $top-bc;
+    } @else if ($top-bc == $bottom-bc) and ($right-bc == $left-bc) {
+        border-color: $top-bc $left-bc;
+    } @else if ($top-bc != $bottom-bc) and ($right-bc == $left-bc) {
+        border-color: $top-bc $right-bc $bottom-bc;
+    } @else {
+        border-color: $top-bc $right-bc $bottom-bc $left-bc
+    } 
+}
+
+@mixin border (
+    $left-bs: null,
+    $top-bs: null,
+    $right-bs: null,
+    $bottom-bs: null,
+    $left-bw: null,
+    $top-bw: null,
+    $right-bw: null,
+    $bottom-bw: null,
+    $left-bc: null,
+    $top-bc: null,
+    $right-bc: null,
+    $bottom-bc: null,
+
+) {   
+    $check-style: $left-bs;
+    $check-width: $left-bw;
+    $check-color: $left-bc;
+
+    @if ($check-style == $left-bs 
+        and $check-style == $top-bs 
+        and $check-style == $right-bs
+        and $check-style == $bottom-bs) and 
+        ($check-width == $left-bw 
+        and $check-width == $top-bw 
+        and $check-width == $right-bw
+        and $check-width == $bottom-bw) and
+        ($check-width == $left-bw 
+        and $check-width == $top-bw 
+        and $check-width == $right-bw
+        and $check-width == $bottom-bw) and
+        ($check-color == $left-bc 
+        and $check-color == $top-bc 
+        and $check-color == $right-bc
+        and $check-color == $bottom-bc)
+    {   
+        
+        border: $check-width $check-style $check-color;
+
+    } @else {
+        @include border-style($top-bs, $right-bs, $bottom-bs, $left-bs);
+        @include border-width($top-bw, $right-bw, $bottom-bw, $left-bw);
+        @include border-color($top-bc, $right-bc, $bottom-bc, $left-bc);
+    }    
+}
+
+@mixin small-breakpoint {
+    @include font (
+        map-get($font-sm, font-style),
+        map-get($font-sm, font-var),
+        map-get($font-sm, font-weight),
+        map-get($font-sm, font-size),
+        map-get($font-sm, line-height),
+        map-get($font-sm, font-family),
+        map-get($font-sm, font-system)
+    );
+
+    @include border (
+        map-get($border-styles-sm, border-left),
+        map-get($border-styles-sm, border-top),
+        map-get($border-styles-sm, border-right),
+        map-get($border-styles-sm, border-bottom),
+        map-get($border-width-sm, border-left),
+        map-get($border-width-sm, border-top),
+        map-get($border-width-sm, border-right),
+        map-get($border-width-sm, border-bottom),
+        map-get($border-color-sm, border-left),
+        map-get($border-color-sm, border-top),
+        map-get($border-color-sm, border-right),
+        map-get($border-color-sm, border-bottom)
+    );
+
+    @include border-radius (
+        map-get($border-radius-sm, border-top-left-r),
+        map-get($border-radius-sm, border-top-right-r),
+        map-get($border-radius-sm, border-bottom-right-r),
+        map-get($border-radius-sm, border-bottom-left-r)
+    );
+
+    @include margins (
+        map-get($margins-sm, margin-top),
+        map-get($margins-sm, margin-right),
+        map-get($margins-sm, margin-bottom),
+        map-get($margins-sm, margin-left),
+    );
+    @include padding (
+        map-get($padding-sm, padding-top),
+        map-get($padding-sm, padding-right),
+        map-get($padding-sm, padding-bottom),
+        map-get($padding-sm, padding-left),
+    );
+
+    @include line-height (map-get($line-height-sm, value));
+
+    @include position (
+        map-get($position-sm, position-type),
+        map-get($position-sm, position-top),
+        map-get($position-sm, position-right),
+        map-get($position-sm, position-bottom),
+        map-get($position-sm, position-left),
+    );
+
+    @include floats (map-get($float-sm, float-value));
+    @include display (map-get($display-sm, display-value));
+    @include letter-spacing (map-get($letter-spacing-sm, value));
+}
+
+@mixin medium-breakpoint {
+
+    @include font (
+        map-get($font-md, font-style),
+        map-get($font-md, font-var),
+        map-get($font-md, font-weight),
+        map-get($font-md, font-size),
+        map-get($font-md, line-height),
+        map-get($font-md, font-family),
+        map-get($font-md, font-system)
+    );
+
+    @include border  (
+        map-get($border-styles-md, border-top),
+        map-get($border-styles-md, border-left),
+        map-get($border-styles-md, border-right),
+        map-get($border-styles-md, border-bottom),
+        map-get($border-width-md, border-left),
+        map-get($border-width-md, border-top),
+        map-get($border-width-md, border-right),
+        map-get($border-width-md, border-bottom),
+        map-get($border-color-md, border-left),
+        map-get($border-color-md, border-top),
+        map-get($border-color-md, border-right),
+        map-get($border-color-md, border-bottom)
+    );
+
+    @include border-radius (
+        map-get($border-radius-md, border-top-left-r),
+        map-get($border-radius-md, border-top-right-r),
+        map-get($border-radius-md, border-bottom-right-r),
+        map-get($border-radius-md, border-bottom-left-r)
+    );
+
+    @include margins (
+        map-get($margins-md, margin-top),
+        map-get($margins-md, margin-right),
+        map-get($margins-md, margin-bottom),
+        map-get($margins-md, margin-left),
+    );
+
+    @include padding (
+        map-get($padding-md, padding-top),
+        map-get($padding-md, padding-right),
+        map-get($padding-md, padding-bottom),
+        map-get($padding-md, padding-left),
+    );
+
+    @include line-height (map-get($line-height-md, value));
+
+    @include position (
+        map-get($position-md, position-type),
+        map-get($position-md, position-top),
+        map-get($position-md, position-right),
+        map-get($position-md, position-bottom),
+        map-get($position-md, position-left),
+    );
+
+    @include floats (map-get($float-md, float-value));
+    @include display (map-get($display-md, display-value));
+    @include letter-spacing (map-get($letter-spacing-md, value));    
+}
+
+@mixin large-breakpoint {
+
+    @include font (
+        map-get($font-lg, font-style),
+        map-get($font-lg, font-var),
+        map-get($font-lg, font-weight),
+        map-get($font-lg, font-size),
+        map-get($font-lg, line-height),
+        map-get($font-lg, font-family),
+        map-get($font-lg, font-system)
+    );
+
+    @include border (
+        map-get($border-styles-lg, border-left),
+        map-get($border-styles-lg, border-top),
+        map-get($border-styles-lg, border-right),
+        map-get($border-styles-lg, border-bottom),
+        map-get($border-width-lg, border-left),
+        map-get($border-width-lg, border-top),
+        map-get($border-width-lg, border-right),
+        map-get($border-width-lg, border-bottom),
+        map-get($border-color-lg, border-left),
+        map-get($border-color-lg, border-top),
+        map-get($border-color-lg, border-right),
+        map-get($border-color-lg, border-bottom)
+    );
+
+    @include border-radius (
+        map-get($border-radius-lg, border-top-left-r),
+        map-get($border-radius-lg, border-top-right-r),
+        map-get($border-radius-lg, border-bottom-right-r),
+        map-get($border-radius-lg, border-bottom-left-r)
+    );
+
+    @include margins (
+        map-get($margins-lg, margin-top),
+        map-get($margins-lg, margin-right),
+        map-get($margins-lg, margin-bottom),
+        map-get($margins-lg, margin-left),
+    );
+    @include padding (
+        map-get($padding-lg, padding-top),
+        map-get($padding-lg, padding-right),
+        map-get($padding-lg, padding-bottom),
+        map-get($padding-lg, padding-left),
+    );
+
+    @include line-height (map-get($line-height-lg, value));
+
+    @include position (
+        map-get($position-lg, position-type),
+        map-get($position-lg, position-top),
+        map-get($position-lg, position-right),
+        map-get($position-lg, position-bottom),
+        map-get($position-lg, position-left),
+    );
+
+    @include floats (map-get($float-lg, float-value));
+    @include display (map-get($display-lg, display-value));
+    @include letter-spacing (map-get($letter-spacing-lg, value));    
+}
+
+.test-container {
+    margin: 0 auto;
+    max-width: 80%;    
+}
+
+@if $breakpoint-small {
+    .small-class {    
+        @include small-breakpoint;        
+    }
+}
+
+@if $breakpoint-medium {
+    .medium-class {
+        @include medium-breakpoint;
+    }
+}
+
+
+@if $breakpoint-large {
+    .large-class {
+        @include large-breakpoint;
+    }
+}

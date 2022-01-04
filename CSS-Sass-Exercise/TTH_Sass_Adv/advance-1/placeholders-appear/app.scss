@@ -1,0 +1,34 @@
+// Place holder selectors at like regular elements so the cascade will effect them. 
+// Keep them at the top of the file if you plan on using them through out that file
+
+
+// Do not make complex nested placeholder selectors like this:
+
+%foo {
+    color: black;
+
+    %bar {
+        color: blue;
+
+        %baz {
+            color: purple;
+        }
+    }
+}
+
+// This will only work if you follow a pattern
+
+// Instead break out the placeholder selectors
+// and call on them indivdually like this:
+
+%foo {
+    color: black;
+}
+
+%bar {
+    color: blue;
+}
+
+%baz {
+    color: purple;
+}

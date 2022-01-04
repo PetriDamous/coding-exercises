@@ -1,0 +1,25 @@
+// ======================================
+//  Loops
+// ======================================
+
+//@for $i from 1 through 10 {
+//  .box-#{$i} {
+//    background-color: adjust-hue(tomato, $i * 20);
+//  }
+//}
+
+$teachers: ('andrew', 'alena', 'joel', 'danielle', 'nick', 'aisha');
+
+@each $teacher in $teachers {
+  .teacher-#{$teacher} {
+    background-image: url('img/#{$teacher}.jpg');
+  }
+}
+
+
+
+
+
+
+
+

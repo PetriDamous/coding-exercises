@@ -1,0 +1,90 @@
+/*
+
+Note: We have to set text decoration directly on the element we want to target with this property.
+If we set it on the parent element inheritance gets over written because the browser default is more specific
+even though browser default has the lowest specificty.
+
+The more specific style wins either way.
+
+From a performance stand point using a class to directly target an element is much faster than using a combinator.
+
+
+*/
+
+:root {
+    --primary-color: #2ddf5c;
+    --secondary-color: #ff1b68;
+    --white: white;
+    --dark-green: #0e4f1f;
+}
+
+/* Simple browser rest */
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.main-header {    
+    background-color: var(--primary-color); 
+    width: 100%;
+    padding: 8px 16px;        
+}
+
+.main-header > div {
+    display: inline-block;
+    vertical-align: middle;    
+}
+
+.main-header > div a {
+    color: var(--dark-green);
+}
+
+.main-header__brand {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 23px; 
+}
+
+.main-nav,
+.main-nav__item {
+    display: inline-block;
+}
+
+.main-nav {    
+    width: calc(100% - 74px); 
+    text-align: right;
+    vertical-align: middle; 
+}
+
+.main-nav__items {
+    list-style: none;
+}
+
+.main-nav__item {
+    margin: 0 16px;
+    
+}
+
+.main-nav__item a {
+    text-decoration: none;
+    color: var(--dark-green);
+}
+
+#product-overview {
+    color: var(--white);
+    background-color: var(--secondary-color); 
+    padding: 10px;
+    width: 100%;
+    height: 510px;
+}
+
+.section-title {
+    color: var(--primary-color); 
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.section-title + p {
+    margin-top: 16px;
+    margin-bottom: 16px;
+}

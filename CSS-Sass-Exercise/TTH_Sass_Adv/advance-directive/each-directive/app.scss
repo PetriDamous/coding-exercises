@@ -1,0 +1,23 @@
+// Using @each directive
+// Acts like a loop
+
+// Our list to iterate through
+$icon-names: (strategy '\e002') (twitter '\e003') (github '\e004');
+
+
+// @each directive 
+// $icon-name will be the idiviual list item ex: (strategy '\e002')
+// $icon-names will be our list from above
+
+// nth allows us to access a particular list item when they are grouped together
+// nth($icon-name, 1) will access the first value of a list item ex: strategy
+// nth($icon-name, 2) will access the second value of a list item ex: '\e002'
+
+@each $icon-name in $icon-names {
+    .icon-#{nth($icon-name, 1)}:after {
+        content: nth($icon-name, 2);
+    }
+}
+
+// Instead of writing all the icon class out one by one like you would in CSS
+// we can us the @each directive to write less repeatable code

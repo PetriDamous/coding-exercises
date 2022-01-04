@@ -1,0 +1,71 @@
+// !defualt example
+
+// included from a config file
+$default-value: green;
+
+// included from a mixin
+$default-value: yellow !default; // If the $default-value above this one doesn't have a value this one of yellow will be used instead
+
+@mixin foo ($var: $default-value) {
+    color: $var; // green unless we take out the value from the first $default-value
+}
+
+.block {
+    @include foo;
+}
+
+
+
+// Example 3
+// $var: yellow;
+// 
+// @mixin foo ($var: $var) {
+    // global-color: $var; // Yellow. Takes in global variable
+    // $var: purple !global; // This varible gets pushed out of the mixin and will not be used when mixin is called
+    // scoped-color: $var; // Will be yellow because of !global
+// }
+// 
+// .block {
+    // @include foo;
+    // $var: lime; // Scoped variable that will stay inside of .block decleratoin
+// }
+// 
+// block {
+    // global-color: $var; // Purple. Because the $var in our mixin set to !global
+// }
+
+
+
+// Example 2
+// $var: yellow;
+// 
+// @mixin foo ($var: $var) {
+    // global-color: $var; // Yellow
+    // $var: purple;
+    // scoped-color: $var; // Purple
+// }
+// 
+// .block {
+    // @include foo;
+    // $var: lime; // Only effects within its scope
+// }
+// 
+// block {
+    // global-color: $var; // Yellow because of the global variable
+// }
+
+
+
+// Example 1:
+// $var: yellow;
+
+// $var as our mixin argument doesn't have a value
+// $var in mixin argument is local to mixin so it doesn't have the value of the global $var
+// @mixin foo ($var) {
+    // color: $var; // $var inside of mixin has no value so we get an error
+                //  Like undefined in JavaScript
+// }
+// 
+// .block {
+    // @include foo;
+// }

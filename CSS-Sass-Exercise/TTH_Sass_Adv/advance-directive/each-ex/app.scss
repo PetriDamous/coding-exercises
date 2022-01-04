@@ -1,0 +1,12 @@
+$teams: (GreenBay Packers green yellow) (Seattle Seahawks blue green) (Chicago Bears blue orange);
+
+@each $city, $team, $color1, $color2 in $teams {
+  .#{to-lower-case($city)} {
+    background-color: $color1;
+    border: 1px solid $color2;
+    &:after {
+      content: 'Your' + ' ' + $city + ' ' + $team;
+      color: $color2;
+    }
+  }
+}

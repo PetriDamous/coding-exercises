@@ -1,0 +1,81 @@
+/* 
+
+When setting the height on a container or element, if we use relative units such as % then the % will be relavent
+to the height of the parent container. The parent container must use absolute unit such as pixels in order for this
+behavior to work.
+
+Height refers to the avaliable height of the parent container
+
+It is possiable to chain together relative heights, but in order to do that you need to chain relative heights
+all the way to the html
+
+Example:
+
+// Very top of our chain
+html {
+    height: 100%;
+}
+
+// Chains down
+body {
+    height: 100%;
+}
+
+main {
+    height: 100%;
+}
+
+.section-1 {
+    height: 95%; // Element is now 95% height of entire page
+}
+
+*/
+
+/* This example is for when you just want to have .section-1 take up a certain % of its parent (main) */
+
+body {
+    margin: 0;
+    
+}
+
+/* Parent container for .section-1 */
+main {
+    height: 500px; /* Must be an absolute unit */
+}
+
+.section-1 {
+    background: #ff1b68;
+    padding: 20px;
+    border: 5px solid black;
+    margin: 30px;
+    height: 100%; /* Since the parent has an absolute height the child will occupy a percentage of its parent container */
+    width: 95%; /* Takes up 95% of the width of its parent container */
+    
+}
+
+.section-2 {
+    margin-top: 10px;
+}
+
+
+h2 {
+    margin: 20px;
+}
+
+
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+}
+
+main {
+    height: 100%;
+}
+
+.section-1 {
+    height: 95%; 
+}

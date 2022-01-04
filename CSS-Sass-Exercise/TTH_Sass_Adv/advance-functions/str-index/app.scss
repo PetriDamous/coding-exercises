@@ -1,0 +1,16 @@
+// String
+$string: 'I like turtles';
+
+// str-index searches a string for a matching substring
+// If the search finds a match a positive value is returned
+// If the search doesn't find a match null is returned
+
+// 1st argument is our string
+// 2nd argument is the sub string we are looking for
+$str-index: str-index($string, 'turtles');
+
+.turtle {
+    @if str-index != null {
+        color: red
+    }
+}

@@ -1,0 +1,43 @@
+/* 
+
+Display property changes how an html element flows in the document
+
+List of common display properties:
+
+none:
+This property removes element from visiable document flow.
+Does not remove element from the DOM
+
+block:
+Takes up the entrier availiable width of container.
+<p>, <li>, <div>, <sections> use block as a default display property
+These are known as block level elements
+
+inline:
+Only takes up the amount of width that it content needs.
+<a>, <span> are examples of elements that use inline by default
+These are known as inline elements
+Inline elements do not have access to margin top and bottom or padding top and bottom since they are not in the normal flow of the document
+
+inline-block:
+The best of block and inline elements
+Acts like an inline element but has access to margin top and bottom and padding top and bottom
+
+*/
+
+
+.inline {
+    display: inline;
+    margin-top: 40px; /* No effect on inline elements */
+    padding-bottom: 50px; /* No effect on inline elements */   
+}
+
+#inline-block {
+    display: inline-block;
+    margin-top: 40px; /* Has effect on inline-block elements */
+    padding-bottom: 50px; /* Has effect on inline-block elements */
+}
+
+#none {
+    display: none;
+}

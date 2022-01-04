@@ -1,0 +1,32 @@
+/* Takes out the default margin given to the body by the browser (user agent) */
+body {
+    margin: 0;
+}
+
+/* Overlaps the h2 margin. Bigger margin wins */
+.section-1 {
+    background: #ff1b68;
+    padding: 20px;
+    border: 5px solid black;
+    margin: 30px;
+}
+
+.section-2 {
+    margin-top: 10px;
+}
+
+/* Collapses parent element margin and over takes it */
+h2 {
+    margin: 20px;
+}
+
+
+/* 
+
+There are many ways to get around colapsing margins.
+
+Easiest way is to use margin-top or margin-bottom properties unless you do not mind the effect of colapsing margins
+
+Remember only vertical margins can colapse.
+
+*/

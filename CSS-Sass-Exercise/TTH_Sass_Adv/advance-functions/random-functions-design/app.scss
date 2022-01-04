@@ -1,0 +1,35 @@
+// rgb function in Sass returns a hex value
+
+// rgba with a value under 1 will return a rbga value not a hex value
+
+// Experiments with the random functions
+
+// Note: Random function will pick a random number between 0 and 1 if no argument is provided.
+// In our example below adding a number (255 in this case) will allow the random function to pick a number between 0 - 255
+
+.random-color {
+    $number: random(10) * 0.1;
+    background-color: rgba(random(255), random(255), random(255), $number);
+}
+
+// Better version
+
+@function random-decimal($val) {
+    $decimal: random($val) * 0.1;
+    @return $decimal;
+}
+
+.random-color2 {
+    background-color: rgba(random(255), random(255), random(255), random-decimal(10));
+}
+
+// Even better
+
+// Uses function from above code
+@mixin random-rgba($attr, $color: 255, $alpha: 10) {
+    #{$attr}: rgba(random($color), random($color), random($color), random-decimal($alpha));
+}
+
+.random-color3 {
+    @include random-rgba(color);
+}

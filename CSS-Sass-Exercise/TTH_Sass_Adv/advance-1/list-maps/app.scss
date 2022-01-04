@@ -1,0 +1,18 @@
+// establish a core color
+$core-grey: #333;
+
+// assign core color to semantic variable
+$input-disabled-color: $core-grey;
+
+// Use semantic variables as assigned to additional semantics
+$input: (
+    disabled-background: lighten($input-disabled-color, 75%),
+    disabled-border: lighten($input-disabled-color, 50%),
+    disabled-text: lighten($input-disabled-color, 5%)
+);
+
+input[disabled] {
+    background-color: map-get($input, disabled-background);
+    border-color: map-get($input, disabled-border);
+    color: map-get($input, disabled-text);
+}

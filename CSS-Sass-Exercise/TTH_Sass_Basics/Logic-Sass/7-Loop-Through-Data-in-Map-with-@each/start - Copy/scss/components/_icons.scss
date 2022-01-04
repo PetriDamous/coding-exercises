@@ -1,0 +1,18 @@
+// ======================================
+//  Icon Styles
+// ======================================
+
+.material-icons {
+  font-size: 2.35em; 
+  color: $color-primary-light;   
+}
+
+// @each $theme, $color in $themes {
+//   .icn-#{$theme} {
+//     color: $color;
+//   }
+// }
+
+.inc {
+  @include set-theme($inc-themes);
+}

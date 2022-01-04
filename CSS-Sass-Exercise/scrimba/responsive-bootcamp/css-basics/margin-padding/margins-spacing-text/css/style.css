@@ -1,0 +1,35 @@
+.card {
+    background: #000;
+    color: white;
+    width: 560px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 24px;
+}
+
+p {
+    font-size: 18px;
+}
+
+/* 
+
+We want to put some space between the <p> that contains
+the <a> and the sibling <p> above the <p> that contains
+the <a>.
+
+To do this we want to access the margin-top property.
+
+By default margin-top and margin-bottom are 18px which 
+is the font-size for all <p> elements on the page.
+
+In order to create some speration between the two <p>
+we will access the margin-top property and set it something
+greater than 18px.
+
+*/
+
+.links {
+    margin-top: 40px;
+}

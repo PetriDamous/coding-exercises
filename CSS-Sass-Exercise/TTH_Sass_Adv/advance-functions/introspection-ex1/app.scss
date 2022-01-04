@@ -1,0 +1,10 @@
+$test: 'pass';
+
+.block {
+    
+    @if global-variable-exists(test) {
+      color: $test;
+    } @else {
+      color: 'fail';
+    }
+  }

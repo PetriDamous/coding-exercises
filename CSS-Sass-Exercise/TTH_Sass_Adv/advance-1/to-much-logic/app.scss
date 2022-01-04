@@ -1,0 +1,50 @@
+/****** Before using function *******/
+
+// Right now we have to much logic and calculations
+// going on in our mixin. A better practice is to
+// let a function handle calculations and let the 
+// mixin handle the printing of CSS styles
+
+// Mixin for building a grid
+// @mixin the-grid($count, $context: 12, $width: 60,
+    // $gutter: 20) {
+// 
+        // $grid-width: ($count - 1) * $gutter + ($count * $width);
+// 
+        // $context-width: $context * ($width + $gutter);
+// 
+        // width: percentage($grid-width / $context-width);
+    // }
+// 
+// .block {
+    // @include the-grid(10);
+// }
+
+/****** After using functions *******/
+
+// Handles the grid width
+@function grid-width($count, $context, $width, $gutter) {
+    $grid-width: ($count - 1) * $gutter + ($count * $width);
+    @return $grid-width;
+}
+
+// Handles the context width
+@function context-width($context, $width, $gutter) {
+    $context-width: $context * ($width + $gutter);
+    @return $context-width;
+}
+
+// Mixin for building a grid
+@mixin the-grid($count, $context: 12, $width: 60,
+    $gutter: 20) {
+
+    $grid-width: grid-width($count, $context, $width, $gutter); // Functions being used to calculate and set values
+    
+    $context-width: context-width($context, $width, $gutter); // Functions being used to calculate and set values       
+
+    width: percentage($grid-width / $context-width);
+}
+
+.block {
+    @include the-grid(10);
+}

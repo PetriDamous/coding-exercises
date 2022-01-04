@@ -1,0 +1,35 @@
+// Sass supports the use of strings and they work similar to JavaScript
+
+// length($val) returns the length of  list
+// random($val) returns a random number from 1 - 100 if used by itself
+// str-length($val) returns length of a string
+// nth($val, $n) Grabs item in list. $val is the list. $n is like the index
+
+// Note: that all index like behavior starts with 1 and not 0
+
+// Sass:
+
+// Variable that stores strings
+$list: 'this is a string of words', 'more words', 'and even more words';
+
+.block {
+    $strings: length($list); // Counts how many items are in $list  
+    foo1: $strings; // 3
+
+    $random: random($strings); // Returns a random number from our argument. In this case the random number will be between 1 - 3
+    foo2: $random; // 1
+
+    $string-length: str-length(nth($list, $random));
+    foo3: $string-length; // 25
+
+    border: 1px solid;
+    padding: 0.5em;
+    text-align: center;
+    width: $string-length * .8em; // Using string length to calculate width based on the length of a string   
+
+    &:after {
+        font-size: 18px;
+        content: nth($list, $random); // this is a string of words
+    }
+}
+

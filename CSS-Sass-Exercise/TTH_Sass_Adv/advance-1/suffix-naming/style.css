@@ -1,0 +1,14 @@
+.base {
+  width: 100%;
+}
+
+.base__element {
+  background-color: blue;
+}
+
+.base__element--modifier {
+  background-color: orange;
+  border-color: red;
+}
+
+/*# sourceMappingURL=style.css.map */

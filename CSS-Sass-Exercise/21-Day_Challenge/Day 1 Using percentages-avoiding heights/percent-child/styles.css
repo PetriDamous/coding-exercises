@@ -1,0 +1,21 @@
+body {
+    margin: 0;
+}
+
+.parent {
+    background-color: tomato;
+    padding: 50px;
+    margin: 0 auto;
+
+
+    width: 80%;
+}
+
+.child {
+    background-color: royalblue;
+    margin: 0 auto;
+
+    width: 50%;
+
+    height: 240px;
+}

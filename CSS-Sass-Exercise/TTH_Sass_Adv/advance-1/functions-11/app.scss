@@ -1,0 +1,39 @@
+/******* Before fixing with function *******/
+
+// The code below will not work. The transparentize function
+// requires a number value and the lightness function returns
+// a percentage value. In order to fix this we can create a
+// function that will convert the value from the lightness
+// return value to a number.
+
+// @function set-opacity($color) {
+    // $lightness: lightness($color);
+    // $trans-value: transparentize($color, $ligthness);
+    // @return $trans-value;
+// }
+// 
+// .block {
+    // background-color: set-opacity(#ccc);
+// }
+
+
+/****** Aadding function to fix the problem ********/
+
+// Where we use a funciton to solve our problem
+// Function converts the percentage value to a number value
+
+// Converts our lightness value from a percentage to number
+@function percent-to-num($val) {
+    @return $val / 100;
+}
+
+@function set-opacity($color) {
+    $lightness: lightness($color);
+    $lightness-num: percent-to-num($lightness); // Function is called on to convert value
+    $trans-value: transparentize($color, $lightness-num); // Value returned from function is used
+    @return $trans-value;
+}
+
+.block {
+    background-color: set-opacity(#ccc);
+}

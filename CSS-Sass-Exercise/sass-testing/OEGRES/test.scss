@@ -1,0 +1,123 @@
+///////////////////////////////////////////////////////////////////////
+//
+// COURSE FOOTER
+//
+// ///////////////////////////////////////////////////////////////////
+
+
+// STYLES
+// ------------------------------------------------------------------
+
+.c-course-footer {
+    // @include clearfix;  
+    background-color: find-color(primary, light);
+  
+    // @include breakpoint(medium) {
+    //   border-bottom-right-radius: 9px;
+    //   overflow: hidden;
+    // }
+  
+    &__progress {
+      // padding-top: spacing(0.25);
+      // padding-bottom: spacing(0.25);
+      text-align: center;
+    }
+  
+    &__direction {
+      // background-color: find-color(white);
+      text-align: left;
+    }
+  
+    &__controls {
+    //   @include grid-row($size:null);
+      // padding: spacing(0.25);
+      background-color: find-color(white);
+      border-left: 2px black solid;    
+    }
+  
+    @include breakpoint(medium) {
+  
+      &__progress {
+        @include grid-column-size(8%);
+        // @include grid-column-size(1);
+        padding-top: spacing(0.25);
+        padding-bottom: spacing(0.25);
+        float: left;
+  
+        // @include breakpoint(899px down) {
+        //   @include grid-column-size(1 of 6);
+        // }
+  
+        @include breakpoint(720px down) {
+          
+        }
+        
+      }
+  
+      &__direction {
+        @include grid-column-size(60%);
+        // @include grid-column-size(7);
+        float: left;
+  
+        @include breakpoint(810px down) {
+          @include grid-column-size(56%);
+        }
+  
+        @include breakpoint(720px down) {
+          
+        }
+        
+      }
+  
+      &__controls {
+        @include grid-column-size(32%);
+        // @include grid-column-size(4);
+        padding: spacing(0.25);
+        float: left;
+  
+        @include breakpoint(810px down) {
+          @include grid-column-size(36%);
+        }
+  
+        @include breakpoint(720px down) {
+          
+        }
+  
+      }
+    }
+  }
+  
+    // Player wrapper
+    .c-course-player-wrap {
+      position: relative;
+      @include breakpoint(small) {
+        @include grid-column-size(12);
+        float: left;
+        padding-right: spacing(sm);
+      }
+  
+      @include breakpoint(medium) {
+        @include grid-column-size(12);
+        float: left;
+        padding-right: spacing(sm);
+      }
+  
+      @include breakpoint(large) {
+        @include grid-column-size(12);
+        float: left;
+        padding-right: spacing(sm);
+      }
+  
+    }
+  
+  
+    // Pager wrapper
+    .c-course-pager-wrap {
+      @include breakpoint(medium) {
+        // @include grid-column-size(12);
+        float: right;
+      }
+    }
+  
+  
+  

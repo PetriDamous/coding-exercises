@@ -1,0 +1,9 @@
+@mixin foo($width: null, $height: null) {
+    width: $width;
+    height: $height;
+    color: pink;
+}
+
+.block {
+    @include foo($width: 100%);
+}

@@ -1,0 +1,5 @@
+$words: 'this is the first string';
+
+.block {
+  content: str-insert($words, ' not', 8);
+}
