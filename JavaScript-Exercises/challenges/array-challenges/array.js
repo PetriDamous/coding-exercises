@@ -1,3 +1,4 @@
+// Challenge 1
 var fruit = ["banana", "apple", "orange", "watermelon"];
 var vegetables = ["carrot", "tomato", "pepper", "lettuce"];
 
@@ -12,7 +13,19 @@ var vegetables = ["carrot", "tomato", "pepper", "lettuce"];
 // 9. Reverse your array.
 // 10. Turn the array into a string and return it.
 
-// If you've done everything correctly, 
+// If you've done everything correctly,
 // the last step should print the following string to the console
 
 // 3,pepper,1,watermelon,orange,apple
+
+// Challenge 2
+// Sort array by last name in alphabetical order
+
+const names = [
+  "John Smith",
+  "Dan Boone",
+  "Jennifer Jane",
+  "Charles Lindy",
+  "Jennifer Eight",
+  "Rob Roy",
+];
