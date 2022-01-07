@@ -38,3 +38,53 @@ const sortByLastName = (names) => {
 };
 
 console.log(sortByLastName(names));
+
+/**
+ *
+ * Challenge 3
+ *
+ */
+
+// Creates Range
+const createRange = (a, b) => {
+  if (!b) return [...new Array(a + 1).keys()];
+
+  return [...new Array(b - a + 1).keys()].map((x) => x + a);
+};
+
+// Solution 1
+const findProduct = (range) => {
+  const productsArray = [];
+
+  range.forEach((numOuter, i) => {
+    const tempArray = [];
+
+    productsArray[i] = [];
+
+    range.forEach((numInner, j) => {
+      productsArray[i][j] = numInner * i;
+    });
+  });
+
+  return productsArray;
+};
+
+console.log(findProduct(createRange(9)));
+
+// Solution 2
+const findProduct = (range) => {
+  const productsArray = [];
+
+  for (let i = 0; i < range.length; i++) {
+    const tempArray = [];
+    productsArray[i] = tempArray;
+
+    for (let j = 0; j < range.length; j++) {
+      productsArray[i][j] = range[j] * i;
+    }
+  }
+
+  return productsArray;
+};
+
+console.log(findProduct(createRange(9)));
