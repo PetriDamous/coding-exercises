@@ -1,0 +1,411 @@
+
+
+1. What is the primary difference between Object.is and the == operator?
+
+A. The == operator coerces values, whereas Object.is does not.
+
+B. The == operator is used inside an if statement, whereas Object.is is not.
+
+C. The == operator can be used on any value, whereas Object.is cannot.
+
+D. The == operator is strict, whereas Object.is is not.
+
+Correct answer: A 
+
+2. What is printed to the console after the following snippet executes?
+
+function foo(x, y = 10) {
+  console.log(y);
+}
+
+foo(42, null);
+
+A. 10
+
+B. null
+
+C. An error
+
+D. undefined
+
+Correct answer: B 
+
+3. What is the value of baz after the following statements execute?
+
+let foo = { x: 1};
+let bar = { y: 2};
+let baz = { ...foo, ...bar };
+
+A. { x: 1, y: 2 }
+
+B. [ { x: 1, y: 2} ]
+
+C. [ { x: 1}, { y: 2} ]
+
+D. { { x: 1}, { y: 2} }
+
+Correct answer: A 
+
+4. What would the following code log to the console?
+
+var myPromise1 = Promise.resolve('hello');
+var myPromise2 = Promise.resolve('world');
+
+Promise.all([myPromise1, myPromise2])
+
+A. ["hello", "world"]
+
+B. ["hello world"]
+
+C. ["hello"] 
+   ["world"]
+
+D. hello world
+
+Correct answer: A
+
+5. What array method should you use to search the people array and return the first match?
+
+function olderThan(people, age) {
+  return people._____(x => x.age > age);
+}
+
+const attendees = [
+  { firstName: "Kelly", lastName: "Sunders", age: 27 },
+  { firstName: "Sam", lastName: "Grand", age: 35 },
+  { firstName: "Ashley", lastName: "O'Neill", age: 19 }
+];
+
+return olderThan(attendees, 20);
+
+A. Array.first
+
+B. Array.find
+
+C. Array.head
+
+D. Array.filter
+
+Correct answer: B 
+
+6. What is printed to the console when the following snippet executes? console.log((() => 'foo')());
+
+A. foo
+
+B. A function object
+
+C. [object Object]
+
+D. An error
+
+Correct answer: A 
+
+7. What result does the following code snippet, which contains a Promise, produce?
+
+const aPromise = new Promise( (res,rej) => {
+    res(42);
+});
+
+aPromise.then( (val) => console.log("Item:",val) );
+
+console.log("Print");
+
+A. Print 
+   Item: 42
+
+B. Print 
+
+C. Item: 42
+   Print
+
+D. Item: 42
+
+Correct answer: A
+
+8. What must you add to the following snippet to prevent iter from being an infinite iterator?
+
+var iter = {
+  [Symbol.iterator]: () => {
+    var val = 0;
+    return {
+      next: () => {
+        return {value: val++};
+      }
+    };
+  }
+}
+
+A. The next method must return an empty object when iteration is complete.
+
+B. A done property on the object returned from next that eventually sets to true.
+
+C. A value property on the object returned from next that eventually sets to null.
+
+D. The next method must return false when iteration is complete.
+
+Correct answer: B 
+
+9. Which would return the value "brown" from the array? arr = ["the", "quick", "brown", "fox"] 
+
+A. arr.first(x => x.indexOf('o') > -1)
+
+B. arr.find(x => x.indexOf('o') > -1)
+
+C. arr.filter(x => x.indexOf('o') > -1)
+
+D. arr.search(x => x.indexOf('o') > -1) 
+
+Correct answer: B
+
+10. Which is the correct syntax for a generator?
+
+A. generator myGenerator() {
+      yield 1;
+      yield 2;
+   }
+
+B. function myGenerator(): generator {
+      yield 1;
+      yield 2;
+   }  
+
+C. *function myGenerator() {
+      yield 1;
+      yield 2;
+   } 
+
+D. function* myGenerator() {
+      yield 1;
+      yield 2;
+   }
+
+Correct answer: D 
+
+11. Which snippet adds error handling to the following code?
+
+myPromise
+  .then(() => {
+    console.log('OK');
+  })
+
+A. myPromise
+    .then(() => {
+        console.log('OK');
+    })
+    .catch(() => {
+        console.log('Oops');
+    });
+
+B. myPromise
+    .then(() => {
+        console.log('OK');
+    })
+    .error(() => {
+        console.log('Oops');
+    });
+
+C. try{
+    myPromise
+        .then(() => {
+        console.log('OK');
+        });
+    }
+    catch(err){
+        console.log(err);
+    }
+
+D. myPromise.try()
+    .then(() => {
+        console.log('OK');
+    })
+    .catch(() => {
+        console.log('Oops');
+    });
+
+Correct answer: A 
+
+12. You have created an array of three elements as shown:
+
+var newVar = new Uint8ClampedArray(3);
+
+newVar[0] = 5;
+newVar[1] = 180;
+newVar[2] = newVar[0]+255;
+
+console.log(newVar);
+
+When you execute the above code, you receive [5, 180, 255] on the console. Why does the last element of the array result in 255?
+
+A. The Uint8ClampedArray has a maximum limit of 255, so it should be replaced by Int8ClampedArray.
+
+B. The values to each of the Uint8ClampedArray elements are assigned simultaneously, so in the newVar[2]= newVar[0]+255 statement the value of newVar[0] is 0.
+
+C. The array has been created using Uint8ClampedArray, which replaces all the numbers greater than 255 with 255 itself.
+
+D. The assignment of values for each element of the array takes place from bottom up, so newVar[0] has a value of 0.
+
+Correct answer: C 
+
+13. What will the console output when D is created? 
+
+class A {
+  constructor() {
+    console.log('A');
+  }
+}
+
+class C extends A {
+  constructor() {
+    super();
+    console.log('C');
+  }
+}
+
+class B extends C {
+  constructor() {
+    console.log('B');
+    super();
+  }
+}
+
+class D extends B {
+  constructor() {
+    console.log('D');
+    super();
+  }
+}
+
+const obj = new D();
+
+A. "A"
+   "B"
+   "C"
+   "D"
+
+B. "A"
+   "C"
+   "B"
+   "D"
+
+C. "D"
+   "B"
+   "C"
+   "A"
+
+D. "D"
+   "B"
+   "A"
+   "C"
+
+Correct answer: D
+
+14. When overriding a class method, how would you ensure that the base method is invoked?
+
+A. super.methodName(args)
+
+B. base.methodName(args)
+
+C. class.methodName(args) 
+
+D. this.methodName(args) 
+
+Correct answer: A 
+
+15. Given a Map let aMap = new Map(), how would you add a key-value pair NaN : 5 to it? 
+
+A. aMap.set( {NaN, 5} )
+
+B. aMap.set( [NaN, 5] )
+
+C. aMap.set( {NaN: 5} ) 
+
+D. aMap.set( NaN, 5 ) 
+
+Correct answer: D 
+
+16. What keywords create getters and setters in classes? 
+
+A. function get method_name() {}
+
+   function set method_name(arg) {}  
+
+B. @get 
+   def method_name() {}
+   @set
+   def method_name(arg) {} 
+
+C. @getter 
+   def method_name() {}
+   @setter
+   def method_name(arg) {}  
+
+D. get method_name() {}
+   set method_name(arg) {}
+
+Correct answer: D
+
+17. What is the output of the following code? 
+
+function testFunction(arg1) {  
+  const foo = "foo"; 
+
+  let f = function () {
+    let foo = 42 + arg1;
+  };
+
+  return console.log(foo);
+}
+
+testFunction(8)
+
+ A. 50 
+
+ B. foo
+
+ C. 42 
+
+ D. undefined
+
+ Correct answer: B
+
+ 18. What keyword suspends execution of a generator?
+
+ A. yield
+ 
+ B. suspend
+ 
+ C. return
+ 
+ D. pause 
+
+ Correct answer: A 
+
+19. You need to create an empty 1D array of three elements, so you wrote the code let anArr = Array.of(3);. This statement ends up giving you an array of one element with value 3. Why?
+
+A. The Array.of() method accepts the following syntax 
+   to create an empty 1D array: 
+   Array.of(undefined, 3);
+
+B. The Array.of() method must enclose the value 3 
+   inside square brackets [].
+
+C. The Array.of() method accepts the following syntax 
+   to create an empty 1D array:
+   Array.of([undefined, undefined, undefined]);
+
+D. The Array.of() method accepts element's value 
+   rather than declaring the size of an array.
+
+Correct answer: D 
+
+20. What happens if one of the Promises in Promise.all rejects with an error?
+
+A. The catch handler of the Promise that the all method created is called with the value from the reject call.
+
+B. The result of the failed Promise is included as an Error object within the values passed to the then handler of the all method.
+
+C. The failure is ignored and only success results are returned.
+
+D. An error is thrown and must be handled outside of the Promise.
+
+Correct answer: A
