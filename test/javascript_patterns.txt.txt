@@ -1,0 +1,310 @@
+
+
+1. What is the difference between Foo.prototype and Foo.__proto__ given the following constructor function: 
+
+function Foo() {}
+
+A. Foo.__proto__ is the prototype that will be used when Foo is invoked with new. Foo.prototype is the prototype of Foo itself.
+
+B. Foo.prototype is the prototype that will be used when Foo is invoked with new. Foo.__proto__ is the prototype of Foo itself. 
+
+C. Foo.prototype is the prototype that will be used when Foo is invoked with new. Foo.__proto__ is undefined. 
+
+D. Nothing, they are the same thing 
+
+Correct answer: B 
+
+2. How would you export and import a default function using built-in JavaScript modules?
+
+A. module.default = function() { ... }
+   const foo = require('./foo.js')
+
+B. export default function() { ... }
+   import './foo.js'
+
+C. export default function() { ... }
+   import foo from './foo.js'
+
+D. export function() { ... } as default
+   import default as foo from './foo.js'
+
+Correct answer: C
+
+3. Which pattern encapsulates a request as an object, thereby letting you parameterize clients with different requests, queue or log requests, and support undoable operations?
+
+A. Queue pattern
+
+B. Factory pattern
+
+C. Command pattern
+
+D. Parameter pattern
+
+Correct answer: C 
+
+4. Which of the following is true about localStorage? 
+
+A. localStorage stores data between browser restart 
+
+B. localStorage can be used to store complex objects consisting of data and functions 
+
+C. localStorage is automatically encrypted, so it is a good place to store sensitive information 
+
+D. localStorage cannot be cleared by the user 
+
+Correct answer: A 
+
+5. Which of the following shows the correct way to subscribe to DOM element events? 
+
+A. var el = document.getElementById("target");
+   el.listen("click", () => alert('hello world'));
+
+B. var el = document.getElementById("target");
+   el.subscribe("click", () => alert('hello world'));
+
+C. var el = document.getElementById("target");
+   el.addEventListener("onClick", () => alert('hello world'));
+
+D. var el = document.getElementById("target");
+   el.addEventListener("click", () => alert('hello world'));
+
+Correct answer: D 
+
+6. Given the following code snippet, what would happen if the Employee.call line was omitted? 
+
+function Employee(name) {
+  this.name = name
+}
+
+function SalariedEmployee(name, salary) {
+  Employee.call(this, name)
+  this.salary = salary
+}
+
+Object.setPrototypeOf(SalariedEmployee.prototype, Employee.prototype)
+
+A. The call to Object.setPrototypeOf would throw an error 
+
+B. Instances of SalariedEmployee would not inherit Employee's prototype
+
+C. Calling new on SalariedEmployee would throw an error 
+
+D. Instances of SalariedEmployee would not have a name property
+
+Correct answer: D 
+
+7. Which of the following is true of manipulating DOM elements? 
+
+A. DOM elements are immutable. To "change" them, you must instead clone them, change the clone and then replace the original DOM element with the clone. 
+
+B. Changes take effect immediately 
+
+C. You can rollback changes by manipulating the shadow DOM
+
+D. Changes are only in the virtual DOM until you call document.commit()
+
+Correct answer: B 
+
+8. How would you implement the command pattern?
+
+A. Expose an object that lets you know what to do next
+
+B. Expose an object that sends API results. 
+
+C. Expose a method that converts an object into a function call. 
+
+D. Expose a method that sends back new objects
+
+Correct answer: C 
+
+9. Given the following built-in JavaScript module, how should you export myFunc in my-func.js?
+
+import myFunc from './my-func.js'
+
+myFunc()
+
+A. export default function myFunc() { ... }
+
+B. export function myFunc() { ... } as default
+
+C. export {
+     myFunc: function() { ... }
+   }
+
+D. export function myFunc() { ... }
+
+Correct answer: A 
+
+10. How would you extend Array to have the following function?
+
+function first() { return this[0] }
+
+A. Array.__proto__.first = function() { return this[0] }
+
+B. Array.prototype.first = () => { return this[0] }
+
+C. Array.first = () => { return this[0] } 
+
+D. Array.prototype.first = function() { return this[0] } 
+
+Correct answer: D 
+
+11. Given the following code, how would you make setName and setJob chainable?
+
+var person = {
+  setName: function(name) {
+    this.name = name;
+  },
+  setJob: function(job) {
+    this.job = job;
+  }
+};
+
+A. Add a this property on person. 
+
+B. Have each return a function. 
+
+C. Convert each to an arrow function. 
+
+D. Have each return this.  
+
+Correct answer: D 
+
+12. How do you handle errors with the Callback pattern?
+
+A. Throw errors with "throw"
+
+B. Pass errors back on the callback
+
+C. Reject the Promise
+
+D. Separate functions out to separate functions
+
+Correct answer: B 
+
+13. A for...of loop is never ending. What is the most likely cause?
+
+A. The continue function never returns an object with {stop: true}
+
+B. The next function never returns an empty object
+
+C. The next function never returns an object with {continue: false}
+
+D. The next function never returns an object with {done: true}
+
+Correct answer: D 
+
+14. To retrieve values required by your process, your code needs to make calls to a remote server that is often slow to respond and sometimes not available at all. The values from that remote server only change at the beginning of the quarter. What is your best option to solve this issue?
+
+A. Write a process that downloads all values from the server at the beginning of the quarter and then use that in your code.
+
+B. Implement caching via a proxy object so that you don't have to rely on the problematic server as much.
+
+C. Add a mediator object that will automatically retry connections to that server so you don't need to add that functionality everywhere in your code.
+
+D. Work with your company's networking team to fix the connection problems to the problematic server. 
+
+Correct answer: B 
+
+15. A function which simplifies the public API of class is an example of which pattern? 
+
+A. Factory 
+
+B. Constructor 
+
+C. Mediator 
+
+D. Facade 
+
+Correct answer: D 
+
+16. In functional programming, which construct can you use to avoid mutating arrays?
+
+A. Splice
+
+B. Symbols
+
+C. Iterable protocol
+
+D. Spread operator 
+
+Correct answer: D 
+
+17. What is the purpose of the Apply server in this implementation of executing a command?
+
+repo.execute = function(name){
+    var args = Array.prototype.slice.call(arguments, 1);
+
+    if(repo[name]){
+        return repo[name].apply(repo, args)
+    }
+    if(name==='get'){
+        return repo['select'].apply(repo, args)
+    }
+    return false;
+};
+
+A. Apply allows you to lock in the 'this' value. 
+
+B. Apply allows you to pass in the arguments needed. 
+
+C. Apply allows you to lock in the 'this' value AND pass in the arguments required. 
+
+D. Apply executes the method in question. 
+
+Correct answer: C 
+
+18. Which actor in the pub/sub pattern sends event notifications to the subscribers?
+
+A. Caller
+
+B. Advertiser
+
+C. Message broker
+
+D. Subscriber
+
+Correct answer: C 
+
+19. How many instances of courseRepo exists?
+
+var Repos = (function () {
+  var courseRepo;
+  function createInstance() {
+    var courseRepo = new CourseRepo();
+    return courseRepo;
+  }
+  return {
+    getCourseRepo: function () {
+      if (!courseRepo) {
+        courseRepo = createInstance();
+      }
+      return courseRepo;
+    }
+  };
+})();
+
+var repo1 = Repos.getCourseRepo();
+var repo2 = Repos.getCourseRepo();
+
+A. 3
+
+B. 1 
+
+C. 0 
+
+D. 2
+
+Correct answer: B 
+
+20. How do you attach multiple listeners to the same event? 
+
+A. Call addEventListener for the first and then index into the taget elements listeners array to add subsequent: elm.listeners['click'][1] = secondListener;
+
+B. You can only have one listener per event so you will need to modify the existing listener to do all the necessary work 
+
+C. Call addEventListener for the first and then insertEventListener for subsequent, specifying the position it should fire in 
+
+D. Just call addEventListener for each 
+
+Correct answer: D 
