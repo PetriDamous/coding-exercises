@@ -1,0 +1,446 @@
+1. Which statement is correct about spread attributes?
+
+A. They mimic the setState method if you use them with useReducer.
+
+B. They always serve as the first parameter in a const statement.
+
+C. They can transfer irrelevant props to components.
+
+D. They are defined using the syntax spreadAttr...
+
+Correct answer: C
+
+===================================================================
+
+2. What can you infer about the result of the following script?
+
+```
+import React, {useState} from 'react';
+
+function Foo()
+{
+  const [count,setCount]=useState(0)
+  return<div>    
+    <button onClick={()=>setCount(count+1)}> Increment the counter 
+ </button>
+  </div>
+}
+
+function MyComp(props)
+{
+  return <h2 style={
+   {backgroundColor: props.id === 2 ? 'green' : 'red', width:500}}> 
+     <props.id /> 
+   </h2>
+}
+
+function App() {
+  return (
+    <div className="App">
+      <MyComp id={Foo} />
+
+    </div>
+  );
+}
+
+export default App;
+```
+A. The background color changes from red to green after clicking the button twice. 
+
+B. The background color changes to red from green after clicking the button twice. 
+
+C. The background color remains red after clicking the button twice.
+
+D. The background color remains green after clicking the button twice. 
+
+Correct answer: C
+
+=========================================================================================
+
+3. Given this code:
+
+```
+const emailInput = React.createRef();
+<LoginForm ref={emailInput} />
+```
+And given that LoginForm is a function component, what part of the React API must be used with LoginForm to make the ref attribute work?
+
+A. React.forwardRef
+
+B. React.forceRef
+
+C. React.createRef
+
+D. React.useRef
+
+Correct answer: A
+
+=========================================================================================
+
+4. You have a React function component that fetches data in a useEffect hook function. 
+    You must server-render this component. What do you do about the data fetching?
+
+A. Move it to a useCallback function.
+
+B. Move it to a useMemo function.
+
+C. React will automatically figure out that data has already been fetched.
+
+D. Move it outside of the component and have the component receive the data as a prop.
+
+=========================================================================================
+
+5. In a class component, you initialize and update the states with the following two lines:
+
+```
+state = { count: 0, tries: 0};
+this.setState( (state) => ({ count: state.count + 1}) );
+```
+
+To port this over to a function component, you first initialize the state with:
+
+```
+const [state, setState] = React.useState({ count: 0, tries: 0});
+```
+
+What is the equivalent hook updater call to the this.setState call above?
+
+A. setState( (state) => ({ ...state, count: state.count + 1}) );
+
+B. setState( (state) => ({ count: state.count + 1}) );
+
+C. setState( ({count}) => ({ count: count + 1}) );
+
+D. setState( (count) => ({ ...state, count: count + 1}) );
+
+Correct answer: A
+
+============================================================================================
+
+6. Which React property specifies default values for a functional component's props argument?
+
+A. defaultProps
+
+B. defaultValues
+
+C. default
+
+D. defaultArgs
+
+Correct answer: A
+
+============================================================================================
+
+7. Which statement is correct about the Document Object Model (DOM) API?
+
+A. It deals with mutable objects only.
+
+B. It deals with Cascading Style Sheets (CSS) only.
+
+C. It must involve third-party APIs.
+
+D. It processes a lot of imperative code.
+
+Correct answer: D
+
+==============================================================================================
+
+8. What is snapshot testing?
+
+A. A strategy for mocking all children components and taking a snapshot of the output of the parent component without its children
+
+B. A strategy for creating a reference snapshot, rendering the component, and matching the new snapshot with the reference snapshot for a change
+
+C. A strategy for saving a snapshot of the component's code into a Cascading Style Sheets (CSS) 
+    file and then checking in future test runs that the code of that component did not change
+
+D. A strategy for taking a snapshot of the component output and making sure there are no errors when doing that
+
+Correct answer: B
+
+================================================================================================
+
+9. What is true about React.memo?
+
+A. It skips rendering a component that uses the useState Hook and has its state altered
+
+B. It re-renders a component with the same props/results every time
+
+C. It skips rendering a component that uses the useContext Hook and has its context altered 
+
+D. It is a higher order component used for performance optimization
+
+Correct answer: D
+
+================================================================================================
+
+10. You have a component with two props, fruit and vegetable. How would you assign default values to these two props?
+
+A. ```
+   MyComponent.defaultProps = {
+     "fruit": Mango,
+     "vegetable": Broccoli
+   }
+   ``` 
+
+B. ```
+   MyComponent.defaultValues = {
+     "fruit": "Mango",
+     "vegetable": "Broccoli"
+   } 
+   ```
+
+C. ```
+   MyComponent.defaultProps = {
+     fruit: "Mango",
+     vegetable: "Broccoli"
+   }
+   ```
+
+D. ```
+   MyComponent.defaultValues = {
+     [ fruit: "Mango",
+     vegetable: "Broccoli" ]
+   }
+   ``` 
+
+Correct answer: C
+
+===========================================================================================
+
+11. A React component has this line:
+
+```
+import "../style.css"
+```
+
+The style.css file has Cascading Style Sheets (CSS) rules and the React component is styled according to them. 
+Assuming your React web app stack uses ReactDOM, Webpack, Babel, and TypeScript, 
+which part of that stack makes it possible for your React component to import the CSS file?
+
+A. ReactDOM
+
+B. A webpack loader
+
+C. Babel's "env" preset
+
+D. TypeScript's JavaScript XML (JSX) transpiler
+
+Correct answer: B
+
+============================================================================================
+
+12. What is a disadvantage to using a state-management solution such as Redux rather than built-in state management in React?
+
+A. Redux introduces extra verbosity and code complexity.
+
+B. Redux forces you to group unrelated elements in your state as one.
+
+C. Redux requires a mandatory debugging tool for its process.
+
+D. Redux requires the use of DevTools to understand the flow of your code.
+
+Correct answer: A
+
+============================================================================================
+
+13. Given this code:
+
+```
+<C render={() => <h1>Hello</h1>} />
+
+
+const C = (props) => {
+  return (
+    <div>{/* ... */}</div>
+  );
+};
+```
+
+Which JSX expression in component C can you use for its render prop (and include the <h1>Hello</h1> within its main div)?
+
+A. {<props.render />}
+
+B. {props.render()}
+
+C. {() => props.render()}
+
+D. {props.render}
+
+Correct answer: B
+
+================================================================================================
+
+14. You must focus an input element created by your component's JSX. How would you do this?
+
+A. Use a ref to get a pointer to the DOM element, so that you can call the focus method on it.
+
+B. Interacting with the underlying DOM should never be done in React.
+
+C. Set the special onload:focus attribute on the input element on the input.
+
+D. Use jQuery and add an ID attribute on the element so you can find it.
+
+Correct answer: A
+
+==============================================================================================
+
+15. How would a tool such as Babel or TypeScript compile the following JavaScript XML (JSX) line?
+
+```
+<button type="submit"> Send </button>
+```
+
+A. <button type="submit">Send</button>
+
+B. <button type="submit" value="Send" />
+
+C. React.createElement("button", { type: 'submit' }, "Send")
+
+D. React.createElement(button, { type: 'submit' }, "Send")
+
+Correct answer: C
+
+==================================================================================================
+
+16. A subscribe function returns an unsubscribe function. Calling the subscribe function establishes a listener 
+    X and calling the unsubscribe function cancels X. What code must you add within the body of a React function component 
+    to make it establish the X listener during its lifetime?
+
+A. ```
+   React.useEffect(() => {
+    const unsubscribe = subscribe()
+    return () => unsubscribe();
+   }, []);
+   ```
+
+B. ```
+   React.useCallback(() => {
+    const unsubscribe = subscribe()
+    return unsubscribe;
+   }, []);
+   ```
+
+C. ```
+   React.useCallback(() => {
+    const unsubscribe = subscribe()
+    return unsubscribe();
+   }, []);
+   ```
+
+D. ```
+   React.useEffect(() => {
+    const unsubscribe = subscribe()
+    return unsubscribe();
+   }, []);
+   ```
+
+Correct answer: A
+
+======================================================================================
+
+17. In the following script, you try to display the text Hi, there! on the webpage but it results in a TypeError. Why?
+
+```
+import React from 'react';
+
+function Foo(props) {
+  return <>{props.p1 += "there!" }</>;
+}
+
+function App() {
+ return (
+   <div>
+	<Foo p1="Hi, " />
+   </div>
+ )
+}
+
+export default App;
+```
+
+A. Because you can only read props but cannot modify them
+
+B. Because the props p1 is not a string but an object
+
+C. Because the opening and closing div tags are missing in Foo
+
+D. Because React 18 does not support the shorthand notation +=
+
+Correct answer: A
+
+==========================================================================================================
+
+18. How do you generate a correct production build for React?
+
+A. Use an uglifier.
+
+B. Importing React gives you a production build by default.
+
+C. Make sure NODE_ENV is seen as "production" while building.
+
+D. Use a minifier.
+
+Correct answer: C
+
+==========================================================================================================
+
+19. What change must you make to optimize the performance of the following component which must run whenever prop changes?
+
+```
+function MyComponent({ prop }) {
+  function Foo() {
+    console.log(prop);
+  }
+
+  useEffect(() => {
+    Foo();
+  }); 
+}
+```
+
+A. Add a second argument [] in the useEffect hook.
+
+B. Define the useEffect hook outside the MyComponent function.
+
+C. Define the useEffect hook outside the MyComponent function with an additional argument [].
+
+D. Add a second argument [prop] in the useEffect hook.
+
+Correct answer: D 
+
+==============================================================================================================
+
+20. Which React component throws an error?
+
+A. ```
+   const App = () => <React.Fragment>
+    <div>Hello</div>
+    <div>World</div>
+  </React.Fragment>;
+  ```
+
+B. ```
+  const App = () => <>
+    <div>Hello</div>
+    <div>World</div>
+  </>;
+  ```
+
+C. ```
+  const App = () => [
+    <div>Hello</div>,
+    <div>World</div>
+  ];
+  ```
+
+D. ```
+  const App = () => (
+    <div>Hello</div>
+    <div>World</div>
+  );
+  ```
+
+Correct answer: D
+
+
