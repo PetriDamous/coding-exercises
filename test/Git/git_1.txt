@@ -1,0 +1,287 @@
+1. Which problem does configuring core.excludesfile solve? 
+
+A. It lists all objects that are not meant to be tracked by Git with a reference file
+
+B. It removes generated files before pushing a commit
+
+C. It rejects commits that include files with proprietary secrets
+
+D. It deletes unnecessary files after migrating from other source control systems to Git
+
+Correct answer: A 
+
+====================================================================================================================
+
+2. Which term defines a pointer to a commit in Git?
+
+A. Origin
+
+B. Branch
+
+C. Tree
+
+D Blob
+
+Correct answer: B 
+
+=======================================================================================
+
+3. How many commits are created if you merge two branches?
+
+A. Three
+
+B. Zero or one 
+
+C. Four 
+
+D. Two 
+
+Correct answer: B 
+
+======================================================================================
+
+4. What is one advantage of rebase over merge? 
+
+A. Rebase never generates history conflicts among the developers that are working on the same repository, but merge does.
+
+B. Rebase results in a cleaner, more streamlined history than merge.
+
+C. Data conflicts during a rebase are automatically resolved by Git, but are not with merge.
+
+D. Rebase is faster than merge.
+
+Correct answer: B 
+
+======================================================================================
+
+5. How does git cherry-pick add a commit named C to the current branch?
+
+A. It creates a new commit containing a copy of C with the HEAD of the current branch as a parent.
+
+B. It creates a new commit with C and the HEAD of the current branch as parents.
+
+C. It creates a new commit with C as a parent.
+
+D. It modifies C so that it has the HEAD of the current branch as a parent.
+
+Correct answer: A 
+
+=======================================================================================
+
+6. What happens during a Git fast-forward?
+
+A. Git moves the working branch pointer forward to the latest commit of the merging branch because there is no divergent work to merge together.
+
+B. All the commits of a source branch are added to the history of a target branch if the two branches diverge.
+
+C. Changes to a branch get discarded and a branch HEAD is moved to the HEAD of another branch if the commit is more recent.
+
+D. Two branches are merged.
+
+Correct answer: A 
+
+=======================================================================================
+
+7. What does rerere mean? 
+
+A. Reuse recorded resolution
+
+B. Restore remote relay
+
+C. Replay responsive rebase
+
+D. Replace regex recursively
+
+Correct answer: A
+
+=======================================================================================
+
+8. How does git bisect help you find bugs in your codebase? 
+
+A. It performs a binary search that isolates the commit that introduced an error.
+
+B. It calculates the difference of your current branch with main, which highlights changes.
+
+C. It performs a parallel check out of each commit in a branch and runs all unit tests.
+
+D. It displays a log of all merge conflicts and their associated resolutions.
+
+Correct answer: A
+
+=======================================================================================
+
+9. Your team primarily resolves merge conflicts by navigating the standard conflict markers, such as, <<<<<<<, =======, and >>>>>>>, but uses graphical user interface (GUI) applications for all other tasks. What is the most likely explanation for this discrepancy? 
+
+A. The team has not configured its merge conflict settings with git rerere.
+
+B. The team has a pre-commit hook configured to add the markers into the files for quality control.
+
+C. The team is not aware of merge utilities that are available with git mergetool.
+
+D. The team performed a rebase on a project, which only allows merges.
+
+Correct answer: C 
+
+=======================================================================================
+
+10. You modify a file, stage it, and modify it again. What do you see when you give the command git status?
+
+A. You see the file twice, once in the list of stashed files, and once in the list of unmodified files.
+
+B. You only see the file in the list of staged files.
+
+C. You see the file twice, once in the list of staged files and once in the list of modified files.
+
+D. You only see the file in the list of modified files.
+
+Correct answer: C 
+
+=======================================================================================
+
+11. Which command recovers commits that are not referenced by a branch or tag? 
+
+A. git log --graph
+
+B. git reflog
+
+C. git show-branch
+
+D. git describe
+
+Correct answer: B 
+
+=======================================================================================
+
+12. How do you turn a Git project into a regular directory structure that does not contain a Git repository? 
+
+A. Use the git reset command.
+
+B. Delete the .git subdirectory from the project's root.
+
+C. Delete the configuration file from the .git subdirectory.
+
+D. Use the git remove command.
+
+Correct answer: B 
+
+======================================================================================
+
+13. You modify a file and then stage it with git add. You modify the file again immediately after the previous modification and then you commit. Which version of the file becomes part of the commit? 
+
+A. Neither version because Git will cancel the commit with an error.
+
+B. The version that existed when you gave the git add command.
+
+C. The version that existed when you gave the git commit command.
+
+D. The first version that was tracked in your working directory. 
+
+Correct answer: B 
+
+======================================================================================
+
+14. What does the following output mean when using git add --interactive? 
+
+```
+     staged       unstaged     path
+1:   unchanged    +2/-0        file1.txt
+2:   +3/-0        nothing      file2.txt
+```
+
+A. file1.txt is listed first because it is unstaged.
+
+B. file1.txt is listed first because it has fewer changes.
+
+C. file2.txt is staged and ready for commit, while file1.txt is still in the working directory.
+
+D. file1.txt is staged and ready for commit, while file2.txt is still in the working directory.
+
+Correct answer: C
+
+======================================================================================
+
+15. You pushed changes onto a personal branch and conducted an interactive rebase on commits that you pushed. Git rejects your latest push, but you do not understand why. Why must you execute a force push? 
+
+A. Your interactive rebase changed the commit history and the remote repository no longer matches the local repository. A force push will force the remote repository to accept the changes.
+
+B. Your interactive rebase altered the commit history and you must force the local branch to accept the remote branches history.
+
+C. Your interactive rebase altered the commit history, which created a new branch. You must force push all new branches to the remote repository.
+
+D. Your interactive rebase altered the commit history. You must force a merge on the remote branch and then pull the latest merged commits.
+
+Correct answer: A 
+
+====================================================================================== 
+
+16. What command(s) do you use to retrieve the latest commits from a remote repository and rebase them onto your local repository?
+
+A. git get origin --rebase
+
+B. git pull --rebase 
+
+C. git fetch and git merge
+
+D. git pull 
+
+Correct answer: B 
+
+======================================================================================
+
+17. What kind of repository does the git init --bare command create? 
+
+A. A centralized repository with multiple working directories
+
+B. A replay repository that will accept any changes pushed to it in its working directory
+
+C. An installed repository where the files created during the install process must be pruned from the working directory
+
+D. A bare repository that lacks a working directory
+
+Correct answer: D 
+
+=======================================================================================
+
+18. Which command creates an annotated tag named mytag on the current commit?
+
+A. git tag -a mytag
+
+B. git tag mytag
+
+C. git annotate mytag
+
+D. git tag mytag "my comment" 
+
+Correct answer: A 
+
+=======================================================================================
+
+19. What happens when you tag the current branch and then rename it? 
+
+A. You would break the reference in the tag by renaming the commit.
+
+B. The tag remains active because it points to a particular commit, not the branch itself. 
+
+C. The tag is garbage-collected.
+
+D. Git will update the tag to point to the same branch even if it is renamed.
+
+Correct answer: B 
+
+======================================================================================
+
+20. A project's history shows that consecutive commits on main are not chronologically sorted. What is a likely cause? 
+
+A. Someone tampered with the Git repository.
+
+B. You performed a git log --shuffle on your current branch. 
+
+C. A developer made a mistake while committing.
+
+D. You performed a rebase onto main. 
+
+Correct answer: D 
+
+======================================================================================
+
+END
