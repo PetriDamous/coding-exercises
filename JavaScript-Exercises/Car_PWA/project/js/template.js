@@ -7,6 +7,6 @@ export const appendCars = (cars) => {
   console.log(cars);
   document.getElementById("first-load").innerHTML = "";
   if (!cars) return;
-  const cardHTML = cars.map((car) => generateCarCard(car.value)).join("");
+  const cardHTML = cars.map((car) => generateCarCard(car)).join("");
   document.querySelector(".mdl-grid").innerHTML += cardHTML;
 };
