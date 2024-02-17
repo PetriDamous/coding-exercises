@@ -1,6 +1,3 @@
-
-
-
 1. The following function never prints "bar" to the console, despite what is passed into the function. Why?
 
 function foo(x) {
@@ -23,6 +20,8 @@ D. x can never be false because it is a function argument.
 
 Correct answer: C 
 
+===============================================================================
+
 2. What is one benefit of using Symbol() for unique identifiers?
 
 A. It is public and a third party can edit it.
@@ -34,6 +33,8 @@ C. It is hidden and you can keep it private for internal use.
 D. Symbols are enumerated and you can use them in for..of or for..in loops.
 
 Correct answer: C 
+
+===============================================================================
 
 3. What is the intent of the following code snippet?
 
@@ -53,6 +54,8 @@ C. To protect all methods of the custom object as private
 D. To ensure that instances of class Person are always constructed using the new keyword
 
 Correct answer: D 
+
+=================================================================================
 
 4. What is the correct format for creating a closure?
 
@@ -85,6 +88,8 @@ D. function square(n) {
 
 Correct answer: A 
 
+===============================================================================
+
 5. Which statement about using files with JavaScript is true? 
 
 A. JavaScript cannot access a database file if there is any Ajax code in the file.
@@ -96,6 +101,8 @@ C. JavaScript cannot send requests to the server if there is any Ajax code in th
 D. JavaScript can directly read from files on the client. 
 
 Correct answer: B 
+
+=================================================================================
 
 6. What does the following code snippet print to the console?
 
@@ -123,6 +130,8 @@ D. User1
 
 Correct answer: A 
 
+================================================================================
+
 7. When comparing two strings with the less than or the greater than operator, what does the `console.log` output return?
 
 var a = 'a';
@@ -138,6 +147,8 @@ C. Error
 D. NaN
 
 Correct answer: A 
+
+=================================================================================
 
 8. The following code runs successfully, but the variable y returns as undefined. How can you change this code so that an error outputs to the console instead?
 
@@ -158,6 +169,8 @@ D. Declare the y variable as const.
 
 Correct answer: A 
 
+===============================================================================
+
 9. What is the difference between a property and a method on a class?
 
 A. Properties and methods are indistinguishable in the ES6 class spec; properties can be methods and methods can be properties.
@@ -169,6 +182,8 @@ C. A property is an association between a name and a value; a method is when a f
 D. A property is only declarable on objects, not classes; a method is declarable only on classes, not objects.
 
 Correct answer: C 
+
+================================================================================
 
 10. How could you make the following instance into an object literal?
 
@@ -195,6 +210,8 @@ D. const foo = {"User1"};
 
 Correct answer: C 
 
+=================================================================================
+
 11. What prints to the console with the final line of the following code snippet?
 
 let foo = 5;
@@ -215,6 +232,8 @@ D. Reference Error
 
 Correct Answer: B 
 
+==================================================================================
+
 12. Which code snippet correctly shows how to access an object foo's property bar using object destructuring?
 
 A. foo['bar']
@@ -226,6 +245,8 @@ C. foo.bar
 D. const bar = () => foo.bar;
 
 Correct answer: B 
+
+===================================================================================
 
 13. A variable-size, dynamic array, numbers, contains a series of integers. Using Math.max(), which code snippet finds the largest number in the array?
 
@@ -241,6 +262,8 @@ D. Math.max(numbers);
 
 Correct answer: C 
 
+================================================================================
+
 14. While writing a JavaScript application, you declare the following variable. You want to check the initial value to determine if it is truthy or falsy. How could you do this?
 
 let val = NaN;
@@ -255,6 +278,8 @@ D. String(val);
 
 Correct answer: B 
 
+=================================================================================
+
 15. An iterator never returns {done: true}. What is the result?
 
 A. The iterator runs infinitely.
@@ -266,6 +291,8 @@ C. The iterator always yields the same value for all calls made to .next().
 D. The iterator only runs for the initial step when .next() is called first
 
 Correct answer: A 
+
+================================================================================
 
 16. What is the value of bar in the following code snippet?
 
@@ -281,6 +308,8 @@ C. ["Foo"]
 D. ["F", "o", "o"]
 
 Correct answer: D 
+
+=================================================================================
 
 17. You create the following function which returns a promise: 
 
@@ -308,6 +337,8 @@ D. async function func1() {
 
 Correct answer: D 
 
+===============================================================================
+
 18. Consider the following object foo:
 
 const foo = {
@@ -328,6 +359,8 @@ C. Replace ! with # in both the object definition and its call.
 D. Replace ! with 9 in both the object definition and its call.
 
 Correct answer: B
+
+================================================================================
 
 19. Which snippet returns the following result?
 
@@ -364,6 +397,8 @@ D. var foo = {
    };
 
 Correct answer: C
+
+=============================================================================
 
 20. What keyword does a generator use to send a generated value to the caller?
 
