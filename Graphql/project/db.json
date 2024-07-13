@@ -44,6 +44,15 @@
       "first": "Eve",
       "last": "Porcello",
       "favorite": true
+    },
+    {
+      "id": "a82e",
+      "twitterHandle": "yoyo@twitter.com",
+      "company": "Nintendo",
+      "bio": "I live in Bluffington",
+      "first": "Petri",
+      "last": "Damous",
+      "favorite": true
     }
   ]
 }
