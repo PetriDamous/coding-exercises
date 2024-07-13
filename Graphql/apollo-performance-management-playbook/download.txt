@@ -1,0 +1,3 @@
+Apollo: Performance Management Playbook.
+Exercise files can be found at the link below:
+https://github.com/pkellner/pluralsight-apollo-managing-performance
