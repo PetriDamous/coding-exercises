@@ -12,8 +12,8 @@ export const ADD_SPEAKERS = gql`
 `;
 
 export const TOGGLE_SPEAKER_FAVORITE = gql`
-  mutation ToggleSpeakerFavorite($speakerId: Int!) {
-    toggleSpeakerFavorite(speakerId: $speakerId) {
+  mutation ToggleSpeakerFavorite($speakerId: ID!) {
+    toggleFavSpeaker(speakerId: $speakerId) {
       id
       first
       last

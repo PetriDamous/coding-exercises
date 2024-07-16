@@ -53,6 +53,12 @@
       "first": "Petri",
       "last": "Damous",
       "favorite": true
+    },
+    {
+      "id": "6b92",
+      "first": "Troy",
+      "last": "Douglas",
+      "favorite": false
     }
   ]
 }

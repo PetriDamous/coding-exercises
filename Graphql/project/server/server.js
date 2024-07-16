@@ -6,7 +6,7 @@ const typeDefs = `#graphql
   type Speaker {
       twitterHandle: String
       company: String
-      id: ID,
+      id: ID!,
       bio: String
       first: String
       last: String

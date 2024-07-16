@@ -16,7 +16,7 @@ import {
 
 function App() {
   const { loading, error, data } = useQuery(GET_SPEAKERS);
-  const [toggleSpeakerFavorite] = useMutation(TOGGLE_SPEAKER_FAVORITE);
+  const [toggleFavSpeaker] = useMutation(TOGGLE_SPEAKER_FAVORITE);
   const [deleteSpeaker] = useMutation(DELETE_SPEAKER);
   const [addSpeaker] = useMutation(ADD_SPEAKERS);
 
@@ -43,7 +43,8 @@ function App() {
       <div className="container show-fav">
         <div className="row">
           <div className="fav-list">
-            {data?.speakers.map(({ id, first, last, favorite }) => {
+            {data?.speakers.map((speaker) => {
+              const { id, first, last, favorite } = speaker;
               return (
                 <div className="favbox" key={id}>
                   <div className="fav-clm col-sm-7">
@@ -55,7 +56,7 @@ function App() {
                     <div className="action">
                       <span
                         onClick={() => {
-                          toggleSpeakerFavorite({
+                          toggleFavSpeaker({
                             variables: {
                               speakerId: id,
                             },
@@ -88,6 +89,7 @@ function App() {
                 </div>
               );
             })}
+            <br />
           </div>
         </div>
       </div>
