@@ -89,12 +89,16 @@ const resolvers = {
         (reFetchSpeaker) => reFetchSpeaker?.reFetchId === reFetchId
       );
 
+      console.log(reFetchedNewSpeaker);
+
       return reFetchedNewSpeaker;
     },
     deleteSpeaker: async (parent, args, context, info) => {
       const { speakerId } = args;
 
-      const speaker = await getSpeaker(speakerId);
+      const { data: speaker } = await getSpeaker(speakerId);
+
+      console.log(speaker);
 
       axios.delete(`http://localhost:5000/speakers/${speakerId}`);
 

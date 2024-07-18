@@ -4,8 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import "./style-home.css";
 import "./style-speakers.css";
-import { useState } from "react";
-import { gql, useMutation, useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import Toolbar from "./components/Toolbar";
 import { GET_SPEAKERS } from "./graphql/query";
 import {
@@ -36,7 +35,16 @@ function App() {
                 favorite,
               },
             },
-            refetchQueries: [{ query: GET_SPEAKERS }],
+            update(cache, { data: { addSpeaker } }) {
+              const { speakers } = cache.readQuery({ query: GET_SPEAKERS });
+
+              cache.writeQuery({
+                query: GET_SPEAKERS,
+                data: {
+                  speakers: [...speakers, addSpeaker],
+                },
+              });
+            },
           });
         }}
       />
@@ -78,8 +86,21 @@ function App() {
                             variables: {
                               speakerId: id,
                             },
-                            update(cache, data) {
-                              console.log(data);
+                            update(cache, { data: { deleteSpeaker } }) {
+                              const { speakers } = cache.readQuery({
+                                query: GET_SPEAKERS,
+                              });
+
+                              const updatedSpeakers = speakers.filter(
+                                (speaker) => speaker.id !== deleteSpeaker.id
+                              );
+
+                              cache.writeQuery({
+                                query: GET_SPEAKERS,
+                                data: {
+                                  speakers: updatedSpeakers,
+                                },
+                              });
                             },
                           });
                         }}
