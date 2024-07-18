@@ -23,7 +23,7 @@ export const TOGGLE_SPEAKER_FAVORITE = gql`
 `;
 
 export const DELETE_SPEAKER = gql`
-  mutation DeleteSpeaker($speakerId: Int!) {
+  mutation DeleteSpeaker($speakerId: ID!) {
     deleteSpeaker(speakerId: $speakerId) {
       id
       first

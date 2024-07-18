@@ -1,5 +1,6 @@
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
+import { randomUUID } from "crypto";
 import axios from "axios";
 
 const typeDefs = `#graphql
@@ -11,6 +12,7 @@ const typeDefs = `#graphql
       first: String
       last: String
       favorite: Boolean
+      reFetchId: String
   }
 
   input SpeakerInput {
@@ -71,14 +73,23 @@ const resolvers = {
         throw new Error("User already exists");
       }
 
+      const reFetchId = randomUUID();
+
       const newSpeaker = {
         ...speakerInput,
         favorite: speakerInput?.favorite || false,
+        reFetchId,
       };
 
-      axios.post("http://localhost:5000/speakers", newSpeaker);
+      await axios.post("http://localhost:5000/speakers", newSpeaker);
 
-      return newSpeaker;
+      const { data: reFetchSpeakers } = await getAllSpeakers();
+
+      const reFetchedNewSpeaker = reFetchSpeakers.find(
+        (reFetchSpeaker) => reFetchSpeaker?.reFetchId === reFetchId
+      );
+
+      return reFetchedNewSpeaker;
     },
     deleteSpeaker: async (parent, args, context, info) => {
       const { speakerId } = args;

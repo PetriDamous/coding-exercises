@@ -78,7 +78,9 @@ function App() {
                             variables: {
                               speakerId: id,
                             },
-                            refetchQueries: [{ query: GET_SPEAKERS }],
+                            update(cache, data) {
+                              console.log(data);
+                            },
                           });
                         }}
                       >
