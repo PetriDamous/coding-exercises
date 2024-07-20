@@ -7,6 +7,8 @@
   - look into making the schema executable.
 - Use apollo rest data source lib and make connectors like at work
 - Create a context to pass around your connectors (currently adding context throws error)
+- Sort by accending and deccedning order using cache
+  - Make two buttons one for asc and the other for desc
 
 ## Client
 
