@@ -3,9 +3,23 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 
+const inMemoryCacheConfig = {
+  typePolicies: {
+    Query: {
+      fields: {
+        speakers: {
+          merge(existing = [], incoming = [], { mergeObjects }) {
+            return [...existing, ...incoming];
+          },
+        },
+      },
+    },
+  },
+};
+
 const apolloClient = new ApolloClient({
   uri: "http://localhost:4000/",
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache(inMemoryCacheConfig),
 });
 
 ReactDOM.createRoot(document.getElementById("root")).render(

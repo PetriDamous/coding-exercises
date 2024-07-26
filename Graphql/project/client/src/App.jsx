@@ -68,6 +68,15 @@ function App() {
                             variables: {
                               speakerId: id,
                             },
+                            optimisticResponse: {
+                              toggleFavSpeaker: {
+                                id,
+                                first,
+                                last,
+                                favorite: !favorite,
+                                __typename: "Speaker",
+                              },
+                            },
                           });
                         }}
                       >
@@ -85,6 +94,15 @@ function App() {
                           deleteSpeaker({
                             variables: {
                               speakerId: id,
+                            },
+                            optimisticResponse: {
+                              deleteSpeaker: {
+                                id,
+                                first,
+                                last,
+                                favorite,
+                                __typename: "Speaker",
+                              },
                             },
                             update(cache, { data: { deleteSpeaker } }) {
                               const { speakers } = cache.readQuery({
