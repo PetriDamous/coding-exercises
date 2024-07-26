@@ -9,7 +9,7 @@ const inMemoryCacheConfig = {
       fields: {
         speakers: {
           merge(existing = [], incoming = [], { mergeObjects }) {
-            return [...existing, ...incoming];
+            return incoming;
           },
         },
       },
