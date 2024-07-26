@@ -6,7 +6,7 @@ const Speaker = ({ speaker }) => {
   const [toggleFavSpeaker] = useMutation(TOGGLE_SPEAKER_FAVORITE);
   const [deleteSpeaker] = useMutation(DELETE_SPEAKER);
 
-  const { id, first, last, favorite } = speaker;
+  const { id, first, last, favorite, fullName } = speaker;
 
   const favIconColor =
     favorite === true ? "fa fa-star orange" : "fa fa-star-o orange";
@@ -65,7 +65,7 @@ const Speaker = ({ speaker }) => {
     <div className="favbox" key={id}>
       <div className="fav-clm col-sm-7">
         <h4>
-          {first} {last} ({id})
+          {fullName} ({id})
         </h4>
       </div>
       <div className="fav-clm col-sm-5">

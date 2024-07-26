@@ -14,6 +14,15 @@ const inMemoryCacheConfig = {
         },
       },
     },
+    Speaker: {
+      fields: {
+        fullName: {
+          read(__, { readField }) {
+            return `${readField("first")} ... ${readField("last")}`;
+          },
+        },
+      },
+    },
   },
 };
 

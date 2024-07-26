@@ -7,6 +7,7 @@ export const GET_SPEAKERS = gql`
       first
       last
       favorite
+      fullName @client
     }
   }
 `;
