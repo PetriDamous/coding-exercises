@@ -3,62 +3,69 @@ import { DELETE_SPEAKER, TOGGLE_SPEAKER_FAVORITE } from "../graphql/mutation";
 import { GET_SPEAKERS } from "../graphql/query";
 
 const Speaker = ({ speaker }) => {
-  const [toggleFavSpeaker] = useMutation(TOGGLE_SPEAKER_FAVORITE);
-  const [deleteSpeaker] = useMutation(DELETE_SPEAKER);
-
   const { id, first, last, favorite, fullName } = speaker;
+
+  const toggleFavSpeakerConfig = {
+    variables: {
+      speakerId: id,
+    },
+    optimisticResponse: {
+      toggleFavSpeaker: {
+        id,
+        first,
+        last,
+        favorite: !favorite,
+        __typename: "Speaker",
+      },
+    },
+  };
+
+  const deleteSpeakerConfig = {
+    variables: {
+      speakerId: id,
+    },
+    optimisticResponse: {
+      deleteSpeaker: {
+        id,
+        first,
+        last,
+        favorite,
+        __typename: "Speaker",
+      },
+    },
+    update(cache, { data: { deleteSpeaker } }) {
+      const { speakers } = cache.readQuery({
+        query: GET_SPEAKERS,
+      });
+
+      const updatedSpeakers = speakers.filter(
+        (speaker) => speaker.id !== deleteSpeaker.id
+      );
+
+      cache.writeQuery({
+        query: GET_SPEAKERS,
+        data: {
+          speakers: updatedSpeakers,
+        },
+      });
+    },
+  };
+
+  const [toggleFavSpeaker] = useMutation(
+    TOGGLE_SPEAKER_FAVORITE,
+    toggleFavSpeakerConfig
+  );
+  const [deleteSpeaker] = useMutation(DELETE_SPEAKER, deleteSpeakerConfig);
 
   const favIconColor =
     favorite === true ? "fa fa-star orange" : "fa fa-star-o orange";
 
   const onToggleSpeaker = () => {
-    toggleFavSpeaker({
-      variables: {
-        speakerId: id,
-      },
-      optimisticResponse: {
-        toggleFavSpeaker: {
-          id,
-          first,
-          last,
-          favorite: !favorite,
-          __typename: "Speaker",
-        },
-      },
-    });
+    toggleFavSpeaker();
   };
 
   const onDeleteSpeaker = () => {
-    deleteSpeaker({
-      variables: {
-        speakerId: id,
-      },
-      optimisticResponse: {
-        deleteSpeaker: {
-          id,
-          first,
-          last,
-          favorite,
-          __typename: "Speaker",
-        },
-      },
-      update(cache, { data: { deleteSpeaker } }) {
-        const { speakers } = cache.readQuery({
-          query: GET_SPEAKERS,
-        });
-
-        const updatedSpeakers = speakers.filter(
-          (speaker) => speaker.id !== deleteSpeaker.id
-        );
-
-        cache.writeQuery({
-          query: GET_SPEAKERS,
-          data: {
-            speakers: updatedSpeakers,
-          },
-        });
-      },
-    });
+    deleteSpeaker();
   };
 
   return (
