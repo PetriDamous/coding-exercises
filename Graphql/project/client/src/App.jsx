@@ -1,4 +1,4 @@
-import { ApolloProvider } from "@apollo/client";
+import { ApolloProvider, useReactiveVar } from "@apollo/client";
 // Bootstrap CSS
 import "bootstrap/dist/css/bootstrap.min.css";
 // Bootstrap Bundle JS
@@ -12,7 +12,7 @@ import useApollo, { currentThemeVar } from "./graphql/useApollo";
 function App() {
   const apolloClient = useApollo();
 
-  const currentTheme = currentThemeVar();
+  const currentTheme = useReactiveVar(currentThemeVar);
 
   const containerStyles = {
     backgroundColor: currentTheme === "dark" ? "black" : "",

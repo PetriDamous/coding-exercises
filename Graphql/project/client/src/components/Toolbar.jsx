@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import {
   Button,
@@ -49,6 +49,10 @@ const Toolbar = () => {
     });
   };
 
+  const currentTheme = currentThemeVar();
+
+  const themeBtnName = currentTheme === "dark" ? "Dark" : "Light";
+
   const handleSubmit = (event) => {
     event.preventDefault();
     insertSpeakerEvent(first, last, favorite);
@@ -58,12 +62,22 @@ const Toolbar = () => {
     setModal(!modal);
   };
 
+  const handleTheme = () => {
+    const currentTheme = currentThemeVar();
+
+    const updatedTheme = currentTheme === "dark" ? "light" : "dark";
+
+    currentThemeVar(updatedTheme);
+  };
+
   return (
     <section className="toolbar">
       <div className="container">
         <ul className="toolrow">
           <li>
-            <Button color="info">fuck</Button>
+            <Button color="info" onClick={handleTheme}>
+              {themeBtnName}
+            </Button>
           </li>
           <li>
             <div>

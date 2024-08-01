@@ -8,7 +8,7 @@ const useApollo = () => {
       Query: {
         fields: {
           speakers: {
-            merge(existing = [], incoming = [], { mergeObjects }) {
+            merge(__, incoming = []) {
               return incoming;
             },
           },
