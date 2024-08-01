@@ -7,15 +7,21 @@ import "./style-home.css";
 import "./style-speakers.css";
 import Toolbar from "./components/Toolbar";
 import SpeakerList from "./components/SpeakerList.jsx";
-import useApollo from "./graphql/useApollo";
+import useApollo, { currentThemeVar } from "./graphql/useApollo";
 
 function App() {
   const apolloClient = useApollo();
 
+  const currentTheme = currentThemeVar();
+
+  const containerStyles = {
+    backgroundColor: currentTheme === "dark" ? "black" : "",
+  };
+
   return (
     <ApolloProvider client={apolloClient}>
       <Toolbar />
-      <div className="container show-fav">
+      <div className="container show-fav" style={containerStyles}>
         <div className="row">
           <div className="fav-list">
             <SpeakerList />

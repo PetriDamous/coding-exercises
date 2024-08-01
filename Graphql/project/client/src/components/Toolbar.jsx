@@ -13,6 +13,7 @@ import {
 } from "reactstrap";
 import { ADD_SPEAKERS } from "../graphql/mutation";
 import { GET_SPEAKERS } from "../graphql/query";
+import { currentThemeVar } from "../graphql/useApollo";
 
 const Toolbar = () => {
   const [modal, setModal] = useState(false);
@@ -61,6 +62,9 @@ const Toolbar = () => {
     <section className="toolbar">
       <div className="container">
         <ul className="toolrow">
+          <li>
+            <Button color="info">fuck</Button>
+          </li>
           <li>
             <div>
               <Button color="info" onClick={toggle}>
