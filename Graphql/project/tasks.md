@@ -8,7 +8,6 @@
 - Use apollo rest data source lib and make connectors like at work
 - Create a context to pass around your connectors (currently adding context throws error)
 
-
 ## Client
 
 - Add in additonal fields during speaker creation in speaker modal to add in remaining attributes. Basically user can include twiter and other missing attributes when creating a speaker
@@ -22,3 +21,4 @@
 - Sort by accending and deccedning order using cache
   - Make two buttons one for asc and the other for desc or make a drop down selection or even a switch
 - Add optimistic UI for adding a speaker
+- Add in the complex example of toggling speakers that are checked that was at the end of lesson `Combining Reactive Variables and Local-only Fields for Redux-like Behavior`
