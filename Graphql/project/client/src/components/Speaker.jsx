@@ -1,9 +1,10 @@
 import { useMutation } from "@apollo/client";
 import { DELETE_SPEAKER, TOGGLE_SPEAKER_FAVORITE } from "../graphql/mutation";
 import { GET_SPEAKERS } from "../graphql/query";
+import { checkBoxColumsVar } from "../graphql/useApollo";
 
 const Speaker = ({ speaker }) => {
-  const { id, first, last, favorite, fullName } = speaker;
+  const { id, checkBoxColumn, first, last, favorite, fullName } = speaker;
 
   const toggleFavSpeakerConfig = {
     variables: {
@@ -68,9 +69,34 @@ const Speaker = ({ speaker }) => {
     deleteSpeaker();
   };
 
+  const onToggleCheckBox = () => {
+    const checkedSpeakerIds = checkBoxColumsVar();
+
+    const foundChecked = checkedSpeakerIds.find(
+      (checkedSpeakerId) => checkedSpeakerId === id
+    );
+
+    if (foundChecked) {
+      const filteredIds = checkedSpeakerIds.filter(
+        (checkedSpeakerId) => checkedSpeakerId !== foundChecked
+      );
+
+      checkBoxColumsVar(filteredIds);
+
+      return;
+    }
+
+    checkBoxColumsVar([...checkedSpeakerIds, id]);
+  };
+
   return (
     <div className="favbox" key={id}>
       <div className="fav-clm col-sm-7">
+        <span
+          className={checkBoxColumn ? "fa fa-check-square-o" : "fa fa-square-o"}
+          onClick={onToggleCheckBox}
+          style={{ cursor: "pointer" }}
+        ></span>
         <h4>
           {fullName} ({id})
         </h4>

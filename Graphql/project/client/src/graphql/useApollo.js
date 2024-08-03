@@ -1,6 +1,7 @@
 import { ApolloClient, InMemoryCache, makeVar } from "@apollo/client";
 
 export const currentThemeVar = makeVar("dark");
+export const checkBoxColumsVar = makeVar([]);
 
 const useApollo = () => {
   const inMemoryCacheConfig = {
@@ -19,6 +20,19 @@ const useApollo = () => {
           fullName: {
             read(__, { readField }) {
               return `${readField("first")} ... ${readField("last")}`;
+            },
+          },
+          checkBoxColumn: {
+            read(__, { readField }) {
+              const speakerId = readField("id");
+
+              const checkedSpeakerIds = checkBoxColumsVar();
+
+              return checkedSpeakerIds.find(
+                (checkedSpeakerId) => checkedSpeakerId === speakerId
+              )
+                ? true
+                : false;
             },
           },
         },

@@ -3,11 +3,12 @@ import { gql } from "@apollo/client";
 export const GET_SPEAKERS = gql`
   query Speakers {
     speakers {
-      id 
+      id
       first
       last
       favorite
-      fullName @client 
+      fullName @client
+      checkBoxColumn @client
     }
   }
 `;
