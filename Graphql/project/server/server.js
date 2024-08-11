@@ -15,12 +15,22 @@ const typeDefs = `#graphql
       reFetchId: String
   }
 
-  input SpeakerInput {
+  input CreateSpeakerInput {
     twitterHandle: String
     company: String
     bio: String
     first: String!
     last: String!
+    favorite: Boolean
+  }
+
+  input UpdateSpeakerInput {
+    id: ID!
+    twitterHandle: String
+    company: String
+    bio: String
+    first: String
+    last: String
     favorite: Boolean
   }
 
@@ -30,10 +40,10 @@ const typeDefs = `#graphql
   }
 
   type Mutation {
-    addSpeaker(speakerInput: SpeakerInput!): Speaker
+    addSpeaker(createSpeakerInput: CreateSpeakerInput!): Speaker
     deleteSpeaker(speakerId: ID!): Speaker
     toggleFavSpeaker(speakerId: ID!): Speaker
-   
+    updateSpeaker(updateSpeakerInput: UpdateSpeakerInput!): Speaker!  
   }
 `;
 
@@ -59,9 +69,9 @@ const resolvers = {
   },
   Mutation: {
     addSpeaker: async (parent, args, context, info) => {
-      const { speakerInput } = args;
+      const { createSpeakerInput } = args;
 
-      const { first, last } = speakerInput;
+      const { first, last } = createSpeakerInput;
 
       const { data: speakers } = await getAllSpeakers();
 
@@ -76,8 +86,8 @@ const resolvers = {
       const reFetchId = randomUUID();
 
       const newSpeaker = {
-        ...speakerInput,
-        favorite: speakerInput?.favorite || false,
+        ...createSpeakerInput,
+        favorite: createSpeakerInput?.favorite || false,
         reFetchId,
       };
 
@@ -113,6 +123,30 @@ const resolvers = {
       axios.put(`http://localhost:5000/speakers/${speakerId}`, updatedSpeaker);
 
       return updatedSpeaker;
+    },
+    updateSpeaker: async (parent, args, context, info) => {
+      const { updateSpeakerInput } = args;
+
+      const { id } = updateSpeakerInput;
+
+      const { data: speaker } = await getSpeaker(id);
+
+      const updatedSpeaker = {
+        id,
+        first: updateSpeakerInput?.first || speaker.first,
+        last: updateSpeakerInput?.last || speaker.last,
+        favorite:
+          typeof updateSpeakerInput?.favorite === "boolean"
+            ? updateSpeakerInput?.favorite
+            : speaker.favorite,
+      };
+
+      const { data } = await axios.put(
+        `http://localhost:5000/speakers/${id}`,
+        updatedSpeaker
+      );
+
+      return data;
     },
   },
 };

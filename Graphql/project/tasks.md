@@ -13,8 +13,8 @@
 - Add in additonal fields during speaker creation in speaker modal to add in remaining attributes. Basically user can include twiter and other missing attributes when creating a speaker
 - Add away to update a speaker.
   - make needed UI changes and add to UI
-    - Might need an extra modal
-    - Need extra button for update next to speaker.
+    - Make speaker name clickable and open a modal to edit speaker info
+    - Just pass the id to the modal component. In the modal component query the cache to get speaker info
 - Create modal that shows speakers detail when speaker name is clicked on
   - This will use the query that queries for an individual speaker
   - We already have the speakers detail in cache so for the sake of learning and to use the extra query to get specific speaker data, we will have the modal run the speaker query to get the speaker details when the modal is opening like how we do at work.
