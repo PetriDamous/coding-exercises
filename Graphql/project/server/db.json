@@ -59,6 +59,13 @@
       "first": "Troy",
       "last": "Douglas",
       "favorite": false
+    },
+    {
+      "id": "bd27",
+      "first": "Doug",
+      "last": "Funny",
+      "favorite": true,
+      "reFetchId": "3e64b421-d437-4ca7-b502-81f1e525c0ee"
     }
   ]
 }

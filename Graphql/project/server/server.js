@@ -89,16 +89,12 @@ const resolvers = {
         (reFetchSpeaker) => reFetchSpeaker?.reFetchId === reFetchId
       );
 
-      console.log(reFetchedNewSpeaker);
-
       return reFetchedNewSpeaker;
     },
     deleteSpeaker: async (parent, args, context, info) => {
       const { speakerId } = args;
 
       const { data: speaker } = await getSpeaker(speakerId);
-
-      console.log(speaker);
 
       axios.delete(`http://localhost:5000/speakers/${speakerId}`);
 
@@ -127,12 +123,14 @@ const startServer = async () => {
     resolvers,
   });
 
-  const { url } = await startStandaloneServer(server, {
+  const serverStartConfig = {
     listen: { port: 4000 },
     // context: async ({ req, res }) => ({
     //   getAllSpeakers: await axios.get("http://localhost:5000/speakers"),
     // }),
-  });
+  };
+
+  const { url } = await startStandaloneServer(server, serverStartConfig);
 
   console.log(`🚀  Server ready at: ${url}`);
 };
