@@ -32,3 +32,14 @@ export const DELETE_SPEAKER = gql`
     }
   }
 `;
+
+export const UPDATE_SPEAKER = gql`
+  mutation UpdateSpeaker($updateSpeakerInput: UpdateSpeakerInput!) {
+    updateSpeaker(updateSpeakerInput: $updateSpeakerInput) {
+      favorite
+      first
+      id
+      last
+    }
+  }
+`;
