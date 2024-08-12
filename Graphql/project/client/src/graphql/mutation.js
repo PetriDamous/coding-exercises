@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 export const ADD_SPEAKERS = gql`
-  mutation AddSpeaker($input: SpeakerInput!) {
-    addSpeaker(speakerInput: $input) {
+  mutation AddSpeaker($input: CreateSpeakerInput!) {
+    addSpeaker(createSpeakerInput: $input) {
       id
       first
       last

@@ -61,10 +61,11 @@
       "favorite": false
     },
     {
-      "id": "bd27",
-      "first": "Nigga",
-      "last": "Funny",
-      "favorite": false
+      "id": "83e1",
+      "first": "doug",
+      "last": "funny",
+      "favorite": false,
+      "reFetchId": "ca1e8cce-c142-41a5-9852-67fd6740f8ae"
     }
   ]
 }
