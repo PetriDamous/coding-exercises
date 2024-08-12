@@ -64,10 +64,16 @@ const getSpeaker = (speakerId) =>
 const resolvers = {
   Query: {
     speakers: async (parent, args, context, info) => {
+      const { offset, limit } = args;
       const { data: speakers } = await getAllSpeakers();
 
       return {
-        dataSet: speakers,
+        dataSet: speakers.filter((rec, idx) => {
+          return idx > offset - 1 && (offset + limit > idx || limit === -1);
+        }),
+        pageInfo: {
+          totalItemCount: speakers.length,
+        },
       };
     },
     speaker: async (parent, args, context, info) => {
