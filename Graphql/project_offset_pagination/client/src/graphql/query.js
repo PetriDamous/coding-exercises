@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 export const GET_SPEAKERS = gql`
-  query Speaker {
-    speakers {
+  query Speaker($offset: Int, $limit: Int) {
+    speakers(offset: $offset, limit: $limit) {
       dataSet {
         id
         last
@@ -13,6 +13,9 @@ export const GET_SPEAKERS = gql`
         bio
         fullName @client
         checkBoxColumn @client
+      }
+      pageInfo {
+        totalItemCount
       }
     }
   }

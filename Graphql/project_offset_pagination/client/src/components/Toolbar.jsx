@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "reactstrap";
 import { currentThemeVar } from "../graphql/useApollo";
 import SpeakerModal from "./SpeakerModal";
+import PagingOffsetLimitControl from "./PagingOffsetLimitControl";
 
 const Toolbar = () => {
   const [modal, setModal] = useState(false);
@@ -38,6 +39,9 @@ const Toolbar = () => {
               </Button>
               <SpeakerModal modal={modal} setModal={setModal} toggle={toggle} />
             </div>
+          </li>
+          <li>
+            <PagingOffsetLimitControl />
           </li>
         </ul>
       </div>
