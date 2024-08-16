@@ -66,6 +66,55 @@
       "last": "funny",
       "favorite": false,
       "reFetchId": "ca1e8cce-c142-41a5-9852-67fd6740f8ae"
+    },
+    {
+      "id": "d7a8",
+      "first": "Bob",
+      "last": "Willson",
+      "favorite": false,
+      "reFetchId": "6c5a8198-4cc9-49e5-9fc2-0e14c27240f2"
+    },
+    {
+      "id": "f234",
+      "first": "Wilferd",
+      "last": "I don't know his last name",
+      "favorite": true,
+      "reFetchId": "a8cb3135-7634-4208-a2fc-3fd892fa9e33"
+    },
+    {
+      "id": "7cae",
+      "first": "Akky",
+      "last": "Chan",
+      "favorite": true,
+      "reFetchId": "25d55cea-732d-474b-8455-6e44f4f5e3ae"
+    },
+    {
+      "id": "906e",
+      "first": "Chris",
+      "last": "Redfield",
+      "favorite": true,
+      "reFetchId": "b423b32a-50d8-445f-9589-b788b15ed587"
+    },
+    {
+      "id": "b7cf",
+      "first": "Leon",
+      "last": "Zip",
+      "favorite": true,
+      "reFetchId": "6ee9f09b-9ff7-4493-ba53-d2ce6f10d2d5"
+    },
+    {
+      "id": "3c46",
+      "first": "Mega",
+      "last": "Man X",
+      "favorite": true,
+      "reFetchId": "4f78fa71-591c-4e8a-8f1a-65a17c564159"
+    },
+    {
+      "id": "d5bd",
+      "first": "Ryu",
+      "last": "",
+      "favorite": false,
+      "reFetchId": "a80a48c1-6b2e-499c-adfc-59c0baf22dc8"
     }
   ]
 }

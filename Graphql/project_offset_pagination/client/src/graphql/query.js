@@ -20,3 +20,23 @@ export const GET_SPEAKERS = gql`
     }
   }
 `;
+
+export const GET_SPEAKERS_CONCAT = gql`
+  query SpeakersConcat($afterCursor: String, $limit: Int) {
+    speakersConcat(afterCursor: $afterCursor, limit: $limit) {
+      dataSet {
+        id
+        first
+        last
+        favorite
+        fullName @client
+        checkBoxColumn @client
+      }
+      pageInfo {
+        totalItemCount
+        lastCursor
+        hasNextPage
+      }
+    }
+  }
+`;
