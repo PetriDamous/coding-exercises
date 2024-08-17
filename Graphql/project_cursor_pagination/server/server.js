@@ -15,6 +15,14 @@ const typeDefs = `#graphql
       favorite: Boolean
       reFetchId: String
       cursor: String
+      sessions: [Session]
+  }
+
+  type Session {
+    id: ID!
+    title: String!
+    eventYear: String
+    cursor: String
   }
 
   input CreateSpeakerInput {
@@ -47,10 +55,16 @@ const typeDefs = `#graphql
     pageInfo: PageInfo
   }
 
+  type SessionResults {
+    dataSet: [Session]
+    pageInfo: PageInfo
+  }
+
   type Query {
-    speakers(offset: Int = 0, limit: Int = -1): SpeakerResults
-    speakersConcat(limit: Int = -1, afterCursor: String = ""): SpeakerResults
     speaker(speakerId: ID!): Speaker
+    speakers(offset: Int = 0, limit: Int = -1): SpeakerResults
+    speakersConcat(limit: Int = -1, afterCursor: String = ""): SpeakerResults    
+    sessionsConcat(limit: Int = -1, afterCursor: String = ""): SessionResults
   }
 
   type Mutation {
@@ -71,6 +85,11 @@ const getOffsetCustom = (data, afterCursor) => {
 };
 
 const getAllSpeakers = () => axios.get("http://localhost:5000/speakers");
+
+const getAll = (endPoint) => axios.get(`http://localhost:5000/${endPoint}`);
+
+const getOne = (endPoint, id) =>
+  axios.get(`http://localhost:5000/${endPoint}/${id}`);
 
 const getSpeaker = (speakerId) =>
   axios.get(`http://localhost:5000/speakers/${speakerId}`);
@@ -107,10 +126,9 @@ const resolvers = {
       const offset = getOffsetCustom(sortedSpeakers, afterCursor);
 
       const dataSet = sortedSpeakers
-        .filter(
-          (rec, idx) =>
-            idx > offset - 1 && (offset + limit > idx || limit === -1)
-        )
+        .filter((rec, idx) => {
+          return idx > offset - 1 && (offset + limit > idx || limit === -1);
+        })
         .map((rec) => {
           rec.cursor = getCursor(rec.id);
           return rec;
@@ -120,6 +138,34 @@ const resolvers = {
         totalItemCount: sortedSpeakers.length,
         lastCursor: dataSet.length > 0 ? getCursor(dataSet.at(-1).id) : "",
         hasNextPage: offset + dataSet.length < sortedSpeakers.length,
+      };
+
+      return { dataSet, pageInfo };
+    },
+    sessionsConcat: async (parent, args, context, info) => {
+      const { limit, afterCursor } = args;
+
+      const { data: sessions } = await getAll("sessions");
+
+      const sortedSessions = sessions.sort((a, b) =>
+        a.eventYear.localeCompare(b)
+      );
+
+      const offset = getOffsetCustom(sortedSessions, afterCursor);
+
+      const dataSet = sortedSessions
+        .filter((rec, idx) => {
+          return idx > offset - 1 && (offset + limit > idx || limit === -1);
+        })
+        .map((rec) => {
+          rec.cursor = getCursor(rec.id);
+          return rec;
+        });
+
+      const pageInfo = {
+        totalItemCount: sortedSessions.length,
+        lastCursor: dataSet.length > 0 ? getCursor(dataSet.at(-1).id) : "",
+        hasNextPage: offset + dataSet.length < sortedSessions.length,
       };
 
       return { dataSet, pageInfo };
@@ -205,6 +251,32 @@ const resolvers = {
       );
 
       return data;
+    },
+  },
+
+  Speaker: {
+    sessions: async (parent) => {
+      const speakerId = parent.id;
+
+      const { data: sessions } = await getAll("sessions");
+
+      const { data: sessionSpeakers } = await getAll("sessionSpeakers");
+
+      const sessionIds = sessionSpeakers
+        .filter((rec) => {
+          return rec.speakerId === speakerId;
+        })
+        .map((rec) => {
+          return rec.sessionId;
+        });
+
+      const sessionsResult = sessions
+        .filter((rec) => {
+          return sessionIds.includes(rec.id);
+        })
+        .sort((a, b) => b.eventYear.localeCompare(a.eventYear));
+
+      return sessionsResult;
     },
   },
 };
