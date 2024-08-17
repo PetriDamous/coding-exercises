@@ -1,4 +1,7 @@
 import { ApolloClient, InMemoryCache, makeVar } from "@apollo/client";
+import { generalConcatPagination } from "./pagination";
+
+console.log(generalConcatPagination());
 
 export const currentThemeVar = makeVar("dark");
 export const checkBoxColumsVar = makeVar([]);
@@ -19,22 +22,7 @@ const useApollo = () => {
               return incoming;
             },
           },
-          speakersConcat: {
-            merge(existing, incoming) {
-              return !existing
-                ? {
-                    __typename: incoming.__typename,
-                    dataSet: [...incoming.dataSet],
-                    pageInfo: { ...incoming.pageInfo },
-                  }
-                : {
-                    __typename: incoming.__typename,
-                    dataSet: [...existing.dataSet, ...incoming.dataSet],
-                    pageInfo: { ...incoming.pageInfo },
-                  };
-            },
-            keyArgs: false,
-          },
+          speakersConcat: generalConcatPagination(),
         },
       },
       Speaker: {
