@@ -22,3 +22,8 @@
   - Make two buttons one for asc and the other for desc or make a drop down selection or even a switch
 - Add optimistic UI for adding a speaker
 - Add in the complex example of toggling speakers that are checked that was at the end of lesson `Combining Reactive Variables and Local-only Fields for Redux-like Behavior`
+
+# Other
+
+- Implement both styles of pagination.
+- Implement data loaders
