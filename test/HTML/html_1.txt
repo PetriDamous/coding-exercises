@@ -1,0 +1,447 @@
+1. You create an HTML file with two elements, a paragraph, and an image. You must add a description of the image within the HTML file stating, "a graph illustrating the total sales of item 1 in the year 2020". How would you write the comment based on the following script?
+
+A. <body>
+    <p> We are heading for a better tomorrow </p>
+    <img src="graph.jpg" description="A graph illustrating the total sales of item 1 in the year 2020"> 
+   </body>
+
+B. <body>
+    <p> We are heading for a better tomorrow </p>
+    <!--A graph illustrating the total sales of item 1 in the year 2020-->
+    <img src="graph.jpg"> 
+   </body>
+
+C. <body>
+    <p> We are heading for a better tomorrow </p>
+    # A graph illustrating the total sales of item 1 in the year 2020
+    <img src="graph.jpg"> 
+   </body>
+
+D. <body>
+    <p> We are heading for a better tomorrow </p>
+    <img src="graph.jpg" comment="A graph illustrating the total sales of item 1 in the year 2020"> 
+   </body>
+
+Correct answer: B 
+
+====================================================================================================================
+
+2. You create an HTML web page that displays Yellow and Brown in separate lines. You copy the text Yellow and paste it into a text editor. What result do you get?
+
+<html>
+  <body>
+    <p>Yellow</p>
+    <p>Brown</p>
+    <script>
+      document.addEventListener('copy', function(p){
+          console.log(p);
+          p.clipboardData.setData('text/plain', 'Red');
+          p.preventDefault(); 
+      });
+    </script>
+  </body>
+</html>
+
+A. Yellow
+
+B. Red
+
+C. Red
+   Brown
+
+D. Yellow
+   Brown
+
+Correct answer: B 
+
+=======================================================================================
+
+3. Which tag would you use to embed a PDF file into a web page?
+
+A. <source>
+
+B. <iframe>
+
+C. <file> 
+
+D. <link> 
+
+Correct answer: B 
+
+======================================================================================
+
+4. Which attribute will assign Cascading Style Sheets (CSS) rules to multiple elements on a web page? 
+
+A. rule
+
+B. id
+
+C. class
+
+D. style
+
+Correct answer: C 
+
+======================================================================================
+
+5. Which input type lets web developers include data that users cannot see or modify when a form is submitted?
+
+A. encrypted
+
+B. secure
+
+C. password
+
+D. hidden
+
+Correct answer: D 
+
+=======================================================================================
+
+6. What is the use of the <script> tag in HTML?
+
+A. To embed a server-side script
+
+B. To embed only TypeScript code in the HTML file
+
+C. To embed both a client-side and server-side script
+
+D. To embed a client-side script
+
+Correct answer: D 
+
+=======================================================================================
+
+7. The following <video> file was designed to restart when it reached its end and continue playing. It isn't restarting automatically when it reaches the end. What is the problem? 
+
+<video controls width="250" >
+
+    <source src="/media/cc0-videos/flower.webm"
+            type="video/webm" loop="true" >
+
+    <source src="/media/cc0-videos/flower.mp4"
+            type="video/mp4" loop="true" >
+
+    Sorry, your browser doesn't support embedded videos.
+</video>
+
+A. loop is an attribute of <video> not <source> with acceptable values of 1 and 0
+
+B. The auto-restart attribute is autoplay="true" and not loop="true"
+
+C. loop is an attribute of <video> and not <source>
+
+D. The loop attribute values are binary with values of 0 for false and 1 for true
+
+Correct answer: C
+
+=======================================================================================
+
+8. A web page includes a <video> element that should play when the page loads, but it is not working. What is the problem?
+
+<video controls width="250" autorun="on" >
+    <source src="/media/cc0-videos/flower.webm"
+            type="video/webm">
+    <source src="/media/cc0-videos/flower.mp4"
+            type="video/mp4">
+    Sorry, your browser doesn't support embedded videos.
+</video>
+
+A. The text sentence is not allowed within the video tag.
+
+B. In the video tag, width is an invalid attribute.
+
+C. In the video tag, autorun="on" is an invalid attribute.
+
+D. The video tag cannot contain more than one source tag.
+
+Correct answer: C
+
+=======================================================================================
+
+9. You are working on a canvas in your website where you need to put an image for more detailed work. What will you implement in your script to add an image? 
+
+A. drawimage(image, x)
+
+B. drawImage(image, x, y);
+
+C. drawImg(image, x, y);
+
+D. DrawImage(x, y);
+
+Correct answer: B 
+
+=======================================================================================
+
+10. You create a table on your web page with three columns and three rows. You must treat the first row as the table's header. To do so, you write the following code:
+
+<head>
+ <style>
+   table, tr, th, td {
+     border: 1px dashed gray;
+   }
+ </style>
+</head>
+<body> 
+  <table>
+    <tr>
+      <td>Column 1</td>
+      <td>Column 2</td>
+      <td>Column 3</td>
+    </tr>
+    <tr>
+      <td>Asia</td>
+      <td>Singapore</td>
+      <td>500</td>
+    </tr>
+    <tr>
+      <td>Australia</td>
+      <td>Sydney</td>
+      <td>900</td>
+    </tr>
+  </table> 
+</body>
+
+The table and its borders appear correctly, except each cell has a similar font size and style. How can you fix this?
+
+A. Wrap the header texts with <bold> tags.
+
+B. Add style="bold;" inside the <table> tag.
+
+C. Add style="font-style: b;" inside the <table> tag.
+
+D. Replace the header's <td> tags with <th> tags.
+
+Correct answer: D
+
+=======================================================================================
+
+11. You have the following paragraph where each word follows a similar font style: 
+
+<body>
+  <p>Pluralsight: Build in-demand skills in everything from cybersecurity to software development. And then use those skills to confidently take your career—and your take-home pay—to the next level.</p>
+</body>
+
+The word, "Pluralsight" must appear in bold with a font size of 30 pixels. What change can you make inside this paragraph using an inline attribute, making sure you do not add any line breaks?
+
+A. <p>
+    <p style="font-weight: bold; font-size: 30px;">Pluralsight</p>:
+    ... </p>
+
+B. <p>
+    <span style="font-family: bold; font-size: 30%;">Pluralsight</span>:
+    ... </p>
+
+C. <p>
+    <span style="font-weight: bold; font-size: 30px;">Pluralsight</span>:
+    ... </p>
+
+D. <p>
+    <p style="font-family: bold; font-size: 30;">Pluralsight</p>:
+    ... </p>
+
+Correct answer: C 
+
+=======================================================================================
+
+12. The following password input should not show characters, but it is. Why is this happening? 
+
+<input type="text" value="password" >password</input>
+
+A. value="password" should be value="hidden"
+
+B. type="text" should be type="password"
+
+C. type="text" should be type="encrypt"
+
+D. type="text" should be type="secure"
+
+Correct answer: B 
+
+======================================================================================
+
+13. When the following table is rendered, the <th> row does not span across the length of the table. What should you change for it to span two columns? 
+
+<table>
+    <thead>
+        <tr>
+            <th span="2">The table header</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>The table body</td>
+            <td>with two columns</td>
+        </tr>
+    </tbody>
+</table>
+
+A. Change <th span="2">The table header</th> to <th     spanlength="2">The table header</th>
+
+B. Change <th span="2">The table header</th> to <th col="2">The table header</th>
+
+C. Change <th span="2">The table header</th> to <th colspan="2">The table header</th>
+
+D. Change <th span="2">The table header</th> to <th spancells="2">The table header</th>
+
+Correct answer: C 
+
+======================================================================================
+
+14. You write code using the <canvas> tag in HTML. It displays a simple game that you made on your website. 
+
+<canvas width="500" height="500" style="background-color:#562">
+ <p>An error may have occurred or your browser does not support the canvas tag.</p>
+</canvas>
+
+<script>
+ var blank = document.getElementById("canvas");
+ var data = blank.getContext("2d");
+ ...
+</script>
+
+Instead of the game, however, the paragraph written inside the <canvas> tag is displayed. Why?
+
+A. The <canvas> tag does not support any game.
+
+B. The <canvas> tag has no <script> tag present within it.
+
+C. There is no id attribute in the <canvas> tag to connect it with its script.
+
+D. The style attribute should be written separately instead of inside the <canvas> tag.
+
+Correct answer: C
+
+======================================================================================
+
+15. What is the purpose of using a hidden field on a web form? 
+
+A. To identify the form's developer information
+
+B. To hide a scripted section containing code
+
+C. To store processing data you don't want displayed on a web page
+
+D. To keep the form secure
+
+Correct answer: C
+
+====================================================================================== 
+
+16. Which HTML5 element replaces the use of the <applet> element?
+
+A. <address>
+
+B. <abr> 
+
+C. <abbr>
+
+D. <object> 
+
+Correct answer: D 
+
+======================================================================================
+
+17. Which tag is an inline container used to mark up a part of a text or a part of a document? 
+
+A. <p>
+
+B. <text>
+
+C. <span>
+
+D. <section>
+
+Correct answer: C 
+
+=======================================================================================
+
+18. You create a basic HTML web page with only one statement. You implement Cascading Style Sheets (CSS) to an element using three methods:
+
+myApp.html
+<html>  
+  <head>
+    <link href="mystyle.css" rel="stylesheet">
+    <style>
+      span {
+        background-color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <p>Hello, friends! 
+     <span style="background-color: blue;"> I give my best wishes to you all! 
+     </span>
+    </p>
+  </body>
+</html>
+
+myApp.css
+span {
+ background-color: red;
+}
+
+What background color will you see for the phrase after rendering the script?
+
+A. Green
+
+B. Black
+
+C. Blue
+
+D. Red 
+
+Correct answer: C 
+
+=======================================================================================
+
+19. You have two Cascading Style Sheets (CSS) scripts, foo.css and baz.css, in your src directory. You use the following code to include them in your HTML script: 
+
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="src/*.css" rel="stylesheet">
+  </head>
+  <body>
+    <p> Hello, users! </p>
+  </body>
+</html>
+
+You render the script, but no HTML elements use CSS styles. Why?
+
+A. You used an invalid attribute in the link element. The valid attribute is type="multiple".
+
+B. You included both CSS scripts using a single link element. 
+
+C. You included both CSS scripts using href instead of href#1 and href#2.
+
+D. You used an invalid syntax *.css to include both the scripts. The valid syntax is ?.css.
+
+Correct answer: B 
+
+======================================================================================
+
+20. What is the difference between method="get" and method="post"? 
+
+A. method="get" encrypts form data inside the body of the HTTP request (data is not shown in the URL).
+
+  method="post" appends form data into the URL in name/value pairs.
+
+B. method="get" appends form data into the URL in name/value pairs.
+  
+  method="post" appends form data inside the body of the HTTP request (data is not shown in the URL).
+
+C. method="get" replaces form data inside the body of the HTTP request (data is not shown in the URL).
+
+  method="post" appends form data into the URL in name/value pairs.
+
+D. method="get" appends form data inside the body of the HTTP request (data is not shown in the URL).
+
+  method="post" appends form data into the URL in an array.
+
+Correct answer: B 
+
+======================================================================================
+
+END
