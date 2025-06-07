@@ -7,6 +7,7 @@ const typeDefs = `#graphql
         first: String
         last: String
         favorite: Boolean
+        firstLast: String
     }
 
     type SpeakerResults {
@@ -32,16 +33,9 @@ const resolvers = {
       return speakerResults;
     },
   },
-  SpeakerResults: {
-    datalist: (parent, args, context, info) => {
-      return parent.datalist;
-    },
-  },
   Speaker: {
-    id: (parent, args, conext, info) => parent.id,
-    first: (parent, args, context, info) => parent.first,
-    last: (parent, args, context, info) => parent.last,
-    favorite: (parent, args, context, info) => parent.favorite,
+    firstLast: (parent, args, context, info) =>
+      `${parent.first} ${parent.last}`,
   },
 };
 
