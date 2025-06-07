@@ -63,7 +63,7 @@ async function apolloServer() {
   });
 }
 
-apolloServer();
+apolloServer().catch((err) => console.error("Error starting server:", err));
 
 /*
 query {
