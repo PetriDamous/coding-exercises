@@ -13,7 +13,23 @@ function App() {
 
   const [toggleSpeakerFavorite] = useMutation(TOGGLE_SPEAKER_FAVORITE);
 
-  const [deleteSpeaker] = useMutation(DELETE_SPEAKER);
+  const [deleteSpeaker] = useMutation(DELETE_SPEAKER, {
+    update(cache, { data: { deleteSpeaker } }) {
+      const { speakers } = cache.readQuery({ query: GET_SPEAKERS });
+
+      cache.writeQuery({
+        query: GET_SPEAKERS,
+        data: {
+          speakers: {
+            __typename: "SpeakerResults",
+            datalist: speakers.datalist.filter(
+              (speaker) => speaker.id !== deleteSpeaker.id
+            ),
+          },
+        },
+      });
+    },
+  });
 
   const [addSpeaker] = useMutation(ADD_SPEAKER);
 
@@ -26,7 +42,19 @@ function App() {
       variables: {
         speakerInput: { first, last, favorite },
       },
-      refetchQueries: [{ query: GET_SPEAKERS }],
+      update(cache, { data: { addSpeaker } }) {
+        const { speakers } = cache.readQuery({ query: GET_SPEAKERS });
+
+        cache.writeQuery({
+          query: GET_SPEAKERS,
+          data: {
+            speakers: {
+              __typename: "SpeakerResults",
+              datalist: [addSpeaker, ...speakers.datalist],
+            },
+          },
+        });
+      },
     });
   };
 
@@ -52,6 +80,16 @@ function App() {
                             variables: {
                               speakerId: +id || id,
                             },
+                            optimisticResponse: {
+                              __typename: "Mutation",
+                              toggleSpeakerFavorite: {
+                                __typename: "Speaker",
+                                id: +id || id,
+                                first,
+                                last,
+                                favorite: !favorite,
+                              },
+                            },
                           })
                         }
                       >
@@ -68,7 +106,16 @@ function App() {
                         onClick={() =>
                           deleteSpeaker({
                             variables: { speakerId: +id || id },
-                            refetchQueries: [{ query: GET_SPEAKERS }],
+                            optimisticResponse: {
+                              __typename: "Mutation",
+                              deleteSpeaker: {
+                                __typename: "Speaker",
+                                id,
+                                first,
+                                last,
+                                favorite,
+                              },
+                            },
                           })
                         }
                       >
