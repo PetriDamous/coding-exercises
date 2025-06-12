@@ -1,5 +1,5 @@
 // import "./App.css";
-import { useQuery, useMutation } from "@apollo/client";
+import { useApolloClient, useQuery, useMutation } from "@apollo/client";
 import { Toolbar } from "./components";
 import {
   ADD_SPEAKER,
@@ -33,6 +33,8 @@ function App() {
 
   const [addSpeaker] = useMutation(ADD_SPEAKER);
 
+  const { cache } = useApolloClient();
+
   if (loading) return <div>Loading....</div>;
 
   if (error) return <div>Error: {error.message}</div>;
@@ -58,9 +60,30 @@ function App() {
     });
   };
 
+  const sortByIdDescending = () => {
+    const { speakers } = cache.readQuery({ query: GET_SPEAKERS });
+
+    const speakersDescening = [...speakers.datalist].sort(
+      (a, b) => b.id - a.id
+    );
+
+    cache.writeQuery({
+      query: GET_SPEAKERS,
+      data: {
+        speakers: {
+          __typename: "SpeakerResutls",
+          datlist: speakersDescening,
+        },
+      },
+    });
+  };
+
   return (
     <>
-      <Toolbar insertSpeakerEvent={insertSpeakerEvent} />
+      <Toolbar
+        insertSpeakerEvent={insertSpeakerEvent}
+        sortByIdDescending={sortByIdDescending}
+      />
       <div className="container show-fav">
         <div className="row">
           <div className="fav-list">
