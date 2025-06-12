@@ -1,15 +1,6 @@
-import React, { useState } from "react";
-import {
-  Button,
-  Form,
-  FormGroup,
-  Input,
-  Label,
-  Modal,
-  ModalBody,
-  ModalFooter,
-  ModalHeader,
-} from "reactstrap";
+import { useState } from "react";
+import { Button } from "reactstrap";
+import { ToolBarModal } from ".";
 
 const Toolbar = ({ insertSpeakerEvent, sortByIdDescending }) => {
   const [modal, setModal] = useState(false);
@@ -31,6 +22,15 @@ const Toolbar = ({ insertSpeakerEvent, sortByIdDescending }) => {
     setModal(!modal);
   };
 
+  const toolBarModalProps = {
+    modal,
+    toggle,
+    handleSubmit,
+    setFirst,
+    setLast,
+    setFavorite,
+  };
+
   return (
     <section className="toolbar">
       <div className="container">
@@ -44,45 +44,11 @@ const Toolbar = ({ insertSpeakerEvent, sortByIdDescending }) => {
               <Button color="info" onClick={sortByIdDescending}>
                 <span>Sort Speaker By ID Decending</span>
               </Button>
-              <Modal isOpen={modal} toggle={toggle}>
-                <Form onSubmit={handleSubmit}>
-                  <ModalHeader toggle={toggle}>
-                    Insert Speaker Dialog
-                  </ModalHeader>
-                  <ModalBody>
-                    <FormGroup>
-                      <Label for="first">First Name</Label>{" "}
-                      <Input
-                        name="first"
-                        onChange={(e) => setFirst(e.target.value)}
-                      />
-                    </FormGroup>
-                    <FormGroup>
-                      <Label for="first">Last Name</Label>{" "}
-                      <Input
-                        name="first"
-                        onChange={(e) => setLast(e.target.value)}
-                      />
-                    </FormGroup>
-                    <FormGroup check>
-                      <Label check>
-                        <Input
-                          type="checkbox"
-                          onChange={(e) => setFavorite(e.target.value === "on")}
-                        />{" "}
-                        Favorite
-                      </Label>
-                    </FormGroup>
-                  </ModalBody>
-                  <ModalFooter>
-                    <Button type="submit">Save</Button>
-                  </ModalFooter>
-                </Form>
-              </Modal>
             </div>
           </li>
         </ul>
       </div>
+      <ToolBarModal {...toolBarModalProps} />
     </section>
   );
 };
