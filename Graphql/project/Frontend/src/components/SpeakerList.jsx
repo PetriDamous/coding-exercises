@@ -1,11 +1,9 @@
 import { Speaker } from ".";
 
-const SpeakerList = ({ data, toggleSpeakerFavorite, deleteSpeaker }) => {
+const SpeakerList = ({ data }) => {
   {
     return data.speakers.datalist.map(({ id, first, last, favorite }) => {
       const speakerListProps = {
-        toggleSpeakerFavorite,
-        deleteSpeaker,
         id,
         first,
         last,

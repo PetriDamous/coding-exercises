@@ -1,35 +1,10 @@
 // import "./App.css";
 import { useApolloClient, useQuery, useMutation } from "@apollo/client";
 import { SpeakerList, Toolbar } from "./components";
-import {
-  ADD_SPEAKER,
-  DELETE_SPEAKER,
-  GET_SPEAKERS,
-  TOGGLE_SPEAKER_FAVORITE,
-} from "./graphql";
+import { ADD_SPEAKER, GET_SPEAKERS } from "./graphql";
 
 function App() {
   const { data, error, loading } = useQuery(GET_SPEAKERS);
-
-  const [toggleSpeakerFavorite] = useMutation(TOGGLE_SPEAKER_FAVORITE);
-
-  const [deleteSpeaker] = useMutation(DELETE_SPEAKER, {
-    update(cache, { data: { deleteSpeaker } }) {
-      const { speakers } = cache.readQuery({ query: GET_SPEAKERS });
-
-      cache.writeQuery({
-        query: GET_SPEAKERS,
-        data: {
-          speakers: {
-            __typename: "SpeakerResults",
-            datalist: speakers.datalist.filter(
-              (speaker) => speaker.id !== deleteSpeaker.id
-            ),
-          },
-        },
-      });
-    },
-  });
 
   const [addSpeaker] = useMutation(ADD_SPEAKER);
 
@@ -78,12 +53,6 @@ function App() {
     });
   };
 
-  const speakerListProps = {
-    data,
-    toggleSpeakerFavorite,
-    deleteSpeaker,
-  };
-
   const toolBarProps = {
     insertSpeakerEvent,
     sortByIdDescending,
@@ -95,7 +64,7 @@ function App() {
       <div className="container show-fav">
         <div className="row">
           <div className="fav-list">
-            <SpeakerList {...speakerListProps} />
+            <SpeakerList data={data} />
           </div>
         </div>
       </div>

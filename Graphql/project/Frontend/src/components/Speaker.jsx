@@ -1,11 +1,31 @@
-const Speaker = ({
-  toggleSpeakerFavorite,
-  deleteSpeaker,
-  id,
-  first,
-  last,
-  favorite,
-}) => {
+import { useMutation } from "@apollo/client";
+import {
+  DELETE_SPEAKER,
+  GET_SPEAKERS,
+  TOGGLE_SPEAKER_FAVORITE,
+} from "../graphql";
+
+const Speaker = ({ id, first, last, favorite }) => {
+  const [toggleSpeakerFavorite] = useMutation(TOGGLE_SPEAKER_FAVORITE);
+
+  const [deleteSpeaker] = useMutation(DELETE_SPEAKER, {
+    update(cache, { data: { deleteSpeaker } }) {
+      const { speakers } = cache.readQuery({ query: GET_SPEAKERS });
+
+      cache.writeQuery({
+        query: GET_SPEAKERS,
+        data: {
+          speakers: {
+            __typename: "SpeakerResults",
+            datalist: speakers.datalist.filter(
+              (speaker) => speaker.id !== deleteSpeaker.id
+            ),
+          },
+        },
+      });
+    },
+  });
+
   return (
     <div className="favbox" key={id}>
       <div className="fav-clm col-sm-7">
