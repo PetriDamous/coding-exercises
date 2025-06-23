@@ -1,9 +1,13 @@
 import { useState } from "react";
 import { Button } from "reactstrap";
 import { ToolBarModal } from ".";
+import { themeVar } from "../graphql/reactiveVars";
+import { useReactiveVar } from "@apollo/client";
 
 const Toolbar = ({ insertSpeakerEvent, sortByIdDescending }) => {
   const [modal, setModal] = useState(false);
+
+  const theme = useReactiveVar(themeVar);
 
   const toggle = () => {
     setModal(!modal);
@@ -31,10 +35,24 @@ const Toolbar = ({ insertSpeakerEvent, sortByIdDescending }) => {
     setFavorite,
   };
 
+  const handleThemeSelect = (e) => themeVar(e.target.value);
   return (
     <section className="toolbar">
       <div className="container">
         <ul className="toolrow">
+          <li>
+            <strong>Theme</strong>
+            <label className="dropmenu">
+              <select
+                className="form-control"
+                onChange={handleThemeSelect}
+                value={theme}
+              >
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+              </select>
+            </label>
+          </li>
           <li>
             <div>
               <Button color="info" onClick={toggle}>

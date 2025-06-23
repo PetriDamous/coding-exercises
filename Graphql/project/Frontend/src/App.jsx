@@ -1,10 +1,16 @@
-// import "./App.css";
-import { useApolloClient, useQuery, useMutation } from "@apollo/client";
+import {
+  useApolloClient,
+  useQuery,
+  useMutation,
+  useReactiveVar,
+} from "@apollo/client";
 import { SpeakerList, Toolbar } from "./components";
-import { ADD_SPEAKER, GET_SPEAKERS } from "./graphql";
+import { ADD_SPEAKER, GET_SPEAKERS, themeVar } from "./graphql";
 
 function App() {
   const { data, error, loading } = useQuery(GET_SPEAKERS);
+
+  const theme = useReactiveVar(themeVar);
 
   const [addSpeaker] = useMutation(ADD_SPEAKER);
 
@@ -58,12 +64,14 @@ function App() {
     sortByIdDescending,
   };
 
+  const currentTheme = theme === "dark" ? "fav-list dark" : "fav-list";
+
   return (
     <>
       <Toolbar {...toolBarProps} />
       <div className="container show-fav">
         <div className="row">
-          <div className="fav-list">
+          <div className={currentTheme}>
             <SpeakerList data={data} />
           </div>
         </div>
