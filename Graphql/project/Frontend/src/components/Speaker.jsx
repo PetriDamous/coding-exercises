@@ -5,7 +5,7 @@ import {
   TOGGLE_SPEAKER_FAVORITE,
 } from "../graphql";
 
-const Speaker = ({ id, first, last, favorite }) => {
+const Speaker = ({ id, first, last, favorite, fullName }) => {
   const [toggleSpeakerFavorite] = useMutation(TOGGLE_SPEAKER_FAVORITE);
 
   const [deleteSpeaker] = useMutation(DELETE_SPEAKER, {
@@ -30,7 +30,7 @@ const Speaker = ({ id, first, last, favorite }) => {
     <div className="favbox" key={id}>
       <div className="fav-clm col-sm-7">
         <h4>
-          {first} {last} ({id})
+          {fullName} ({id})
         </h4>
       </div>
       <div className="fav-clm col-sm-5">

@@ -5,10 +5,11 @@ import "./CSS/style-home.css";
 import "./CSS/style-speakers.css";
 import App from "./App.jsx";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import { inMemoryCacheConfig } from "./graphql/";
 
 const client = new ApolloClient({
   uri: import.meta.env.VITE_API_URL,
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache(inMemoryCacheConfig),
 });
 
 createRoot(document.getElementById("root")).render(
