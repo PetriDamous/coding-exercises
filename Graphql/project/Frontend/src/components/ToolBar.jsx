@@ -1,13 +1,19 @@
 import { useState } from "react";
 import { Button } from "reactstrap";
 import { ToolBarModal } from ".";
-import { themeVar } from "../graphql/reactiveVars";
+import { themeVar, paginationDataVar } from "../graphql/reactiveVars";
 import { useReactiveVar } from "@apollo/client";
+import { PagingOffsetLimitControl } from "./index";
 
-const Toolbar = ({ insertSpeakerEvent, sortByIdDescending }) => {
+const Toolbar = ({
+  insertSpeakerEvent,
+  sortByIdDescending,
+  totalItemCount,
+}) => {
   const [modal, setModal] = useState(false);
 
   const theme = useReactiveVar(themeVar);
+  const paginationData = useReactiveVar(paginationDataVar);
 
   const toggle = () => {
     setModal(!modal);
@@ -16,6 +22,8 @@ const Toolbar = ({ insertSpeakerEvent, sortByIdDescending }) => {
   const [first, setFirst] = useState("");
   const [last, setLast] = useState("");
   const [favorite, setFavorite] = useState(false);
+
+  const lastPage = Math.trunc((totalItemCount - 1) / paginationData.limit);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -40,6 +48,9 @@ const Toolbar = ({ insertSpeakerEvent, sortByIdDescending }) => {
     <section className="toolbar">
       <div className="container">
         <ul className="toolrow">
+          <li>
+            <PagingOffsetLimitControl lastPage={lastPage} />
+          </li>
           <li>
             <strong>Theme</strong>
             <label className="dropmenu">

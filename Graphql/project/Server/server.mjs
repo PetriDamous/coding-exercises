@@ -13,8 +13,13 @@ const typeDefs = `#graphql
         firstLast: String
     }
 
+    type PageInfo {
+      totalItemCount: Int
+    }
+
     type SpeakerResults {
         datalist: [Speaker]
+        pageInfo: PageInfo
     }
 
     input SpeakerInput {
@@ -24,7 +29,7 @@ const typeDefs = `#graphql
     }
 
     type Query {
-        speakers: SpeakerResults
+        speakers(offset: Int = 0, limit: Int = -1): SpeakerResults
     }
 
     type Mutation {
@@ -37,9 +42,18 @@ const typeDefs = `#graphql
 const resolvers = {
   Query: {
     speakers: async (parent, args, context, info) => {
+      const { offset, limit } = args;
+
       const speakers = await context.speakersAPI.get();
 
-      return { datalist: speakers.data };
+      const paginatedSpeakers = speakers.data.filter((speaker, index) => {
+        return index > offset - 1 && (offset + limit > index || limit === -1);
+      });
+
+      return {
+        datalist: paginatedSpeakers,
+        pageInfo: { totalItemCount: speakers.data.length },
+      };
     },
   },
   Mutation: {

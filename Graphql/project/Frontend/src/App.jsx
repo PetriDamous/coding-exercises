@@ -5,12 +5,25 @@ import {
   useReactiveVar,
 } from "@apollo/client";
 import { SpeakerList, Toolbar } from "./components";
-import { ADD_SPEAKER, GET_SPEAKERS, themeVar } from "./graphql";
+import {
+  ADD_SPEAKER,
+  GET_SPEAKERS,
+  themeVar,
+  paginationDataVar,
+} from "./graphql";
 
 function App() {
-  const { data, error, loading } = useQuery(GET_SPEAKERS);
-
   const theme = useReactiveVar(themeVar);
+  const paginationData = useReactiveVar(paginationDataVar);
+
+  const { limit, currentPage } = paginationData;
+
+  const { data, error, loading } = useQuery(GET_SPEAKERS, {
+    variables: {
+      offset: currentPage * limit,
+      limit,
+    },
+  });
 
   const [addSpeaker] = useMutation(ADD_SPEAKER);
 
@@ -59,7 +72,10 @@ function App() {
     });
   };
 
+  const totalItemCount = data.speakers.pageInfo.totalItemCount;
+
   const toolBarProps = {
+    totalItemCount,
     insertSpeakerEvent,
     sortByIdDescending,
   };
