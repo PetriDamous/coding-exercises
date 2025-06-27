@@ -57,7 +57,7 @@ const resolvers = {
     speakers: async (parent, args, context, info) => {
       const { offset, limit } = args;
 
-      const speakers = await context.speakersAPI.get();
+      const speakers = await context.speakersAPI.get("/speakers");
 
       const paginatedSpeakers = speakers.data.filter((speaker, index) => {
         return index > offset - 1 && (offset + limit > index || limit === -1);
@@ -71,7 +71,7 @@ const resolvers = {
     speakersConcat: async (parent, args, context, info) => {
       const { limit, afterCursor } = args;
 
-      const speakers = await context.speakersAPI.get();
+      const speakers = await context.speakersAPI.get("/speakers");
 
       const sortedSpeakers = speakers.data.sort((a, b) => {
         return a.last.localeCompare(b);
@@ -169,7 +169,7 @@ const startServer = async () => {
   const { url } = await startStandaloneServer(server, {
     context: async () => ({
       speakersAPI: axios.create({
-        baseURL: "http://localhost:5000/speakers",
+        baseURL: "http://localhost:5000",
       }),
     }),
     listen: { port: 4000 },
