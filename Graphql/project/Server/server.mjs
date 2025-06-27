@@ -11,10 +11,13 @@ const typeDefs = `#graphql
         last: String
         favorite: Boolean
         firstLast: String
+        cursor: String
     }
 
     type PageInfo {
       totalItemCount: Int
+      lastCursor: String
+      hasNextPage: Boolean
     }
 
     type SpeakerResults {
@@ -25,11 +28,12 @@ const typeDefs = `#graphql
     input SpeakerInput {
       first: String
       last: String
-      favorite: Boolean
+      favorite: Boolean      
     }
 
     type Query {
         speakers(offset: Int = 0, limit: Int = -1): SpeakerResults
+        speakersConcat(limit: Int = -1, afterCursor: String = ""): SpeakerResults
     }
 
     type Mutation {
@@ -38,6 +42,15 @@ const typeDefs = `#graphql
       deleteSpeaker(speakerId: ID!): Speaker
     }
 `;
+
+const getCursor = (cursor) => Buffer.from(cursor.toString()).toString("base64");
+
+const getOffsetCustom = (data, afterCursor) => {
+  const offsetBasedOnFind = data.findIndex(
+    (rec) => getCursor(rec.id) === afterCursor
+  );
+  return offsetBasedOnFind === -1 ? 0 : offsetBasedOnFind + 1;
+};
 
 const resolvers = {
   Query: {
@@ -53,6 +66,40 @@ const resolvers = {
       return {
         datalist: paginatedSpeakers,
         pageInfo: { totalItemCount: speakers.data.length },
+      };
+    },
+    speakersConcat: async (parent, args, context, info) => {
+      const { limit, afterCursor } = args;
+
+      const speakers = await context.speakersAPI.get();
+
+      const sortedSpeakers = speakers.data.sort((a, b) => {
+        return a.last.localeCompare(b);
+      });
+
+      const offset = getOffsetCustom(sortedSpeakers, afterCursor);
+
+      const datalist = sortedSpeakers
+        .filter((speaker, index) => {
+          return index > offset - 1 && (offset + limit > index || limit === -1);
+        })
+        .map((rec) => {
+          rec.cursor = getCursor(rec.id);
+          return rec;
+        });
+
+      const pageInfo = {
+        totalItemCount: sortedSpeakers.length,
+        lastCursor:
+          datalist.length > 0
+            ? getCursor(datalist[datalist.length - 1].id)
+            : "",
+        hasNextPage: offset + datalist.length < sortedSpeakers.length,
+      };
+
+      return {
+        datalist,
+        pageInfo,
       };
     },
   },

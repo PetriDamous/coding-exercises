@@ -1,98 +1,14 @@
-import {
-  useApolloClient,
-  useQuery,
-  useMutation,
-  useReactiveVar,
-} from "@apollo/client";
-import { SpeakerList, Toolbar } from "./components";
-import {
-  ADD_SPEAKER,
-  GET_SPEAKERS,
-  themeVar,
-  paginationDataVar,
-} from "./graphql";
+import { PagePaginate, CursorPaginate } from "./components";
+import { BrowserRouter, Routes, Route } from "react-router";
 
 function App() {
-  const theme = useReactiveVar(themeVar);
-  const paginationData = useReactiveVar(paginationDataVar);
-
-  const { limit, currentPage } = paginationData;
-
-  const { data, error, loading } = useQuery(GET_SPEAKERS, {
-    variables: {
-      offset: currentPage * limit,
-      limit,
-    },
-  });
-
-  const [addSpeaker] = useMutation(ADD_SPEAKER);
-
-  const { cache } = useApolloClient();
-
-  if (loading) return <div>Loading....</div>;
-
-  if (error) return <div>Error: {error.message}</div>;
-
-  const insertSpeakerEvent = (first, last, favorite) => {
-    addSpeaker({
-      variables: {
-        speakerInput: { first, last, favorite },
-      },
-      update(cache, { data: { addSpeaker } }) {
-        const { speakers } = cache.readQuery({ query: GET_SPEAKERS });
-
-        cache.writeQuery({
-          query: GET_SPEAKERS,
-          data: {
-            speakers: {
-              __typename: "SpeakerResults",
-              datalist: [addSpeaker, ...speakers.datalist],
-            },
-          },
-        });
-      },
-    });
-  };
-
-  const sortByIdDescending = () => {
-    const { speakers } = cache.readQuery({ query: GET_SPEAKERS });
-
-    const speakersDescening = [...speakers.datalist].sort(
-      (a, b) => b.id - a.id
-    );
-
-    cache.writeQuery({
-      query: GET_SPEAKERS,
-      data: {
-        speakers: {
-          __typename: "SpeakerResutls",
-          datlist: speakersDescening,
-        },
-      },
-    });
-  };
-
-  const totalItemCount = data.speakers.pageInfo.totalItemCount;
-
-  const toolBarProps = {
-    totalItemCount,
-    insertSpeakerEvent,
-    sortByIdDescending,
-  };
-
-  const currentTheme = theme === "dark" ? "fav-list dark" : "fav-list";
-
   return (
-    <>
-      <Toolbar {...toolBarProps} />
-      <div className="container show-fav">
-        <div className="row">
-          <div className={currentTheme}>
-            <SpeakerList data={data} />
-          </div>
-        </div>
-      </div>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route index element={<PagePaginate />} />
+        <Route path="/cursor" element={<CursorPaginate />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
