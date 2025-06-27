@@ -12,6 +12,7 @@ const typeDefs = `#graphql
         favorite: Boolean
         firstLast: String
         cursor: String
+        sessions: [Session]
     }
 
     type PageInfo {
@@ -31,9 +32,22 @@ const typeDefs = `#graphql
       favorite: Boolean      
     }
 
+    type Session {
+      id: ID!
+      title: String!
+      eventYear: String
+      cursor: String
+    }
+
+    type SesssionResults {
+      datalist: [Session]
+      pageInfo: PageInfo
+    }
+
     type Query {
         speakers(offset: Int = 0, limit: Int = -1): SpeakerResults
         speakersConcat(limit: Int = -1, afterCursor: String = ""): SpeakerResults
+        sessionsConcat(limit: Int = -1, afterCursor: String = ""): SesssionResults
     }
 
     type Mutation {
@@ -102,6 +116,39 @@ const resolvers = {
         pageInfo,
       };
     },
+    sessionsConcat: async (parent, args, context, info) => {
+      const response = await context.speakersAPI.get("/sessions");
+
+      const responseSorted = response.data.sort((a, b) => {
+        return a.eventYear.localeCompare(b);
+      });
+
+      const { limit, afterCursor } = args;
+      const offset = getOffsetCustom(responseSorted, afterCursor);
+
+      const datalist = responseSorted
+        .filter((rec, index) => {
+          return index > offset - 1 && (offset + limit > index || limit === -1);
+        })
+        .map((rec) => {
+          rec.cursor = getCursor(rec.id);
+          return rec;
+        });
+
+      const pageInfo = {
+        totalItemCount: response.data.length,
+        lastCursor:
+          datalist.lenggth > 0
+            ? getCursor(datalist[datalist.length - 1].id)
+            : "",
+        hasNextPage: offset + datalist.length < response.data.length,
+      };
+
+      return {
+        datalist,
+        pageInfo,
+      };
+    },
   },
   Mutation: {
     addSpeaker: async (parent, args, context, info) => {
@@ -157,6 +204,29 @@ const resolvers = {
   Speaker: {
     firstLast: (parent, args, context, info) =>
       `${parent.first} ${parent.last}`,
+    sessions: async (parent, _, context) => {
+      const speakerId = parent.id;
+
+      const speakers = await context.speakersAPI.get("/speakers");
+
+      const sessions = await context.speakersAPI.get("/sessions");
+
+      const sessionIds = speakers.data
+        .filter((rec) => {
+          return rec.speakerId === speakerId;
+        })
+        .map((rec) => {
+          return rec.sessionId;
+        });
+
+      const sessionsResult = sessions.data
+        .filter((rec) => {
+          return sessionIds.includes(rec.id);
+        })
+        .sort((a, b) => b.eventYear.localeComparte(a.eventYear));
+
+      return sessionsResult;
+    },
   },
 };
 
