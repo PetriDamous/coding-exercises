@@ -3,58 +3,66 @@ import { startStandaloneServer } from "@apollo/server/standalone";
 import { GraphQLError } from "graphql";
 import { ApolloServerErrorCode } from "@apollo/server/errors";
 import axios from "axios";
+import DataLoader from "dataloader";
 
 const typeDefs = `#graphql
-    type Speaker {
-        id: ID!
-        first: String
-        last: String
-        favorite: Boolean
-        firstLast: String
-        cursor: String
-        sessions: [Session]
-    }
+  type Room {
+    id: ID!
+    name: String
+    capacity: Int
+  }
 
-    type PageInfo {
-      totalItemCount: Int
-      lastCursor: String
-      hasNextPage: Boolean
-    }
-
-    type SpeakerResults {
-        datalist: [Speaker]
-        pageInfo: PageInfo
-    }
-
-    input SpeakerInput {
+  type Speaker {
+      id: ID!
       first: String
       last: String
-      favorite: Boolean      
-    }
-
-    type Session {
-      id: ID!
-      title: String!
-      eventYear: String
+      favorite: Boolean
+      firstLast: String
       cursor: String
-    }
+      sessions: [Session]
+  }
 
-    type SesssionResults {
-      datalist: [Session]
+  type PageInfo {
+    totalItemCount: Int
+    lastCursor: String
+    hasNextPage: Boolean
+  }
+
+  type SpeakerResults {
+      datalist: [Speaker]
       pageInfo: PageInfo
-    }
+  }
 
-    type Query {
-        speakers(offset: Int = 0, limit: Int = -1): SpeakerResults
-        speakersConcat(limit: Int = -1, afterCursor: String = ""): SpeakerResults
-        sessionsConcat(limit: Int = -1, afterCursor: String = ""): SesssionResults
-    }
+  input SpeakerInput {
+    first: String
+    last: String
+    favorite: Boolean      
+  }
 
-    type Mutation {
-      addSpeaker(input: SpeakerInput): Speaker
-      toggleSpeakerFavorite(speakerId: ID!):Speaker
-      deleteSpeaker(speakerId: ID!): Speaker
-    }
+  type Session {
+    id: ID!
+    title: String!
+    eventYear: String
+    cursor: String
+    room: Room
+  }
+
+  type SesssionResults {
+    datalist: [Session]
+    pageInfo: PageInfo
+  }
+
+  type Query {
+      speakers(offset: Int = 0, limit: Int = -1): SpeakerResults
+      speakersConcat(limit: Int = -1, afterCursor: String = ""): SpeakerResults
+      sessionsConcat(limit: Int = -1, afterCursor: String = ""): SesssionResults
+  }
+
+  type Mutation {
+    addSpeaker(input: SpeakerInput): Speaker
+    toggleSpeakerFavorite(speakerId: ID!):Speaker
+    deleteSpeaker(speakerId: ID!): Speaker
+  }
 `;
 
 const getCursor = (cursor) => Buffer.from(cursor.toString()).toString("base64");
@@ -201,6 +209,15 @@ const resolvers = {
       return updatedSpeaker;
     },
   },
+  Session: {
+    room: async (parent, _, context) => {
+      const roomId = parent.roomId;
+
+      const roomRec = context.roomLoader.load(roomId);
+
+      return roomRec;
+    },
+  },
   Speaker: {
     firstLast: (parent, args, context, info) =>
       `${parent.first} ${parent.last}`,
@@ -240,6 +257,19 @@ const startServer = async () => {
     context: async () => ({
       speakersAPI: axios.create({
         baseURL: "http://localhost:5000",
+      }),
+      roomLoader: new DataLoader(async (roomIds) => {
+        const responseRooms = await axios.get("http://localhost:5000/rooms");
+
+        const roomMap = {};
+
+        responseRooms.data.forEach((room) => {
+          roomMap[room.id] = room;
+        });
+
+        return roomIds.map((roomId) => {
+          return roomMap[roomId];
+        });
       }),
     }),
     listen: { port: 4000 },
