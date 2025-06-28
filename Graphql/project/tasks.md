@@ -29,3 +29,15 @@
 
 - Implement both styles of pagination.
 - Implement data loaders
+
+# Tasks for 6/28 - 6/29
+
+- Implement last section code for the `Apollo cache like redux`
+  - Create checkbox that is local only global state
+  - Have anything that has a check box toggle fav of speaker when button for toggle checked speakers is cliked
+    - This button will live in the toolbar controls.
+    - when clicked any speaker that has a check mark will have their fav status toggled
+  - This will use both reactive variables and adding in custom code into the cache
+- Implement cusor pagination to new route for sessions
+  - create new route with new component for that route
+  - implement the rest of the cursor pagination.
