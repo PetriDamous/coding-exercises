@@ -12,14 +12,14 @@ const typeDefs = `#graphql
     capacity: Int
   }
 
-  type Speaker {
+  type Speaker @cacheControl (maxAge: 3600) { # Cache the entire speaker type for 3600 seconds. By default this is PUBLIC caching so anything all intermediate caching on the net can participate in caching (such as CDNs, browser caching, proxy servers, etc)
       id: ID!
       first: String
       last: String
-      favorite: Boolean
+      favorite: Boolean @cacheControl (maxAge: 5, scope: PRIVATE) # Only favorite is cached for 5 seconds. PRIVATE scope means only the users browswer is used for caching.
       firstLast: String
       cursor: String
-      sessions: [Session]
+      sessions: [Session] @cacheControl (maxAge: 600) # Caches only sessions for 10 min or 600 seconds. PUBLIC by default.
   }
 
   type PageInfo {
@@ -221,7 +221,9 @@ const resolvers = {
   Speaker: {
     firstLast: (parent, args, context, info) =>
       `${parent.first} ${parent.last}`,
-    sessions: async (parent, _, context) => {
+    sessions: async (parent, _, context, info) => {
+      info.cacheControl.setCacheHint({ maxAge: 600, scope: "PUBLIC" });
+
       const speakerId = parent.id;
 
       const speakers = await context.speakersAPI.get("/speakers");
@@ -254,6 +256,9 @@ const startServer = async () => {
   });
 
   const { url } = await startStandaloneServer(server, {
+    cacheControl: {
+      defaultMaxAge: 5, // Sets everything in server to be cached for 5 seconds
+    },
     context: async () => ({
       speakersAPI: axios.create({
         baseURL: "http://localhost:5000",
