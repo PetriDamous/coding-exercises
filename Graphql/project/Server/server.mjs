@@ -6,6 +6,18 @@ import axios from "axios";
 import DataLoader from "dataloader";
 
 const typeDefs = `#graphql
+  enum CacheControlScope {
+    PUBLIC
+    PRIVATE
+  }
+
+  directive @cacheControl(
+    maxAge: Int
+    scope: CacheControlScope
+    inheritMaxAge: Boolean
+  ) on FIELD_DEFINITION | OBJECT | INTERFACE | UNION
+
+
   type Room {
     id: ID!
     name: String
