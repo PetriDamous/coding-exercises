@@ -1,4 +1,4 @@
-import { PagePaginate, CursorPaginate } from "./components";
+import { PagePaginate, CursorPaginate, SessionsConcat } from "./components";
 import { BrowserRouter, Routes, Route } from "react-router";
 
 function App() {
@@ -7,6 +7,7 @@ function App() {
       <Routes>
         <Route index element={<PagePaginate />} />
         <Route path="/cursor" element={<CursorPaginate />} />
+        <Route path="/sessions" element={<SessionsConcat />} />
       </Routes>
     </BrowserRouter>
   );

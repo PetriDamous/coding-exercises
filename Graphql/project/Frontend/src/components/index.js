@@ -5,3 +5,4 @@ export { default as ToolBarModal } from "./ToolBarModal";
 export { default as PagingOffsetLimitControl } from "./PagingOffsetLimitControl";
 export { default as PagePaginate } from "./PagePaginate";
 export { default as CursorPaginate } from "./CursorPaginate";
+export { default as SessionsConcat } from "./SessionsConcat";
