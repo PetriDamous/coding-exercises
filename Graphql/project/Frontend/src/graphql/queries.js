@@ -36,3 +36,26 @@ export const GET_SPEAKERS_CONCAT = gql`
     }
   }
 `;
+
+export const GET_SESSIONS_CONCAT = gql`
+  query SessionsConcat($limit: Int, $afterCursor: String) {
+    sessionsConcat(limit: $limit, afterCursor: $afterCursor) {
+      datalist {
+        title
+        room {
+          capacity
+          id
+          name
+        }
+        id
+        eventYear
+        cursor
+      }
+      pageInfo {
+        totalItemCount
+        lastCursor
+        hasNextPage
+      }
+    }
+  }
+`;

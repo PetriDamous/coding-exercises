@@ -11,6 +11,7 @@ const inMemoryCacheConfig = {
           merge: generalPagination,
           keyArgs: false,
         },
+        sessionsConcat: { merge: generalPagination, keyArgs: false },
       },
     },
     Speaker: {
