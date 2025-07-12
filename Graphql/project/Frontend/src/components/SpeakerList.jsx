@@ -12,7 +12,7 @@ const SpeakerList = ({ data }) => {
           fullName,
         };
 
-        return <Speaker {...speakerListProps} />;
+        return <Speaker key={id} {...speakerListProps} />;
       }
     );
   }
