@@ -238,25 +238,7 @@ const resolvers = {
 
       const speakerId = parent.id;
 
-      const speakers = await context.speakersAPI.get("/speakers");
-
-      const sessions = await context.speakersAPI.get("/sessions");
-
-      const sessionIds = speakers.data
-        .filter((rec) => {
-          return rec.speakerId === speakerId;
-        })
-        .map((rec) => {
-          return rec.sessionId;
-        });
-
-      const sessionsResult = sessions.data
-        .filter((rec) => {
-          return sessionIds.includes(rec.id);
-        })
-        .sort((a, b) => b.eventYear.localeComparte(a.eventYear));
-
-      return sessionsResult;
+      return context.sessionsLoader.load(speakerId);
     },
   },
 };
@@ -286,6 +268,36 @@ const startServer = async () => {
 
         return roomIds.map((roomId) => {
           return roomMap[roomId];
+        });
+      }),
+      sessionsLoader: new DataLoader(async (speakerIds) => {
+        const [responseSessions, responseSessionSpeakers] = await Promise.all([
+          axios.get("http://localhost:5000/sessions"),
+          axios.get("http://localhost:5000/sessionSpeakers"),
+        ]);
+
+        const allSessions = responseSessions.data;
+        const allSessionSpeakers = responseSessionSpeakers.data;
+
+        // Build a map: speakerId -> [sessionId]
+        const speakerToSessionIds = {};
+        allSessionSpeakers.forEach(({ speakerId, sessionId }) => {
+          if (!speakerToSessionIds[speakerId]) {
+            speakerToSessionIds[speakerId] = [];
+          }
+          speakerToSessionIds[speakerId].push(sessionId);
+        });
+
+        // Build a map: sessionId -> session
+        const sessionMap = {};
+        allSessions.forEach((session) => {
+          sessionMap[session.id] = session;
+        });
+
+        // Return sessions for each speakerId in order
+        return speakerIds.map((speakerId) => {
+          const sessionIds = speakerToSessionIds[speakerId] || [];
+          return sessionIds.map((id) => sessionMap[id]).filter(Boolean);
         });
       }),
     }),

@@ -38,6 +38,3 @@
     - This button will live in the toolbar controls.
     - when clicked any speaker that has a check mark will have their fav status toggled
   - This will use both reactive variables and adding in custom code into the cache
-- Implement cusor pagination to new route for sessions
-  - create new route with new component for that route
-  - implement the rest of the cursor pagination.
