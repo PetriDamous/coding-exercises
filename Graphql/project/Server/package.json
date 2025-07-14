@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "run-server": "nodemon server.mjs --ignore db.json",
+    "run-server": "nodemon --inspect server.mjs --ignore db.json",
     "json-server": "json-server data/db.json --port 5000",
     "start": "npm-run-all --parallel run-server json-server",
     "test": "echo \"Error: no test specified\" && exit 1"
