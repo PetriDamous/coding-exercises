@@ -19,6 +19,7 @@ function PagePaginate() {
   const { limit, currentPage } = paginationData;
 
   const { data, error, loading } = useQuery(GET_SPEAKERS, {
+    fetchPolicy: "network-only",
     variables: {
       offset: currentPage * limit,
       limit,

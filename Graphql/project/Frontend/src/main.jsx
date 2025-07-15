@@ -14,13 +14,16 @@ import { createPersistedQueryLink } from "@apollo/client/link/persisted-queries"
 import { inMemoryCacheConfig } from "./graphql/";
 import { sha256 } from "crypto-hash";
 
-const link = createPersistedQueryLink({ sha256 }).concat(
-  new HttpLink({ uri: import.meta.env.VITE_API_URL })
-);
+const httpLink = new HttpLink({ uri: import.meta.env.VITE_API_URL });
+
+const apqLink = createPersistedQueryLink({
+  sha256,
+  useGETForHashedQueries: true,
+});
 
 const client = new ApolloClient({
   cache: new InMemoryCache(inMemoryCacheConfig),
-  link,
+  link: apqLink.concat(httpLink),
   connectToDevTools: true,
 });
 
