@@ -8,3 +8,5 @@ export const paginationDataVar = makeVar({
   currentPage: 0, // current page on
   totalItemCount: 0, // total number of speakers over all not just ones showing
 });
+
+export const checkboxIdsVar = makeVar([]);
