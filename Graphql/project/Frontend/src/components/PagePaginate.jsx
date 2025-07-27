@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
   useApolloClient,
   useQuery,
@@ -16,15 +17,27 @@ function PagePaginate() {
   const theme = useReactiveVar(themeVar);
   const paginationData = useReactiveVar(paginationDataVar);
 
-  const { limit, currentPage } = paginationData;
+  const { limit, currentPage, offset } = paginationData;
 
   const { data, error, loading } = useQuery(GET_SPEAKERS, {
-    fetchPolicy: "network-only",
     variables: {
       offset: currentPage * limit,
       limit,
     },
   });
+
+  useEffect(() => {
+    if (data && data?.speakers) {
+      const newTotal = data.speakers.pageInfo.totalItemCount;
+
+      if (paginationData.totalItemCount !== newTotal) {
+        paginationDataVar({
+          ...paginationData,
+          totalItemCount: data.speakers.pageInfo.totalItemCount,
+        });
+      }
+    }
+  }, [data, paginationData]);
 
   const [addSpeaker] = useMutation(ADD_SPEAKER);
 
@@ -34,20 +47,36 @@ function PagePaginate() {
 
   if (error) return <div>Error: {error.message}</div>;
 
+  const totalItemCount = paginationData.totalItemCount;
+
   const insertSpeakerEvent = (first, last, favorite) => {
     addSpeaker({
       variables: {
         speakerInput: { first, last, favorite },
       },
       update(cache, { data: { addSpeaker } }) {
-        const { speakers } = cache.readQuery({ query: GET_SPEAKERS });
+        const { speakers } = cache.readQuery({
+          query: GET_SPEAKERS,
+          variables: {
+            offset: offset,
+            limit: limit,
+          },
+        });
 
         cache.writeQuery({
           query: GET_SPEAKERS,
+          variables: {
+            offset: offset,
+            limit: limit,
+          },
           data: {
             speakers: {
               __typename: "SpeakerResults",
               datalist: [addSpeaker, ...speakers.datalist],
+              pageInfo: {
+                __typename: "PageInfo",
+                totalItemCount,
+              },
             },
           },
         });
@@ -56,7 +85,13 @@ function PagePaginate() {
   };
 
   const sortByIdDescending = () => {
-    const { speakers } = cache.readQuery({ query: GET_SPEAKERS });
+    const { speakers } = cache.readQuery({
+      query: GET_SPEAKERS,
+      variables: {
+        offset: offset,
+        limit: limit,
+      },
+    });
 
     const speakersDescening = [...speakers.datalist].sort(
       (a, b) => b.id - a.id
@@ -64,16 +99,22 @@ function PagePaginate() {
 
     cache.writeQuery({
       query: GET_SPEAKERS,
+      variables: {
+        offset: offset,
+        limit: limit,
+      },
       data: {
         speakers: {
-          __typename: "SpeakerResutls",
-          datlist: speakersDescening,
+          __typename: "SpeakerResults",
+          datalist: speakersDescening,
+          pageInfo: {
+            __typename: "PageInfo",
+            totalItemCount,
+          },
         },
       },
     });
   };
-
-  const totalItemCount = data.speakers.pageInfo.totalItemCount;
 
   const toolBarProps = {
     totalItemCount,
