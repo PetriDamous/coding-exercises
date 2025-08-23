@@ -3,9 +3,10 @@ const { ApolloServer } = require("apollo-server-express");
 const SessionDataSource = require("./datasources/sessions");
 const SpeakerDataSource = require("./datasources/speakers");
 const { UserDataSource } = require("./datasources/users");
-
+const { PubSub } = require("apollo-server");
 const { generateUserModel } = require("./models/user");
 const { AuthDirective } = require("./directives/AuthDirective");
+const http = require("http");
 
 const {
   createRateLimitTypeDef,
@@ -23,6 +24,7 @@ const auth = require("./utils/auth");
 const cookieParser = require("cookie-parser");
 const express = require("express");
 const app = express();
+const pubsub = new PubSub();
 
 const dataSources = () => ({
   sessionDataSource: new SessionDataSource(),
@@ -63,7 +65,8 @@ const server = new ApolloServer({
   ],
   context: ({ req, res }) => {
     let user = null;
-    if (req.cookies.token) {
+    // Extra req to prevent errors
+    if (req && req.cookies.token) {
       const payload = auth.verifyToken(req.cookies.token);
       user = payload;
     }
@@ -73,12 +76,17 @@ const server = new ApolloServer({
       models: {
         User: generateUserModel({ user }),
       },
+      pubsub,
     };
   },
 });
 
 server.applyMiddleware({ app });
 
-app.listen(process.env.PORT || 4000, () => {
+const httpServer = http.createServer(app);
+
+server.installSubscriptionHandlers(httpServer);
+
+httpServer.listen(process.env.PORT || 4000, () => {
   console.log(`graphQL running at port 4000`);
 });
