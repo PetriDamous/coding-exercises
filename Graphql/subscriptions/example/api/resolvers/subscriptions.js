@@ -1,4 +1,4 @@
-const FAVORITE_UPDATE = "FAVORITE_UPDATE";
+const { FAVORITE_UPDATE } = require("./utils");
 
 module.exports = {
   favorites: {

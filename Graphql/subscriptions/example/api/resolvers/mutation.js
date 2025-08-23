@@ -1,4 +1,5 @@
 const authUtils = require("../utils/auth");
+const { FAVORITE_UPDATE } = require("./utils");
 
 module.exports = {
   createSession: async (parent, args, { dataSources, user }, info) => {
@@ -107,13 +108,25 @@ module.exports = {
     };
   },
   toggleFavoriteSession: async (parent, args, context, info) => {
-    if (context.user) {
-      const user = await context.dataSources.userDataSource.toggleFavoriteSession(
-        args.sessionId,
-        context.user.sub
+    const { sessionId } = args || {};
+    const { dataSources, pubsub, user } = context || {};
+
+    if (user) {
+      const user = await dataSources.userDataSource.toggleFavoriteSession(
+        sessionId,
+        user.sub
       );
+
+      let userFavorites = await dataSources.userDataSource.getFavorites(
+        sessionId
+      );
+
+      pubsub.publish(FAVORITE_UPDATE, {
+        favorites: { sessionId, count: userFavorites.length },
+      });
       return user;
     }
+
     return undefined;
   },
   markFeatured: (parent, args, { user, dataSources }, info) => {
