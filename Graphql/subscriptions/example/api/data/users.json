@@ -26,6 +26,13 @@
         "80310",
         "79874"
       ]
+    },
+    {
+      "email": "dan_james@yahoo.com",
+      "hash": "$2a$10$aenHwBDXBqi89/v84DDaQevwAZQDt8kBt9RUt4R245IKqSvOPX3VK",
+      "role": "USER",
+      "id": "79ae698c-dba4-4ebe-b01f-81ec963f575b",
+      "favorites": []
     }
   ]
 }
