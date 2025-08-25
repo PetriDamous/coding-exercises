@@ -112,19 +112,21 @@ module.exports = {
     const { dataSources, pubsub, user } = context || {};
 
     if (user) {
-      const user = await dataSources.userDataSource.toggleFavoriteSession(
-        sessionId,
-        user.sub
-      );
-
-      let userFavorites = await dataSources.userDataSource.getFavorites(
+      const userFaviorte =
+        await dataSources.userDataSource.toggleFavoriteSession(
+          sessionId,
+          user.sub
+        );
+      let usersFaviortes = await dataSources.userDataSource.getFavorites(
         sessionId
       );
-
       pubsub.publish(FAVORITE_UPDATE, {
-        favorites: { sessionId, count: userFavorites.length },
+        favorites: {
+          sessionId,
+          count: usersFaviortes.length,
+        },
       });
-      return user;
+      return userFaviorte;
     }
 
     return undefined;
