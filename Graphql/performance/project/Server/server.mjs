@@ -205,7 +205,7 @@ const resolvers = {
     toggleSpeakerFavorite: async (parent, args, context, info) => {
       const { speakerId } = args;
 
-      const url = `/${speakerId}`;
+      const url = `/speakers/${speakerId}`;
 
       const res = await context.speakersAPI.get(url);
 
