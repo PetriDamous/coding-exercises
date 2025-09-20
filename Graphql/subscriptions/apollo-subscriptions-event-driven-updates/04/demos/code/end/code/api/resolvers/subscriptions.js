@@ -1,9 +1,10 @@
-const FAVORITEUPDATES = 'FAVORITEUPDATES';
+const FAVORITEUPDATES = "FAVORITEUPDATES";
 
 module.exports = {
   favorites: {
     subscribe: (parent, args, { pubsub, user }, info) => {
-      console.log('resolvers!: ', user);
+      // authenticated user that was verified from connection.context
+      console.log("resolvers!: ", user);
       return pubsub.asyncIterator([FAVORITEUPDATES]);
     },
   },
