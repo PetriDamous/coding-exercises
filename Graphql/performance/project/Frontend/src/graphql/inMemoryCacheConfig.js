@@ -25,6 +25,9 @@ const inMemoryCacheConfig = {
         isChecked: (_, { readField }) => {
           const currentCheckboxIds = checkboxIdsVar();
 
+          // If array is returend !! will convert to boolean of true since a reaturend [] is truthy.
+
+          // If id is not matched in false is returned !! will still return the boolean of false.
           return !!currentCheckboxIds.find(
             (currentCheckboxId) => currentCheckboxId === readField("id")
           );
