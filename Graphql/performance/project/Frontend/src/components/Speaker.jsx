@@ -31,7 +31,7 @@ const Speaker = ({ id, first, last, favorite, fullName, isChecked }) => {
     },
   });
 
-  const handleChecked = (e) => {
+  const handleChecked = () => {
     if (isChecked) {
       const updateCheckboxIds = checkboxIds.filter(
         (checkboxId) => checkboxId !== id
