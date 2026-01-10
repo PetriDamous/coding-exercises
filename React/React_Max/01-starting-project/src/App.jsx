@@ -1,4 +1,7 @@
 import Accordion from "./components/Accordion/Accordion";
+import SearchAbleList from "./components/SearchAbleList/SearchAbleList";
+import Places from "./components/Places/Places";
+import PLACES from "./Data/data";
 
 function App() {
   const items = [
@@ -38,6 +41,14 @@ function App() {
             </Accordion.Item>
           ))}
         </Accordion>
+      </section>
+      <section>
+        <SearchAbleList items={PLACES}>
+          {(item) => <Places item={item} />}
+        </SearchAbleList>
+        <SearchAbleList items={["Item_1", "Item_2"]}>
+          {(item) => <p>{item}</p>}
+        </SearchAbleList>
       </section>
     </main>
   );
