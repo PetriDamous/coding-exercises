@@ -43,10 +43,10 @@ function App() {
         </Accordion>
       </section>
       <section>
-        <SearchAbleList items={PLACES}>
+        <SearchAbleList items={PLACES} itemKeyFn={(item) => item.id}>
           {(item) => <Places item={item} />}
         </SearchAbleList>
-        <SearchAbleList items={["Item_1", "Item_2"]}>
+        <SearchAbleList items={["Item_1", "Item_2"]} itemKeyFn={(item) => item}>
           {(item) => <p>{item}</p>}
         </SearchAbleList>
       </section>
