@@ -16,6 +16,7 @@ function App() {
       <main>
         <CounterConfig setChosenCount={setChosenCount} />
         <Counter initialCount={chosenCount} />
+        <Counter initialCount={0} />
       </main>
     </>
   );
