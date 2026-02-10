@@ -9,3 +9,7 @@ export const createResultOutput = (result) => {
 
   return resultText;
 };
+
+// console.log(createResultOutput("no-calc"));
+
+console.log("Result: " + "no-calc");
