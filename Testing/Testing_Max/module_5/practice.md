@@ -1,0 +1,2 @@
+- Write more tests for cleanNumbers
+  - Example test for errors
