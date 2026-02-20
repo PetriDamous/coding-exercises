@@ -20,7 +20,7 @@ describe("generateToken()", () => {
   });
 });
 
-describe("generateTokenPromise()", () => {
+describe.concurrent("generateTokenPromise()", () => {
   it("should return a defined value. Using the '.resolver' method.", () => {
     // Arrange
     const testEmail = "dogwater@yahoo.com";
