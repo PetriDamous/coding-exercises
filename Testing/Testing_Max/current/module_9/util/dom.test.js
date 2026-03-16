@@ -13,7 +13,31 @@ document.write(htmlDocumentContent);
 vi.stubGlobal("document", document);
 
 describe("showError()", () => {
-  it("Dummy test", () => {
-    showError("test");
+  it("should contain error message in id='errors' element.", () => {
+    // Arrange
+    const errorMsg = "test";
+
+    // Act
+    showError(errorMsg);
+
+    const errorContainer = document.getElementById("errors");
+    const errorElm = errorContainer.firstElementChild;
+
+    // Assert
+    expect(errorElm).not.toBeNull();
+  });
+
+  it("should show error message of 'test' in id='errors' element", () => {
+    // Arrange
+    const errorMsg = "test";
+
+    // Act
+    showError(errorMsg);
+
+    const errorInnerHTML =
+      document.getElementById("errors").firstElementChild.innerHTML;
+
+    // Assert
+    expect(errorInnerHTML).toBe("test");
   });
 });
