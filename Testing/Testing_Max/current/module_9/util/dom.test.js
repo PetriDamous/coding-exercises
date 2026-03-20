@@ -1,4 +1,4 @@
-import { it, describe, expect, vi } from "vitest";
+import { it, describe, expect, vi, beforeEach } from "vitest";
 import { Window } from "happy-dom";
 import fs from "fs";
 import path from "path";
@@ -9,8 +9,14 @@ const htmlDocumentContent = fs.readFileSync(htmlDocPath).toString();
 
 const window = new Window();
 const document = window.document;
-document.write(htmlDocumentContent);
 vi.stubGlobal("document", document);
+
+beforeEach(() => {
+  // Prevent appending multiple htmlDocumentContent
+  document.body.innerHTML = "";
+
+  document.write(htmlDocumentContent);
+});
 
 describe("showError()", () => {
   it("should contain error message in id='errors' element.", () => {
@@ -39,5 +45,23 @@ describe("showError()", () => {
 
     // Assert
     expect(errorInnerHTML).toBe("test");
+  });
+
+  it("should not contain an error paragraph initially", () => {
+    const errorContainer = document.getElementById("errors");
+    const errorMsg = errorContainer.firstElementChild;
+
+    expect(errorMsg).toBeNull();
+  });
+
+  it("should output the provided message in the error paragaph", () => {
+    const testErrorMessage = "Test";
+
+    showError(testErrorMessage);
+
+    const errorsEl = document.getElementById("errors");
+    const errorParagraph = errorsEl.firstElementChild;
+
+    expect(errorParagraph.textContent).toBe(testErrorMessage);
   });
 });
