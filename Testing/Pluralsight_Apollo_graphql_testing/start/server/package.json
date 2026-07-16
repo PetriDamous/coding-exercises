@@ -1,0 +1,27 @@
+{
+  "name": "apollo-server-container",
+  "description": "Container running apollo server. Used for PS course Testing Apollo.",
+  "dependencies": {
+    "@babel/core": "7.10.5",
+    "@babel/preset-env": "7.10.4",
+    "apollo-server": "2.9.7",
+    "apollo-server-testing": "2.16.1",
+    "babel-jest": "26.1.0",
+    "faker": "4.1.0",
+    "graphql": "14.5.8",
+    "graphql-tag": "^2.10.1",
+    "jest": "26.1.0",
+    "node-fetch": "2.6.0"
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js localhost 4000",
+    "test": "jest"
+  },
+  "keywords": [],
+  "devDependencies": {
+    "@types/graphql": "14.0.1",
+    "nodemon": "1.18.4"
+  }
+}

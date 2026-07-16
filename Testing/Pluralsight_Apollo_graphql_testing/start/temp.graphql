@@ -1,0 +1,13 @@
+# Using introspection query to get the schema of a GraphQL API
+
+{
+  # let's get the schema of the GraphQL API
+  __schema {
+    # get the types defined in the schema
+    types {
+      # get the name and kind of each type
+      name
+      kind
+    }
+  }
+}
