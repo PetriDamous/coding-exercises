@@ -58,6 +58,7 @@ const mocks = {
 };
 
 const server = new ApolloServer({
+  schema,
   typeDefs,
   resolvers,
   mocks,
