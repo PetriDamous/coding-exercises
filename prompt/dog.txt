@@ -1,0 +1,36 @@
+Going to need clear, super detailed notes again.  going to give you info over the next few prompts.  please wait until I tell you to write notes to start writing the notes.  sounds good?
+
+Going to need clear, super detailed notes again.  going to give you info over the next few prompts. also use the slide deck provided earlier to aid you in writing these notes.  please wait until I tell you to write notes to start writing the notes.  sounds good?
+
+you can start writing those clear, super detailed notes now.
+
+Now that you have everything you can start writing the detailed notes.
+
+
+- Additional instructions
+	- When you are about to go over the code for a certain code piece:
+		- Show full code first
+		- Then you can explain and break it down step by step
+		- You can use snippets of the code when you explain a part in detail, I find this helpful
+	
+
+
+- Starting a new course that is about `Securing an Apollo Server`. 
+	- Goal is to create a living notebook and to be able to give you info per section of the course so I can copy notes you create into my other non living notebook.  
+	- For each section I will tell you that I want notes but have to give you information over the next few prompts.  
+		- I will have no way of telling you how many prompts it will take so please wait until I tell you I am ready to start writing clear, detailed notes on the topic at hand.
+		- I will always provide a course transcript of the topic we are going over in the course. Use that in conjunction with other materials I may provide to write notes.
+
+We are starting a new section called Restricting Access for Types and Fields with Roles and Permissions.
+
+I am giving you the slide deck for this section that you can use as an aid when you are writing notes for this section.
+		
+
+- Overall explanation of what the section is about
+	- Break everything down into sections for easy digest
+		- Each section should flow as follows
+			- Explain what we are doing
+			- show full code for that section
+			- explain what we are doing with code snippets for that section
+		- Continue to next section of topic
+	- The transcript and slides should help guide you.
