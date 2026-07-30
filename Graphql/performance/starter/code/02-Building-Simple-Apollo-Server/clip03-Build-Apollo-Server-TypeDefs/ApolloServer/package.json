@@ -1,0 +1,16 @@
+{
+  "name": "ApolloServer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "apollo-server": "^2.19.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "build": "echo \"Place holder for build. No Action taken here\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
