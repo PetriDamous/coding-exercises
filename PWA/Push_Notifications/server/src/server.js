@@ -7,13 +7,8 @@ import cors from "cors";
 dotenv.config();
 const app = express();
 
-app.use(
-  cors({
-    origin: "http://127.0.0.1:8080",
-    methods: ["POST"],
-    allowedHeaders: ["Content-Type"],
-  }),
-);
+app.use(cors());
+
 app.use(bodyParser.json());
 
 // -----------------------------
@@ -71,6 +66,25 @@ app.post("/send-push", async (req, res) => {
     console.error("Push error:", err);
     res.status(500).json({ error: "Failed to send push" });
   }
+});
+
+// ----------------------------------
+// UnSubscribe
+// ----------------------------------
+
+app.post("/unsubscribe", (req, res) => {
+  const { endpoint } = req.body;
+
+  if (!savedSubscription) {
+    return res.status(400).json({ error: "No subscription stored yet" });
+  }
+
+  if (savedSubscription.endpoint === endpoint) {
+    savedSubscription = null;
+    console.log("Subscription removed");
+  }
+
+  res.json({ message: "Unsubscribed successfully" });
 });
 
 // -----------------------------

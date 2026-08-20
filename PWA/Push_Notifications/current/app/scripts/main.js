@@ -70,7 +70,7 @@
     pushButton.addEventListener("click", function () {
       pushButton.disabled = true;
       if (isSubscribed) {
-        // TODO: Unsubscribe user
+        unsubscribeUser();
       } else {
         subscribeUser();
       }
@@ -151,5 +151,41 @@
     } else {
       subscriptionDetails.classList.add("is-invisible");
     }
+  }
+
+  function unsubscribeUser() {
+    swRegistration.pushManager
+      .getSubscription()
+      .then(function (subscription) {
+        if (subscription) {
+          return subscription.unsubscribe().then(() => {
+            // 2. Notify backend
+            fetch("http://localhost:4001/unsubscribe", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ endpoint: subscription.endpoint }),
+            });
+
+            return true;
+          });
+        }
+
+        return false;
+      })
+      .catch(function (error) {
+        console.log("Error unsubscribing", error);
+      })
+      .then(function (didUnsubscribe) {
+        if (!didUnsubscribe) {
+          console.log("No subscription existed — nothing to unsubscribe.");
+        }
+
+        updateSubscriptionOnServer(null);
+
+        console.log("User is unsubscribed.");
+        isSubscribed = false;
+
+        updateBtn();
+      });
   }
 })();
